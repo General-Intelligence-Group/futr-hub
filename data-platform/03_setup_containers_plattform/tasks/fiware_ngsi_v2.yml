@@ -1,0 +1,79 @@
+---
+- name: Create private context-management network
+  docker_network:
+    name: context-management
+    driver: bridge
+    state: present
+
+- name: Create volume fiware_v2_mongo-data
+  docker_volume:
+    name: "fiware-mongo-data"
+
+- name: Ensure remote directory exists
+  file:
+    path: /opt/scp/ansible/orion_mongo/docker-entrypoint-initdb.d
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Copy Mongo init Script
+  copy:
+    src: orion_mongo/docker-entrypoint-initdb.d/init_orion_db.js
+    dest: /opt/scp/ansible/orion_mongo/docker-entrypoint-initdb.d/init_orion_db.js
+    mode: '0666'
+
+- name: Deploy Mongo for Orion V2
+  docker_container:
+    name: fiware-mongo-db
+    image: mongo:3.6
+    restart_policy: always
+    networks:
+      - name: "context-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "context-management"
+    state: started
+    env:
+      MONGO_INITDB_DATABASE: "orion"
+    command:
+      - --nojournal
+      - --storageEngine wiredTiger
+      - --maxConns 5000
+    sysctls:
+      net.core.somaxconn: 65535
+    volumes:
+      - /opt/scp/ansible/orion_mongo/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
+      - fiware-mongo-data:/data
+    labels:
+      com.docker.compose.project: "context-management"
+
+- name: Deploy Orion V2
+  docker_container:
+    name: orion-v2
+    image: fiware/orion:2.6.0
+    restart_policy: always
+    networks:
+      - name: "public"
+      - name: "context-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    sysctls:
+      net.core.somaxconn: 65535
+    state: started
+    command:
+      - -dbhost fiware-mongo-db
+      - -dbPoolSize 100
+      - -notificationMode threadpool:100:100
+      - -reqPoolSize 100
+      # - -disableMetrics
+      - -statCounters
+      - -statSemWait
+      - -statTiming
+      - -statNotifQueue
+      - -reqMutexPolicy none
+    labels:
+      com.docker.compose.project: "context-management"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+

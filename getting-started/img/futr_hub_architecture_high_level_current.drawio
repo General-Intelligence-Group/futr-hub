@@ -1,0 +1,1662 @@
+<mxfile host="65bd71144e" pages="5">
+    <diagram name="Architecture V2" id="0UkDvLvnBx0PbgZoNIiY">
+        <mxGraphModel dx="3951" dy="2769" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+            <root>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-0"/>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-1" parent="-2a-PBrGXe-KLZz-CNGb-0"/>
+                <mxCell id="13" value="Platform User Interfaces&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;UI &amp;amp; API&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="740" y="-50" width="690" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-2" value="Data Plattform" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="30" y="60" width="1400" height="580" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-3" value="Infrastructure Monitoring &amp;amp; Logging&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Loki, Grafana &amp;amp; Prometheus&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="280" y="500" width="680" height="130.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-4" value="Platform Admin Interfaces&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;UI &amp;amp; API&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="30" y="-50" width="690" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-6" value="Identity Management Stack&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;User &amp;amp; Access Lists&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="50" y="265" width="220" height="225" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-7" value="Public Stack&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Gateways for incoming traffic&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="50" y="90" width="1360" height="156.13" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-10" value="Data-Flow Stack&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;Extract-Transform-Load Engine&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="280" y="265" width="220" height="79" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-12" value="Context Management Stack&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;Data Broker (NGSI &amp;amp; SensorThings API)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="508.75" y="265" width="451.25" height="225" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-16" value="Data-Management Stack&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;SQL &amp;amp; NoSQL Databases&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="970" y="500" width="440" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-20" value="API Management Stack&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;Access Gateway&lt;/span&gt;&lt;br style=&quot;font-weight: 400&quot;&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;&amp;amp;&lt;/span&gt;&lt;br style=&quot;font-weight: 400&quot;&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;OpenAPI Documentation&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="970" y="265" width="210" height="225" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-30" value="Configuration &amp;amp; Orchestration Stack&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;Git, CI/CD, Automation&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="1450" y="60" width="220" height="580" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-35" value="Connector Layer&lt;br&gt;&lt;i style=&quot;font-weight: 400&quot;&gt;MQTT&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="49.25" y="500" width="220.75" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-38" value="Use Cases" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="30" y="-160" width="1400" height="93" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Geo Data Stack&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;Masterportal&lt;br&gt;&amp;amp;&lt;br&gt;QGIS Server&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="280" y="355.25" width="220" height="134.75" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Meta Data Stack&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;CKAN&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=17;" parent="-2a-PBrGXe-KLZz-CNGb-1" vertex="1">
+                    <mxGeometry x="1190" y="265" width="220" height="225" as="geometry"/>
+                </mxCell>
+                <mxCell id="-2a-PBrGXe-KLZz-CNGb-56" value="UC1" parent="-2a-PBrGXe-KLZz-CNGb-0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="Current" id="033N_jXtB5L8RfG_DhFp">
+        &#xa;        &#xa;        &#xa;&#xa;&#xa;
+        <mxGraphModel dx="3018" dy="2322" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+            &#xa;            &#xa;            &#xa;&#xa;&#xa;
+            <root>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-1" parent="UcCBTfaWxU2AfVIyk3or-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-3" value="Data Platform" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="30" y="70" width="1450" height="630" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-1" value="Infrastructure Monitoring &amp;amp; Logging" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530.5" y="530" width="930" height="100" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-5" value="Identity Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-7" value="Public Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="95" width="1410" height="160" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-8" value="&lt;b&gt;Traefik&lt;/b&gt;&lt;br&gt;Reverse Proxy&amp;nbsp; + Lets Encrypt" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="70" y="135" width="1380" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-9" value="&lt;b&gt;Keycloak Proxy&lt;/b&gt;&lt;br&gt;Generic OAuth" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="205" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-12" value="Data-Flow Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="290" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-13" value="&lt;b&gt;NodeRed&lt;br&gt;&lt;/b&gt;FlowEngine External" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="305" width="190" height="135" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-14" value="Context Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530" y="275" width="460" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-15" value="&lt;b&gt;Orion&amp;nbsp;&lt;br&gt;&lt;/b&gt;Context Broker NGSI V2" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-16" value="&lt;b&gt;Mongo DB&lt;br&gt;&lt;/b&gt;Context Broker Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-20" value="Data-Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1240.5" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-21" value="&lt;b&gt;Grafana&lt;br&gt;&lt;/b&gt;Dashboard System" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-22" value="&lt;b&gt;Influx DB&lt;br&gt;&lt;/b&gt;Historian Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-23" value="&lt;b&gt;NodeRed&lt;br&gt;&lt;/b&gt;FlowEngine Internal Historian" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="450" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-24" value="API Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1000" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-25" value="&lt;b&gt;Gravitee Portal&lt;br&gt;&lt;/b&gt;Admin + Dev. Portal" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-26" value="&lt;b&gt;Gravitee Gateway&lt;br&gt;&lt;/b&gt;API Gateway" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="550" y="205" width="425" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-27" value="&lt;b&gt;Elastic Search&lt;br&gt;&lt;/b&gt;Search &amp;amp; Logging" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-28" value="&lt;b&gt;Mongo DB&lt;br&gt;&lt;/b&gt;Gravitee Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="405" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-32" value="&lt;b&gt;Keycloak&lt;br&gt;&lt;/b&gt;Identity Management" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-33" value="&lt;b&gt;PostgreSQL&lt;br&gt;&lt;/b&gt;Database for Keycloak" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-34" value="Platform Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1500" y="70" width="220" height="630" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-35" value="&lt;b&gt;Portainer&lt;br&gt;&lt;/b&gt;Docker Admin UI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="486" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-40" value="Container Management" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="30" y="743" width="1450" height="100" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-41" value="&lt;b&gt;Docker&lt;br&gt;&lt;/b&gt;Container Engine" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="781" width="1410" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-43" value="&lt;b&gt;Prometheus&lt;/b&gt;&lt;br&gt;Central Logging + Monitoring" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-44" value="&lt;b&gt;Grafana&lt;/b&gt;&lt;br&gt;System Dashboard" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1260" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-48" value="&lt;b&gt;Ansible&lt;/b&gt;&lt;br&gt;Automation Framework" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="536" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-49" value="Connector Layer" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="530" width="460" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-50" value="&lt;b&gt;HiveMQ&lt;/b&gt;&lt;br&gt;MQTT Broker" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="UcCBTfaWxU2AfVIyk3or-56" value="&lt;b&gt;TimescaleDB&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="405" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-0" value="Use Cases" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="30" y="-100" width="1450" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-2" value="&lt;b&gt;cAdvisor&lt;/b&gt;&lt;br&gt;Container KPI Collection" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="780" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-3" value="&lt;b&gt;nodeExporter&lt;/b&gt;&lt;br&gt;Host KPI Collection" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1025" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-4" value="&lt;b&gt;gitlab.com&lt;/b&gt;&lt;br&gt;Code Repository" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="587" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-5" value="&lt;b&gt;gitlab.com CI/CD&lt;/b&gt;&lt;br&gt;CI/CI Pipeline" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="637" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-6" value="&lt;b&gt;FROST Server HTTP&lt;br&gt;&lt;/b&gt;Sensor Things HTTP API" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="301.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-7" value="&lt;b&gt;FROST Server MQTT&lt;br&gt;&lt;/b&gt;Sensor Things MQTT API" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="350.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-8" value="&lt;b&gt;HiveMQ&lt;/b&gt;&lt;br&gt;Internal MQTT Broker for FROST" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="400.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-11" value="&lt;b&gt;PostgreSQL incl. PostGIS&lt;br&gt;&lt;/b&gt;Database for FROST" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="450.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4cbwmdV8lIEpzmhMWAyK-13" value="&lt;b&gt;NodeRed&amp;nbsp;&lt;br&gt;&lt;/b&gt;FlowEngine MQTT / NGSI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="1" value="&lt;b&gt;NodeRed&amp;nbsp;&lt;br&gt;&lt;/b&gt;FlowEngine LoRaWan / NGSI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="621" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="4" value="UC1" style="ellipse;whiteSpace=wrap;html=1;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="90" y="-60" width="250" height="80" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="2Y0kYa8IOJYJALFTxk37-5" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="UcCBTfaWxU2AfVIyk3or-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="340" y="360" width="120" height="60" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="5" value="UC1" style="" parent="UcCBTfaWxU2AfVIyk3or-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="p8RQ_iyLTfPI9hfyaAfL-6" value="UC Flows" style="" parent="UcCBTfaWxU2AfVIyk3or-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="p8RQ_iyLTfPI9hfyaAfL-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#FF9933;" parent="p8RQ_iyLTfPI9hfyaAfL-6" source="4" edge="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry relative="1" as="geometry">
+                        &#xa;                        &#xa;                        &#xa;&#xa;&#xa;
+                        <mxPoint x="365" y="350" as="targetPoint"/>
+                        &#xa;                        &#xa;                        &#xa;&#xa;&#xa;
+                        <Array as="points">
+                            &#xa;                            &#xa;                            &#xa;&#xa;&#xa;
+                            <mxPoint x="215" y="110"/>
+                            &#xa;                            &#xa;                            &#xa;&#xa;&#xa;
+                            <mxPoint x="365" y="110"/>
+                            &#xa;                            &#xa;                            &#xa;&#xa;&#xa;
+                        </Array>
+                        &#xa;                        &#xa;                        &#xa;&#xa;&#xa;
+                    </mxGeometry>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-5" value="&lt;b&gt;Admin UIs&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="p8RQ_iyLTfPI9hfyaAfL-6" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="110" y="200" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-6" value="&lt;b&gt;Enduser UIs&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="p8RQ_iyLTfPI9hfyaAfL-6" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="320" y="200" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-7" value="User Interfaces" parent="UcCBTfaWxU2AfVIyk3or-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-9" value="IDM UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Keycloak Admin UI&lt;br&gt;&lt;/span&gt;&lt;br&gt;https://idm.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="320" y="-210" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-10" value="External Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-ext.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530" y="-210" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-11" value="Internal Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-int.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-12" value="Grafana Monitoring UI&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Grafana Dashboards&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://monitoring.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="320" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-13" value="IoT Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-iot.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="740" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-14" value="Portainer UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Container Overview&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://portainer.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="950" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-15" value="Gravitee UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Admin &amp;amp; Developer Portal&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://apim.&amp;lt;domain&amp;gt;/portal/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1160" y="-210" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-16" value="Grafana Data UI&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Grafana Dashboards&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://grafana.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="950" y="-210" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-17" value="Traefik UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Reverse Proxy UI&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://rp.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1160" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="rpBbn92kHmXe8tSryifd-18" value="REST APIs&lt;br style=&quot;font-size: 5px;&quot;&gt;&lt;br style=&quot;font-size: 5px;&quot;&gt;&lt;span style=&quot;font-weight: normal; font-size: 5px;&quot;&gt;Several APIs (NGSI, etc.)&lt;br style=&quot;font-size: 5px;&quot;&gt;&lt;br style=&quot;font-size: 5px;&quot;&gt;&lt;/span&gt;https://apim.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=5;" parent="rpBbn92kHmXe8tSryifd-7" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1360" y="280" width="90" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+            </root>
+            &#xa;            &#xa;            &#xa;&#xa;&#xa;
+        </mxGraphModel>
+        &#xa;        &#xa;        &#xa;&#xa;&#xa;
+    </diagram>
+    <diagram name="K8s" id="jDynJSXijsabQt3ELceI">
+        &#xa;        &#xa;        &#xa;&#xa;&#xa;
+        <mxGraphModel dx="3018" dy="2322" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+            &#xa;            &#xa;            &#xa;&#xa;&#xa;
+            <root>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-1" parent="SUldCz9n0TkrPwvE7E2_-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-2" value="Data Platform" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="30" y="70" width="1450" height="630" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-3" value="Infrastructure Monitoring &amp;amp; Logging" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530.5" y="530" width="930" height="100" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-4" value="Identity Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-5" value="Public Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="95" width="1410" height="160" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-6" value="&lt;b&gt;Traefik&lt;/b&gt;&lt;br&gt;Reverse Proxy&amp;nbsp; + Lets Encrypt" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="70" y="135" width="1380" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-7" value="&lt;b&gt;Keycloak Proxy&lt;/b&gt;&lt;br&gt;Generic OAuth" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="205" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-8" value="Data-Flow Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="290" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-9" value="&lt;b&gt;NodeRed&lt;br&gt;&lt;/b&gt;FlowEngine External" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="305" width="190" height="135" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-10" value="Context Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530" y="275" width="460" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-11" value="&lt;b&gt;Orion&amp;nbsp;&lt;br&gt;&lt;/b&gt;Context Broker NGSI V2" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-12" value="&lt;b&gt;Mongo DB&lt;br&gt;&lt;/b&gt;Context Broker Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-13" value="Data-Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1240.5" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-14" value="&lt;b&gt;Grafana&lt;br&gt;&lt;/b&gt;Dashboard System" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-15" value="&lt;b&gt;Influx DB&lt;br&gt;&lt;/b&gt;Historian Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-16" value="&lt;b&gt;NodeRed&lt;br&gt;&lt;/b&gt;FlowEngine Internal Historian" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="450" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-17" value="API Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1000" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-18" value="&lt;b&gt;Gravitee Portal&lt;br&gt;&lt;/b&gt;Admin + Dev. Portal" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-19" value="&lt;b&gt;Gravitee Gateway&lt;br&gt;&lt;/b&gt;API Gateway" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="550" y="205" width="425" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-20" value="&lt;b&gt;Elastic Search&lt;br&gt;&lt;/b&gt;Search &amp;amp; Logging" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-21" value="&lt;b&gt;Mongo DB&lt;br&gt;&lt;/b&gt;Gravitee Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="405" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-22" value="&lt;b&gt;Keycloak&lt;br&gt;&lt;/b&gt;Identity Management" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-23" value="&lt;b&gt;PostgreSQL&lt;br&gt;&lt;/b&gt;Database for Keycloak" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-24" value="Platform Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1500" y="70" width="220" height="630" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-25" value="&lt;b&gt;Portainer&lt;br&gt;&lt;/b&gt;Docker Admin UI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="486" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-26" value="Container Management" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="30" y="743" width="1450" height="100" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-27" value="&lt;b&gt;Docker&lt;br&gt;&lt;/b&gt;Container Engine" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="781" width="1410" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-28" value="&lt;b&gt;Prometheus&lt;/b&gt;&lt;br&gt;Central Logging + Monitoring" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-29" value="&lt;b&gt;Grafana&lt;/b&gt;&lt;br&gt;System Dashboard" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1260" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-30" value="&lt;b&gt;Ansible&lt;/b&gt;&lt;br&gt;Automation Framework" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="536" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-31" value="Connector Layer" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="530" width="460" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-32" value="&lt;b&gt;HiveMQ&lt;/b&gt;&lt;br&gt;MQTT Broker" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-33" value="&lt;b&gt;TimescaleDB&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="405" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-34" value="Use Cases" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="30" y="-100" width="1450" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-35" value="&lt;b&gt;cAdvisor&lt;/b&gt;&lt;br&gt;Container KPI Collection" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="780" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-36" value="&lt;b&gt;nodeExporter&lt;/b&gt;&lt;br&gt;Host KPI Collection" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1025" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-37" value="&lt;b&gt;gitlab.com&lt;/b&gt;&lt;br&gt;Code Repository" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="587" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-38" value="&lt;b&gt;gitlab.com CI/CD&lt;/b&gt;&lt;br&gt;CI/CI Pipeline" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="637" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-39" value="&lt;b&gt;FROST Server HTTP&lt;br&gt;&lt;/b&gt;Sensor Things HTTP API" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="301.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-40" value="&lt;b&gt;FROST Server MQTT&lt;br&gt;&lt;/b&gt;Sensor Things MQTT API" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="350.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-41" value="&lt;b&gt;HiveMQ&lt;/b&gt;&lt;br&gt;Internal MQTT Broker for FROST" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="400.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-42" value="&lt;b&gt;PostgreSQL incl. PostGIS&lt;br&gt;&lt;/b&gt;Database for FROST" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="450.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-43" value="&lt;b&gt;NodeRed&amp;nbsp;&lt;br&gt;&lt;/b&gt;FlowEngine MQTT / NGSI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-44" value="&lt;b&gt;NodeRed&amp;nbsp;&lt;br&gt;&lt;/b&gt;FlowEngine LoRaWan / NGSI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="621" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-45" value="UC1" style="ellipse;whiteSpace=wrap;html=1;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="90" y="-60" width="250" height="80" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-46" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="340" y="360" width="120" height="60" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="SUldCz9n0TkrPwvE7E2_-1" source="SUldCz9n0TkrPwvE7E2_-64" target="SUldCz9n0TkrPwvE7E2_-70" edge="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry relative="1" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-64" value="Configuration &amp;amp; Orchestration Stack k8s" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1750" y="330" width="250" height="370" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-65" value="&lt;b&gt;Ansible Control Node&lt;/b&gt;&lt;br&gt;Docker-Container&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1765" y="366.5" width="225" height="294.5" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-66" value="&lt;b&gt;Helm&lt;/b&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp;- Charts from Repositories&lt;br&gt;&lt;div&gt;&amp;nbsp;- Build Helm Packages from Charts&lt;br&gt;&amp;nbsp;- Deployment of Helm Packages&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1780" y="521" width="200" height="80" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-67" value="&lt;b&gt;Playbooks&lt;/b&gt;&lt;br&gt;Cloned from Repositories" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1780" y="416.5" width="200" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-68" value="&lt;b&gt;k8s Infrastructure&lt;/b&gt;&lt;br&gt;[Terraform etc.]" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1777.5" y="466" width="200" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-69" value="&lt;b&gt;Verify/Test&lt;/b&gt;&lt;br&gt;Check Installation" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1780" y="610" width="200" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-70" value="&lt;div style=&quot;font-weight: normal ; margin: 0px ; padding: 0px ; border: 0px ; font-family: &amp;#34;segoe ui&amp;#34; , &amp;#34;segoe ui web (west european)&amp;#34; , &amp;#34;segoe ui&amp;#34; , , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;roboto&amp;#34; , &amp;#34;helvetica neue&amp;#34; , sans-serif ; font-size: 15px ; font-stretch: inherit ; line-height: inherit ; vertical-align: baseline&quot;&gt;Das Docker-Image&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;font-weight: normal ; margin: 0px ; padding: 0px ; border: 0px ; font-family: &amp;#34;segoe ui&amp;#34; , &amp;#34;segoe ui web (west european)&amp;#34; , &amp;#34;segoe ui&amp;#34; , , &amp;#34;blinkmacsystemfont&amp;#34; , &amp;#34;roboto&amp;#34; , &amp;#34;helvetica neue&amp;#34; , sans-serif ; font-size: 15px ; font-stretch: inherit ; line-height: inherit ; vertical-align: baseline&quot;&gt;&lt;ul&gt;&lt;li&gt;stellt die aktuelle Version von Ansible bereit.&lt;/li&gt;&lt;li&gt;stellt alle notwendigen Ansible-Galaxy-Module bereit.&lt;/li&gt;&lt;li&gt;stellt ein Ansible-Playbook bereit, dass&amp;nbsp;&lt;/li&gt;&lt;ul&gt;&lt;li&gt;ein definiertes Git-Repository klont, dass alle notwendigen Ansible-Dateien enthält und&lt;/li&gt;&lt;li&gt;die dort enthaltenen Playbooks automatisch ausführt.&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;ist so ausgelegt, dass man sowohl&amp;nbsp;&lt;i&gt;managed,&lt;/i&gt;&amp;nbsp;als auch eigene (on-premise) Kubernetes-Cluster provisionieren kann.&lt;/li&gt;&lt;li&gt;stellt einen SSH-Key bereit, der für die Provisionierung weiterer Rechner verwendet werden kann.&lt;/li&gt;&lt;li&gt;kann mittels&amp;nbsp;&lt;i&gt;kubectl&lt;/i&gt;&amp;nbsp;einen&amp;nbsp;Kubernetes-Cluster steuern.&lt;/li&gt;&lt;li&gt;kann mittels&amp;nbsp;&lt;i&gt;helm&lt;/i&gt;&amp;nbsp;die notwendigen Helm-Packages lokal erzeugen und in einen Kubernetes-Cluster ausrollen.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=5;" parent="SUldCz9n0TkrPwvE7E2_-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="2040" y="191.5" width="420" height="338.5" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-47" value="UC1" style="" parent="SUldCz9n0TkrPwvE7E2_-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-48" value="UC Flows" style="" parent="SUldCz9n0TkrPwvE7E2_-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#FF9933;" parent="SUldCz9n0TkrPwvE7E2_-48" source="SUldCz9n0TkrPwvE7E2_-45" edge="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry relative="1" as="geometry">
+                        &#xa;                        &#xa;                        &#xa;&#xa;&#xa;
+                        <mxPoint x="365" y="350" as="targetPoint"/>
+                        &#xa;                        &#xa;                        &#xa;&#xa;&#xa;
+                        <Array as="points">
+                            &#xa;                            &#xa;                            &#xa;&#xa;&#xa;
+                            <mxPoint x="215" y="110"/>
+                            &#xa;                            &#xa;                            &#xa;&#xa;&#xa;
+                            <mxPoint x="365" y="110"/>
+                            &#xa;                            &#xa;                            &#xa;&#xa;&#xa;
+                        </Array>
+                        &#xa;                        &#xa;                        &#xa;&#xa;&#xa;
+                    </mxGeometry>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-50" value="&lt;b&gt;Admin UIs&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="SUldCz9n0TkrPwvE7E2_-48" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="110" y="200" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-51" value="&lt;b&gt;Enduser UIs&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="SUldCz9n0TkrPwvE7E2_-48" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="320" y="200" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-52" value="User Interfaces" parent="SUldCz9n0TkrPwvE7E2_-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-53" value="IDM UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Keycloak Admin UI&lt;br&gt;&lt;/span&gt;&lt;br&gt;https://idm.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="320" y="-210" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-54" value="External Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-ext.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530" y="-210" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-55" value="Internal Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-int.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-56" value="Grafana Monitoring UI&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Grafana Dashboards&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://monitoring.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="320" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-57" value="IoT Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-iot.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="740" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-58" value="Portainer UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Container Overview&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://portainer.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="950" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-59" value="Gravitee UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Admin &amp;amp; Developer Portal&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://apim.&amp;lt;domain&amp;gt;/portal/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1160" y="-210" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-60" value="Grafana Data UI&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Grafana Dashboards&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://grafana.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="950" y="-210" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-61" value="Traefik UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Reverse Proxy UI&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://rp.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1160" y="-110" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="SUldCz9n0TkrPwvE7E2_-62" value="REST APIs&lt;br style=&quot;font-size: 5px;&quot;&gt;&lt;br style=&quot;font-size: 5px;&quot;&gt;&lt;span style=&quot;font-weight: normal; font-size: 5px;&quot;&gt;Several APIs (NGSI, etc.)&lt;br style=&quot;font-size: 5px;&quot;&gt;&lt;br style=&quot;font-size: 5px;&quot;&gt;&lt;/span&gt;https://apim.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=5;" parent="SUldCz9n0TkrPwvE7E2_-52" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1360" y="280" width="90" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+            </root>
+            &#xa;            &#xa;            &#xa;&#xa;&#xa;
+        </mxGraphModel>
+        &#xa;        &#xa;        &#xa;&#xa;&#xa;
+    </diagram>
+    <diagram name="Architecture V1" id="4i2uSsrnapK0vU5PNBM8">
+        &#xa;        &#xa;        &#xa;&#xa;&#xa;
+        <mxGraphModel dx="3018" dy="2322" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+            &#xa;            &#xa;            &#xa;&#xa;&#xa;
+            <root>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-1" parent="Vi5ZQTkNBOQvgt8A8Rts-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-2" value="Data Plattform" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="30" y="70" width="1450" height="630" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-3" value="Infrastructure Monitoring &amp;amp; Logging" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530.5" y="530" width="930" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-4" value="User Interfaces (UI&amp;nbsp; + API)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="-200" width="1410" height="250" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-5" value="IDM UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Keycloak Admin UI&lt;br&gt;&lt;/span&gt;&lt;br&gt;https://idm.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="60" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-6" value="Identity Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-7" value="Public Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="100" width="1410" height="155" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-8" value="&lt;b&gt;Traefik&lt;/b&gt;&lt;br&gt;Reverse Proxy&amp;nbsp; + Lets Encrypt" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="70" y="135" width="1380" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-9" value="&lt;b&gt;Keycloak Proxy&lt;/b&gt;&lt;br&gt;Generic OAuth" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="205" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-10" value="Data-Flow Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="290" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-11" value="&lt;b&gt;NodeRed&lt;br&gt;&lt;/b&gt;FlowEngine External" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-12" value="Context Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="530" y="275" width="460" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-13" value="&lt;b&gt;Orion&amp;nbsp;&lt;br&gt;&lt;/b&gt;Context Broker NGSI V2" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-14" value="&lt;b&gt;Mongo DB&lt;br&gt;&lt;/b&gt;Context Broker Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-15" value="External Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-ext.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="270" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-16" value="Data-Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1240.5" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-17" value="&lt;b&gt;Grafana&lt;br&gt;&lt;/b&gt;Dashboard System" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-18" value="&lt;b&gt;Influx DB&lt;br&gt;&lt;/b&gt;Historian Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-19" value="&lt;b&gt;NodeRed&lt;br&gt;&lt;/b&gt;FlowEngine Internal Historian" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-20" value="API Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1000" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-21" value="&lt;b&gt;Gravitee Portal&lt;br&gt;&lt;/b&gt;Admin + Dev. Portal" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-22" value="&lt;b&gt;Gravitee Gateway&lt;br&gt;&lt;/b&gt;API Gateway" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="550" y="205" width="425" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-23" value="&lt;b&gt;Elastic Search&lt;br&gt;&lt;/b&gt;Search &amp;amp; Logging" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-24" value="&lt;b&gt;Mongo DB&lt;br&gt;&lt;/b&gt;Gravitee Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="405" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-25" value="Grafana Data UI&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Grafana Dashboards&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://grafana.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="690" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-26" value="Gravitee UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Admin &amp;amp; Developer Portal&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://apim.&amp;lt;domain&amp;gt;/portal/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="900" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-27" value="REST APIs&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Several APIs (NGSI, etc.)&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://apim.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1230" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-28" value="&lt;b&gt;Keycloak&lt;br&gt;&lt;/b&gt;Identity Management" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-29" value="&lt;b&gt;PostgreSQL&lt;br&gt;&lt;/b&gt;Database for Keycloak" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-30" value="Configuration &amp;amp; Orchestration Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1500" y="70" width="220" height="630" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-31" value="&lt;b&gt;Portainer&lt;br&gt;&lt;/b&gt;Docker Admin UI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="419" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-34" value="&lt;b&gt;Prometheus&lt;/b&gt;&lt;br&gt;Central Logging + Monitoring" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-35" value="&lt;b&gt;Grafana&lt;/b&gt;&lt;br&gt;System Dashboard" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1260" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-36" value="&lt;b&gt;Ansible&lt;/b&gt;&lt;br&gt;Automation Framework" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="469" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-37" value="Connector Layer" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="530" width="460" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-38" value="&lt;b&gt;HiveMQ&lt;/b&gt;&lt;br&gt;MQTT Broker" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-39" value="&lt;b&gt;TimescaleDB&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="405" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-40" value="Use Cases" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="37.5" y="-370" width="1450" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-41" value="&lt;b&gt;cAdvisor&lt;/b&gt;&lt;br&gt;Container KPI Collection" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="780" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-42" value="&lt;b&gt;nodeExporter&lt;/b&gt;&lt;br&gt;Host KPI Collection" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1025" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-43" value="&lt;b&gt;gitlab.com&lt;/b&gt;&lt;br&gt;Code Repository" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="520" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-44" value="&lt;b&gt;gitlab.com CI/CD&lt;/b&gt;&lt;br&gt;CI/CI Pipeline" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-45" value="&lt;b&gt;FROST Server HTTP&lt;br&gt;&lt;/b&gt;Sensor Things HTTP API" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="301.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-46" value="&lt;b&gt;FROST Server MQTT&lt;br&gt;&lt;/b&gt;Sensor Things MQTT API" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="350.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-47" value="&lt;b&gt;HiveMQ&lt;/b&gt;&lt;br&gt;Internal MQTT Broker for FROST" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="400.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-48" value="&lt;b&gt;PostgreSQL incl. PostGIS&lt;br&gt;&lt;/b&gt;Database for FROST" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="450.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-49" value="Grafana Monitoring UI&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Grafana Dashboards&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://monitoring.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="60" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-50" value="&lt;b&gt;NodeRed&amp;nbsp;&lt;br&gt;&lt;/b&gt;FlowEngine MQTT / NGSI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-51" value="Internal Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-int.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="270" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-52" value="IoT Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-iot.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="480" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-53" value="Traefik UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Reverse Proxy UI&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://rp.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="900" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-54" value="Portainer UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Container Overview&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://portainer.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="690" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-55" value="&lt;b&gt;NodeRed&amp;nbsp;&lt;br&gt;&lt;/b&gt;FlowEngine LoRaWan / NGSI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="621" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="cbxyhsInclQjpuo_pz5u-0" value="&lt;b&gt;Docker&lt;br&gt;&lt;/b&gt;Container Engine" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="621" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="qNfyF6qeuLlZeECqo0os-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="Vi5ZQTkNBOQvgt8A8Rts-1" edge="1">
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                    <mxGeometry relative="1" as="geometry">
+                        &#xa;                        &#xa;                        &#xa;&#xa;&#xa;
+                        <mxPoint x="250" y="330" as="sourcePoint"/>
+                        &#xa;                        &#xa;                        &#xa;&#xa;&#xa;
+                        <mxPoint x="250" y="410" as="targetPoint"/>
+                        &#xa;                        &#xa;                        &#xa;&#xa;&#xa;
+                    </mxGeometry>
+                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+                <mxCell id="Vi5ZQTkNBOQvgt8A8Rts-57" value="UC1" parent="Vi5ZQTkNBOQvgt8A8Rts-0"/>
+                &#xa;                &#xa;                &#xa;&#xa;&#xa;
+            </root>
+            &#xa;            &#xa;            &#xa;&#xa;&#xa;
+        </mxGraphModel>
+        &#xa;        &#xa;        &#xa;&#xa;&#xa;
+    </diagram>
+    <diagram name="Status Sprint 1" id="wxiKP_FXkGMyMkJNfsT6">
+        &#xa;        &#xa;        &#xa;        &#xa;&#xa;&#xa;&#xa;
+        <mxGraphModel dx="1422" dy="1941" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+            &#xa;            &#xa;            &#xa;            &#xa;&#xa;&#xa;&#xa;
+            <root>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-0"/>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-1" parent="nmdCjhxdmIR2uhcm8-r6-0"/>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-2" value="Data Plattform" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="30" y="70" width="1450" height="630" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-3" value="Infrastructure Monitoring &amp;amp; Logging" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="530.5" y="530" width="930" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-4" value="User Interfaces (UI&amp;nbsp; + API)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="-200" width="1410" height="250" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-5" value="IDM UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Keycloak Admin UI&lt;br&gt;&lt;/span&gt;&lt;br&gt;https://idm.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="60" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-6" value="Identity Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-7" value="Public Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="100" width="1410" height="155" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-8" value="&lt;b&gt;Traefik&lt;/b&gt;&lt;br&gt;Reverse Proxy&amp;nbsp; + Lets Encrypt" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="70" y="135" width="1380" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-9" value="&lt;b&gt;Keycloak Proxy&lt;/b&gt;&lt;br&gt;Generic OAuth" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="205" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-10" value="Data-Flow Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="290" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-11" value="&lt;b&gt;NodeRed&lt;br&gt;&lt;/b&gt;FlowEngine External" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-12" value="Context Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="530" y="275" width="460" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-13" value="&lt;b&gt;Orion&amp;nbsp;&lt;br&gt;&lt;/b&gt;Context Broker NGSI V2" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-14" value="&lt;b&gt;Mongo DB&lt;br&gt;&lt;/b&gt;Context Broker Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-15" value="External Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-ext.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="270" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-16" value="Data-Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1240.5" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-17" value="&lt;b&gt;Grafana&lt;br&gt;&lt;/b&gt;Dashboard System" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-18" value="&lt;b&gt;Influx DB&lt;br&gt;&lt;/b&gt;Historian Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-19" value="&lt;b&gt;NodeRed&lt;br&gt;&lt;/b&gt;FlowEngine Internal Historian" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-20" value="API Management Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1000" y="275" width="220" height="240" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-21" value="&lt;b&gt;Gravitee Portal&lt;br&gt;&lt;/b&gt;Admin + Dev. Portal" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-22" value="&lt;b&gt;Gravitee Gateway&lt;br&gt;&lt;/b&gt;API Gateway" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="550" y="205" width="425" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-23" value="&lt;b&gt;Elastic Search&lt;br&gt;&lt;/b&gt;Search &amp;amp; Logging" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-24" value="&lt;b&gt;Mongo DB&lt;br&gt;&lt;/b&gt;Gravitee Database" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1015" y="405" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-25" value="Grafana Data UI&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Grafana Dashboards&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://grafana.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="690" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-26" value="Gravitee UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Admin &amp;amp; Developer Portal&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://apim.&amp;lt;domain&amp;gt;/portal/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="900" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-27" value="REST APIs&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Several APIs (NGSI, etc.)&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://apim.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1230" y="-170" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-28" value="&lt;b&gt;Keycloak&lt;br&gt;&lt;/b&gt;Identity Management" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="305" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-29" value="&lt;b&gt;PostgreSQL&lt;br&gt;&lt;/b&gt;Database for Keycloak" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="355" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-30" value="Configuration &amp;amp; Orchestration Stack" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1500" y="70" width="220" height="630" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-31" value="&lt;b&gt;Portainer&lt;br&gt;&lt;/b&gt;Docker Admin UI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="419" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-32" value="&lt;b&gt;Prometheus&lt;/b&gt;&lt;br&gt;Central Logging + Monitoring" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="545" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-33" value="&lt;b&gt;Grafana&lt;/b&gt;&lt;br&gt;System Dashboard" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1260" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-34" value="&lt;b&gt;Ansible&lt;/b&gt;&lt;br&gt;Automation Framework" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="469" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-35" value="Connector Layer" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="50" y="530" width="460" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-36" value="&lt;b&gt;HiveMQ&lt;/b&gt;&lt;br&gt;MQTT Broker" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-37" value="&lt;b&gt;TimescaleDB&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1255.5" y="405" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-38" value="Use Cases" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="37.5" y="-370" width="1450" height="150" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-39" value="&lt;b&gt;cAdvisor&lt;/b&gt;&lt;br&gt;Container KPI Collection" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="780" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-40" value="&lt;b&gt;nodeExporter&lt;/b&gt;&lt;br&gt;Host KPI Collection" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1025" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-41" value="&lt;b&gt;gitlab.com&lt;/b&gt;&lt;br&gt;Code Repository" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="520" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-42" value="&lt;b&gt;gitlab.com CI/CD&lt;/b&gt;&lt;br&gt;CI/CI Pipeline" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-43" value="&lt;b&gt;FROST Server HTTP&lt;br&gt;&lt;/b&gt;Sensor Things HTTP API" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="301.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-44" value="&lt;b&gt;FROST Server MQTT&lt;br&gt;&lt;/b&gt;Sensor Things MQTT API" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="350.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-45" value="&lt;b&gt;HiveMQ&lt;/b&gt;&lt;br&gt;Internal MQTT Broker for FROST" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="400.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-46" value="&lt;b&gt;PostgreSQL incl. PostGIS&lt;br&gt;&lt;/b&gt;Database for FROST" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="785" y="450.5" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-47" value="Grafana Monitoring UI&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Grafana Dashboards&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://monitoring.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="60" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-48" value="&lt;b&gt;NodeRed&amp;nbsp;&lt;br&gt;&lt;/b&gt;FlowEngine MQTT / NGSI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="570" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-49" value="Internal Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-int.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="270" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-50" value="IoT Flow UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;NodeRed Admin UI&lt;br&gt;(behind genric OAuth)&lt;br&gt;&lt;/span&gt;https://nr-iot.&amp;lt;domain&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="480" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-51" value="Traefik UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Reverse Proxy UI&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://rp.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="900" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-52" value="Portainer UI&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Container Overview&lt;br&gt;&lt;br&gt;&lt;/span&gt;https://portainer.&amp;lt;domain&amp;gt;/" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="690" y="-70" width="200" height="90" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-53" value="&lt;b&gt;NodeRed&amp;nbsp;&lt;br&gt;&lt;/b&gt;FlowEngine LoRaWan / NGSI" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="305" y="621" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-54" value="&lt;b&gt;Docker&lt;br&gt;&lt;/b&gt;Container Engine" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1515" y="621" width="190" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-55" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="470" y="290" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-56" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="470" y="341.5" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-57" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="720" y="290" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-58" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="710" y="341.5" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-59" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1420" y="350.5" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-60" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1420.5" y="290" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-61" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="230" y="290" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-62" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="230" y="341.5" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-63" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="65" y="120" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-64" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1420.5" y="560" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-65" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1180" y="190" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-66" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1180" y="290" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-67" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1180" y="341.5" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-68" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1180" y="395" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-69" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1680" y="395" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-70" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="1190" y="560" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-71" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="950" y="560" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-72" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="710" y="560" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-73" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#60a917;strokeColor=#2D7600;fontColor=#ffffff;" parent="nmdCjhxdmIR2uhcm8-r6-1" vertex="1">
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                    <mxGeometry x="950" y="190" width="40" height="40" as="geometry"/>
+                    &#xa;                    &#xa;                    &#xa;                    &#xa;&#xa;&#xa;&#xa;
+                </mxCell>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+                <mxCell id="nmdCjhxdmIR2uhcm8-r6-74" value="UC1" parent="nmdCjhxdmIR2uhcm8-r6-0"/>
+                &#xa;                &#xa;                &#xa;                &#xa;&#xa;&#xa;&#xa;
+            </root>
+            &#xa;            &#xa;            &#xa;            &#xa;&#xa;&#xa;&#xa;
+        </mxGraphModel>
+        &#xa;        &#xa;        &#xa;        &#xa;&#xa;&#xa;&#xa;
+    </diagram>
+</mxfile>

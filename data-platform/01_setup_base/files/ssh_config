@@ -1,0 +1,5 @@
+Host THEHOSTNAME
+    HostName THEHOSTNAME
+    User mrdocker
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa_sc_admin

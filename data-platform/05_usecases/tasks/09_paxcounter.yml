@@ -1,0 +1,102 @@
+---
+- name: Create private paxcounter network
+  docker_network:
+    name: paxcounter-flow
+    driver: bridge
+    state: present
+
+# Create data volumes for nodered containers
+- name: Create volume nr-paxcounter-data
+  docker_volume:
+    name: "nr-paxcounter-data"
+
+# Create settings file, used for all nodered containers
+- name: Ensure remote directory exists for Nodered Settings
+  file:
+    path: /opt/scp/ansible/nodered
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create Nodered Settings paxcounter
+  template:
+    src: nodered/settings.js.j2
+    dest: /opt/scp/ansible/nodered/paxcounter-settings.js
+    owner: '{{ CREATE_USER }}'
+    mode: '0755'
+
+# Create paxcounter container
+- name: Deploy without project set
+  docker_container:
+    name: nr-paxcounter
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    volumes:
+      - nr-paxcounter-data:/data
+      - /opt/scp/ansible/nodered/paxcounter-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "paxcounter-flow"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "paxcounter-flow"
+
+- name: Clone Repo to nr-paxcounter container
+  command: docker exec nr-paxcounter bash -l -c "rm -rf /data/node_modules;rm -rf /data/projects/{{ NR_REPO_TARGET_FOLDER }};git clone https://{{ NR_GIT_LOGIN }}:{{ NR_GIT_TOKEN }}@{{ PAX_FLOW_PROJECT }} /data/projects/{{ NR_REPO_TARGET_FOLDER }}"  # noqa 204
+  changed_when: True
+
+- name: Install modules for nr-paxcounter
+  command: docker exec nr-paxcounter bash -l -c "cd /data/projects/{{ NR_REPO_TARGET_FOLDER }}; npm install"
+  changed_when: True
+
+- name: Link node_modules directory for nr-paxcounter
+  command: docker exec nr-paxcounter bash -l -c "ln -s -b /data/projects/{{ NR_REPO_TARGET_FOLDER }}/node_modules /data/"
+  changed_when: True
+
+- name: Deploy nr-paxcounter with cloned project set
+  docker_container:
+    name: nr-paxcounter
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    env:
+      FLOWS: "{{ NR_REPO_TARGET_FOLDER }}"
+    volumes:
+      - nr-paxcounter-data:/data
+      - /opt/scp/ansible/nodered/paxcounter-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "paxcounter-flow"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "paxcounter-flow"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+
+- name: Ensure remote temp directory exists
+  file:
+    path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create grafana dashboard from template
+  template:
+    src: grafana/dashboards/09_paxcounter_dashboard.json.j2
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/09_paxcounter_dashboard.json
+    mode: '0666'
+
+- name: (Re-)Import Grafana Dashboard
+  community.grafana.grafana_dashboard:
+        grafana_url: https://grafana.{{ DOMAIN }}
+        url_username: admin
+        url_password: "{{ GRAFANA_ADMIN_PASSWORD }}"
+        state: present
+        commit_message: Updated by ansible
+        overwrite: yes
+        path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/09_paxcounter_dashboard.json

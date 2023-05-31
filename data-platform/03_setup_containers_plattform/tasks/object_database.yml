@@ -1,0 +1,80 @@
+---
+- name: Create volume minio-vol1-data
+  docker_volume:
+    name: "minio-vol1-data"
+
+- name: Deploy min.io Server
+  docker_container:
+    name: minio-server1
+    image: minio/minio:RELEASE.2021-03-17T02-33-02Z
+    restart_policy: always
+    volumes:
+      - minio-vol1-data:/data
+    env:
+      MINIO_ACCESS_KEY: "{{ MINIO_ACCESS_KEY }}"
+      MINIO_SECRET_KEY: "{{ MINIO_SECRET_KEY }}"
+      MINIO_REGION_NAME: "{{ MINIO_REGION_NAME }}"
+      MINIO_HTTP_TRACE: "/dev/stdout"
+    networks:
+      - name: "data-management"
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    command:
+      - server /data
+    labels:
+      com.docker.compose.project: "data-management"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Min.io Interface
+      traefik.http.routers.minio.rule: "Host(`blob.{{ DOMAIN }}`)"
+      traefik.http.routers.minio.entrypoints: "websecure"
+      traefik.http.routers.minio.service: "minio"
+      traefik.http.routers.minio.tls: "true"
+      traefik.http.routers.minio.tls.certresolver: "le"
+      traefik.http.services.minio.loadbalancer.server.port: "9000"
+
+- name: Configure min.io Server
+  docker_container:
+    name: minio_mc
+    image: minio/mc:RELEASE.2021-03-23T05-46-11Z
+    restart_policy: no
+    networks:
+      - name: "data-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "data-management"
+    state: started
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set local http://minio-server1:9000 {{ MINIO_ACCESS_KEY }} {{ MINIO_SECRET_KEY }};
+      mc mb local/images;
+      mc policy set download local/images;
+      mc mb local/files;
+      mc policy set none local/files;
+      mc admin config set local identity_openid \
+        config_url='https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}/.well-known/openid-configuration' \
+        client_id='{{ IDM_CLIENT }}';
+      "
+    labels:
+      com.docker.compose.project: "data-management"
+
+- name: Kill Configuration Container
+  docker_container:
+    name: minio_mc
+    image: minio/mc:RELEASE.2021-03-23T05-46-11Z
+    restart_policy: no
+    networks:
+      - name: "data-management"
+    state: absent
+    labels:
+      com.docker.compose.project: "data-management"
+
+- name: Restart min.io Server
+  docker_container:
+    name: minio-server1
+    image: minio/minio:RELEASE.2021-03-17T02-33-02Z
+    state: started
+    restart: yes

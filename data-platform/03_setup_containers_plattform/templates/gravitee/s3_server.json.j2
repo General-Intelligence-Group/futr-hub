@@ -1,0 +1,123 @@
+{
+  "labels" : [
+
+  ],
+  "tags" : [
+
+  ],
+  "proxy" : {
+    "groups" : [
+      {
+        "proxy" : {
+          "enabled" : false,
+          "host" : "null",
+          "type" : "HTTP",
+          "port" : 0
+        },
+        "services" : {
+          "discovery" : {
+            "enabled" : false
+          }
+        },
+        "http" : {
+          "idleTimeout" : 60000,
+          "pipelining" : false,
+          "connectTimeout" : 5000,
+          "keepAlive" : true,
+          "followRedirects" : false,
+          "maxConcurrentConnections" : 100,
+          "useCompression" : true,
+          "encodeURI" : false,
+          "readTimeout" : 10000
+        },
+        "ssl" : {
+          "trustAll" : false,
+          "hostnameVerifier" : false
+        },
+        "endpoints" : [
+          {
+            "target" : "{{ s3_api_endpoint }}",
+            "weight" : 1,
+            "backup" : false,
+            "inherit" : true,
+            "type" : "HTTP",
+            "healthcheck" : {
+              "trigger" : {
+                "unit" : "SECONDS",
+                "rate" : 60
+              },
+              "enabled" : true,
+              "steps" : [
+                {
+                  "name" : "default-step",
+                  "request" : {
+                    "path" : "{{ s3_api_healthcheckPath }}",
+                    "method" : "GET",
+                    "fromRoot" : false
+                  },
+                  "response" : {
+                    "assertions" : [
+                      "#response.status == 403"
+                    ]
+                  }
+                }
+              ],
+              "inherit" : false
+            },
+            "name" : "{{ s3_api_endpointName }}"
+          }
+        ],
+        "load_balancing" : {
+          "type" : "ROUND_ROBIN"
+        },
+        "name" : "Local Deployment"
+      }
+    ],
+    "preserve_host" : false,
+    "virtual_hosts" : [
+      {
+        "path" : "{{ s3_api_publicPath }}"
+      }
+    ],
+    "strip_context_path" : false
+  },
+  "disable_membership_notifications" : false,
+  "visibility" : "public",
+  "name" : "{{ s3_api_name }}",
+  "version" : "1.0",
+  "services" : {
+    "health-check" : {
+      "enabled" : true,
+      "trigger" : {
+        "unit" : "SECONDS",
+        "rate" : 60
+      },
+      "steps" : [
+        {
+          "name" : "default-step",
+          "request" : {
+            "path" : "{{ s3_api_healthcheckPath }}",
+            "method" : "GET",
+            "fromRoot" : false
+          },
+          "response" : {
+            "assertions" : [
+              "#response.status == 403"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "response_templates" : {
+
+  },
+  "resources" : [
+
+  ],
+  "paths" : {
+    "/" : [ ]
+  },
+  "description" : "{{ s3_api_description }}",
+  "lifecycle_state": "PUBLISHED"
+  }

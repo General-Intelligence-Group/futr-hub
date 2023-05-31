@@ -1,0 +1,150 @@
+---
+
+####################################
+#### LOG IN IDENTITY PROVIDER   ####
+####################################
+
+
+- name: Login into APIM management API using IDM provider
+  uri:
+    method: POST
+    url: "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/token"
+    return_content: yes
+    body_format: form-urlencoded
+    body:
+    - [ grant_type, "password" ]
+    - [ username, "admin@{{ DOMAIN }}" ]
+    - [ password, "{{ SC_ADMIN_PASSWORD }}" ]
+    - [ client_id, "platform-central-main" ]
+    - [ client_secret, "{{ IDM_CLIENT_SECRET }}" ]
+    headers:
+      Accept: application/json
+    status_code: 200
+  register: user
+
+
+- name: Exchange token at APIM
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/auth/oauth2/keycloak/exchange?token={{ user.json.access_token }}"
+    return_content: yes
+    headers:
+      Accept: application/json
+    status_code: 200
+  register: new_token
+
+
+- name: Get IDM user id
+  uri:
+    method: GET
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ new_token.json.token }}
+    status_code: 200
+  register: idm_user_id
+
+#############################
+#### CREATE FIWARE API   ####
+#############################
+
+
+
+- name: Create FIWARE API Entry
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/apis/import"
+    return_content: yes
+    body_format: json
+    body: |
+      {
+        "proxy": {
+          "endpoints": [
+            {
+              "name":"default",
+              "target":"http://orion-v2:1026",
+              "inherit":true
+            }
+          ],
+          "context_path":"{{ orion_api_publicPath }}"
+        },
+        "pages":[],
+        "plans":[],
+        "tags":[],
+        "name":"FIWARE NGSI",
+        "version":"1.0",
+        "description":"FIWARE NGSI API for Orion Context Broker"
+      }
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ new_token.json.token }}
+    status_code: 200,400
+  register: fiwareAPI
+
+
+
+- debug:
+    msg: "Failed. FIWARE API already existing?"
+  when: fiwareAPI.status == 400
+
+
+- name: Create SWAGGER Documentation Page
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/apis/{{ fiwareAPI.json.id }}/pages/"
+    return_content: yes
+    body_format: json
+    body: |
+      { "content": "{{ lookup('template', 'gravitee/swagger_ngsi.json.j2') }}",
+        "name": "API SWAGGER Doc",
+        "parentId": "",
+        "published": true,
+        "type": "SWAGGER"
+      }
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ new_token.json.token }}
+    status_code: 201
+  when: fiwareAPI.status != 400
+  register: swagger
+
+# - debug:
+#     var: swagger
+
+- name: Update to final Values
+  uri:
+    method: PUT
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/apis/{{ fiwareAPI.json.id }}"
+    return_content: yes
+    body_format: json
+    body: "{{ lookup('template', 'gravitee/orion_ngsi_v2.json.j2') }}"
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ new_token.json.token }}
+    status_code: 200
+  when: fiwareAPI.status != 400
+
+- name: Create Subscription Plan based on API Keys
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/apis/{{ fiwareAPI.json.id }}/plans"
+    return_content: yes
+    body_format: json
+    body: "{{ lookup('template', 'gravitee/create_plan_api_key.json.j2') }}"
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ new_token.json.token }}
+    status_code: 201
+  when: fiwareAPI.status != 400
+
+- name: Start the API
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/apis/{{ fiwareAPI.json.id }}?action=START"
+    return_content: yes
+    headers:
+      Authorization: Bearer {{ new_token.json.token }}
+    status_code: 204
+  when: fiwareAPI.status != 400
+

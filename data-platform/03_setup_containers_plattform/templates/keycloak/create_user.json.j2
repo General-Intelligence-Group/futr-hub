@@ -1,0 +1,22 @@
+{
+        "username": "admin@{{ DOMAIN }}",
+        "enabled": true,
+        "totp": false,
+        "emailVerified": true,
+        "firstName": "Admin",
+        "lastName": "Admin",
+        "email": "admin@{{ DOMAIN }}",
+        "disableableCredentialTypes": [],
+        "requiredActions": [],
+        "notBefore": 0,
+        "access": {
+            "manageGroupMembership": true,
+            "view": true,
+            "mapRoles": true,
+            "impersonate": true,
+            "manage": true
+        },
+        "attributes":{
+            "minio_policy":["readwrite"]
+        }
+    }

@@ -1,0 +1,34 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "Timescale",
+            "Group": "Urban Data Plattform",
+            "Port": 5432,
+            "Username": "{{ TIMESCALE_POSTGRES_USER }}",
+            "Host": "{{ TIMESCALE_POSTGRES_HOST }}",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres",
+            "PassFile": "/pgpassfile"
+        },
+        "2": {
+            "Name": "FROST PostGIS",
+            "Group": "Urban Data Plattform",
+            "Port": 5432,
+            "Username": "{{ FROST_POSTGRES_USER }}",
+            "Host": "{{ FROST_POSTGRES_HOST }}",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres",
+            "PassFile": "/pgpassfile"
+        },
+        "3": {
+            "Name": "Keycloak DB Server",
+            "Group": "Urban Data Plattform",
+            "Port": 5432,
+            "Username": "{{ KEYCLOAK_POSTGRES_USER }}",
+            "Host": "{{ KEYCLOAK_POSTGRES_HOST }}",
+            "SSLMode": "prefer",
+            "MaintenanceDB": "postgres",
+            "PassFile": "/pgpassfile"
+        }
+    }
+}

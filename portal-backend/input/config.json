@@ -1,0 +1,1605 @@
+{
+	"Portalconfig": {
+		"treeType": "custom",
+		"searchBar": {
+			"osm": {
+				"minChars": 3,
+				"serviceId": "10",
+				"limit": 30,
+				"states": "Berlin",
+				"classes": "place,highway,building,shop,historic,leisure,city,county"
+			},
+			"komoot": {
+				"minChars": 3,
+				"serviceId": "11",
+				"limit": 20,
+				"lang": "de",
+				"lat": 52.5,
+				"lon": 13.4,
+				"bbox": "13.0708,52.2472,13.7511,52.6828"
+			},
+			"visibleVector": {},
+			"tree": {},
+			"startZoomLevel": 3,
+			"placeholder": "Suche"
+		},
+		"mapView": {
+			"backgroundImage": "./resources/img/backgroundCanvas.jpeg",
+			"startCenter": [
+				384300,
+				5824382
+			],
+			"extent": [
+				368000,
+				5790800,
+				415000,
+				5837000
+			],
+			"options": [
+				{
+					"resolution": 28,
+					"scale": 100000,
+					"zoomLevel": 0
+				},
+				{
+					"resolution": 19.5,
+					"scale": 70000,
+					"zoomLevel": 1
+				},
+				{
+					"resolution": 14,
+					"scale": 50000,
+					"zoomLevel": 2
+				},
+				{
+					"resolution": 10,
+					"scale": 35000,
+					"zoomLevel": 3
+				},
+				{
+					"resolution": 7,
+					"scale": 25000,
+					"zoomLevel": 4
+				},
+				{
+					"resolution": 4.2,
+					"scale": 15000,
+					"zoomLevel": 5
+				},
+				{
+					"resolution": 2.8,
+					"scale": 10000,
+					"zoomLevel": 6
+				},
+				{
+					"resolution": 1.9,
+					"scale": 7000,
+					"zoomLevel": 7
+				},
+				{
+					"resolution": 1.4,
+					"scale": 5000,
+					"zoomLevel": 8
+				},
+				{
+					"resolution": 1,
+					"scale": 3500,
+					"zoomLevel": 9
+				},
+				{
+					"resolution": 0.7,
+					"scale": 2500,
+					"zoomLevel": 10
+				},
+				{
+					"resolution": 0.4,
+					"scale": 1500,
+					"zoomLevel": 11
+				},
+				{
+					"resolution": 0.28,
+					"scale": 1000,
+					"zoomLevel": 12
+				},
+				{
+					"resolution": 0.14,
+					"scale": 500,
+					"zoomLevel": 13
+				},
+				{
+					"resolution": 0.07,
+					"scale": 250,
+					"zoomLevel": 14
+				},
+				{
+					"resolution": 0.035,
+					"scale": 125,
+					"zoomLevel": 15
+				},
+				{
+					"resolution": 0.0175,
+					"scale": 50,
+					"zoomLevel": 16
+				},
+				{
+					"resolution": 0.00875,
+					"scale": 25,
+					"zoomLevel": 17
+				}
+			],
+			"startZoomLevel": 5,
+			"epsg": "EPSG:25833"
+		},
+		"menu": {
+			"tree": {
+				"name": "Themen"
+			},
+			"tools": {
+				"name": "translate#common:menu.tools.name",
+				"icon": "bi bi-tools",
+				"children": {
+					"gfi": {
+						"roles": [
+							"ds_open_data"
+						],
+						"name": "Informationen abfragen",
+						"active": true,
+						"highlightVectorRules": {
+							"fill": {
+								"color": [
+									215,
+									102,
+									41,
+									0.9
+								]
+							},
+							"image": {
+								"scale": 1.5
+							},
+							"stroke": {
+								"width": 4
+							},
+							"text": {
+								"scale": 2
+							}
+						}
+					},
+					"coordToolkit": {
+						"roles": [
+							"ds_open_data"
+						],
+						"name": "translate#common:menu.tools.coordToolkit"
+					},
+					"measure": {
+						"roles": [
+							"ds_open_data"
+						],
+						"measurementAccuracy": "decimeter",
+						"name": "translate#common:menu.tools.measure"
+					},
+					"draw": {
+						"roles": [
+							"ds_open_data"
+						],
+						"name": "Zeichnen / Schreiben",
+						"renderToWindow": false,
+						"download": {
+							"preSelectedFormat": "KML"
+						}
+					},
+					"fileImport": {
+						"roles": [
+							"ds_open_data"
+						],
+						"name": "Datei Import"
+					},
+					"saveSelection": {
+						"roles": [
+							"ds_open_data"
+						],
+						"name": "Auswahl speichern"
+					},
+					"filter": {
+						"roles": [
+							"ds_nda"
+						],
+						"name": "Zeitfilter ",
+						"icon": "bi-funnel-fill",
+						"deactivateGFI": false,
+						"multiLayerSelector": true,
+						"liveZoomToFeatures": true,
+						"layers": [
+							{
+								"layerId": "bil_bau",
+								"active": true,
+								"title": "BIL-Leitungsauskunft Bau",
+								"snippetTags": false,
+								"resetLayer": true,
+								"showHits": true,
+								"snippets": [
+									{
+										"type": "dateRange",
+										"title": "",
+										"attrName": [
+											"start_string",
+											"end_string"
+										],
+										"operator": "BETWEEN",
+										"format": "YYYY-MM-DD"
+									}
+								]
+							}
+						]
+					},
+					"layerSlider": {
+						"roles": [
+							"ds_open_data"
+						],
+						"name": "Zeitreihe Luftbilder",
+						"icon": "bi-film",
+						"title": "",
+						"sliderType": "player",
+						"timeInterval": 5000,
+						"layerIds": [
+							{
+								"layerId": "20230420_Gesamtareal_dop_cog",
+								"title": "Vom 20.04.2023"
+							},						
+							{
+								"layerId": "20230323_Gesamtareal_dop_cog",
+								"title": "Vom 23.03.2023"
+							},
+							{
+								"layerId": "20230216_Gesamtareal_dop_cog",
+								"title": "Vom 16.02.2023"
+							},
+							{
+								"layerId": "20230119_Gesamtareal_dop_cog",
+								"title": "Vom 19.01.2023"
+							},
+							{
+								"title": "Vom 15.12.2022",
+								"layerId": "20221215_Gesamtareal_dop_cog"
+							},
+							{
+								"title": "Vom 17.11.2022",
+								"layerId": "20221117_Gesamtareal_dop_cog"
+							},
+							{
+								"title": "Vom 13.10.2022",
+								"layerId": "20221013_Gesamtareal_dop_cog"
+							},
+							{
+								"layerId": "20220915_Gesamtareal_dop_cog",
+								"title": "Vom 15.09.2022"
+							},
+							{
+								"layerId": "20220818_Gesamtareal_dop_cog",
+								"title": "Vom 18.08.2022"
+							},
+							{
+								"layerId": "20220714_Gesamtareal_dop_cog",
+								"title": "Vom 14.07.2022"
+							},						
+							{
+								"layerId": "20220413_Gesamtareal_dop_cog",
+								"title": "Vom 13.04.2022"
+							},
+							{
+								"layerId": "20220331_Gesamtareal_dop_cog",
+								"title": "Vom 11.03.2022"
+							},
+							{
+								"layerId": "20220210_Gesamtareal_dop_cog",
+								"title": "Vom 10.02.2022"
+							},
+							{
+								"title": "Jahrgang 2021",
+								"layerId": "luftbild2021"
+							},
+							{
+								"layerId": "k_luftbild2018",
+								"title": "Jahrgang 2018"
+							},
+							{
+								"title": "Jahrgang 2015",
+								"layerId": "k_luftbild2015"
+							},
+							{
+								"layerId": "k_luftbild2011",
+								"title": "Jahrgang 2011"
+							},
+							{
+								"layerId": "k_luftbild2007",
+								"title": "Jahrgang 2007"
+							},
+							{
+								"layerId": "luftbild2004",
+								"title": "Jahrgang 2004"
+							}
+						]
+					},
+					"print": {
+						"name": "PDF erzeugen",
+						"icon": "bi-printer-fill",
+						"mapfishServiceId": "mapfish_printservice",
+						"printAppId": "txl",
+						"filename": "Ausdruck",
+						"title": "Mein Titel",
+						"version": "mapfish_print_3",
+						"currentLayoutName": "A4 Hochformat",
+						"dpiForPdf": 200,
+						"printMapMarker": false,
+						"roles": [
+							"ds_nda"
+						]
+					},
+					"addWMS": {
+						"roles": [
+							"ds_open_data"
+						],
+						"name": "Web Layer hinzufügen "
+					}
+				}
+			},
+			"legend": {
+				"name": "Legende"
+			},
+			"login": {
+				"roles": [
+					"ds_open_data"
+				],
+				"name": "translate#additional:modules.tools.login.title",
+				"icon": "bi-door-open"
+			}
+		},
+		"portalTitle": {
+			"logo": "resources/img/UTR_horizontal-bunt.png"
+		},
+		"controls": {
+			"fullScreen": true,
+			"totalView": true,
+			"backForward": true,
+			"zoom": true,
+			"button3d": true,
+			"orientation": {
+				"zoomMode": "once"
+			},
+			"attributions": {
+				"isInitOpenDesktop": false,
+				"isInitOpenMobile": false
+			},
+			"mousePosition": true
+		}
+	},
+	"Themenconfig": {
+		"Hintergrundkarten": {
+			"Ordner": [
+				{
+					"Titel": "Schematische Karten",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "basemap",
+							"name": "Hintergrundkarte farbig",
+							"layerAttribution": "<span>© basemap.de / BKG 2023</span>",
+							"visibility": true
+						},
+						{
+							"id": "fis_webatlas_sw",
+							"name": "Hintergrundkarte s/w",
+							"layerAttribution": "<span>Geoportal Berlin / WebAtlas Berlin</span>",
+							"visibility": false
+						}						
+					]
+				},
+				{
+					"Titel": "Luftbilder Berlin (FIS Broker)",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "luftbild2022",
+							"name": "Digitale True Orthophotos 2022",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale farbige Orthophotos 2022 (DOP20RGB)</span>"
+						},
+						{
+							"id": "luftbild2021",
+							"name": "Digitale Orthophotos 2021",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale farbige Orthophotos 2021 (DOP20RGB)</span>"
+						},
+						{
+							"id": "luftbild2020",
+							"name": "Digitale True Orthophotos 2020",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale farbige TrueOrthophotos 2020 (DOP20RGB)</span>"
+						},
+						{
+							"id": "501",
+							"name": "Digitale Orthophotos 2019",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale farbige Orthophotos 2019 (DOP20RGB)</span>"
+						},
+						{
+							"id": "k_luftbild2018",
+							"name": "Digitale Orthophotos 2018",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2018</span>"
+						},
+						{
+							"id": "k_luftbild2017",
+							"name": "Digitale Orthophotos 2017",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2017</span>"
+						},
+						{
+							"id": "k_luftbild2016",
+							"name": "Digitale Orthophotos 2016",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2016</span>"
+						},
+						{
+							"id": "k_luftbild2015",
+							"name": "Digitale Orthophotos 2015",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2015</span>"
+						},
+						{
+							"id": "k_luftbild2014",
+							"name": "Digitale Orthophotos 2014",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2014</span>"
+						},
+						{
+							"id": "k_luftbild2013",
+							"name": "Digitale True Orthophotos 2013",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale farbige Trueorthophotos 2013</span>"
+						},
+						{
+							"id": "k_luftbild2011",
+							"name": "Digitale Orthophotos 2011",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2011</span>"
+						},
+						{
+							"id": "k_luftbild2010",
+							"name": "Digitale Orthophotos 2010",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2010</span>"
+						},
+						{
+							"id": "k_luftbild2009",
+							"name": "Digitale Orthophotos 2009",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2009</span>"
+						},
+						{
+							"id": "k_luftbild2007",
+							"name": "Digitale Orthophotos 2007",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2007</span>"
+						},
+						{
+							"id": "luftbild2006",
+							"name": "Digitale Orthophotos s/w 2006",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale schwarz-weiß Orthophotos 2006</span>"
+						},
+						{
+							"id": "luftbild2004",
+							"name": "Digitale Orthophotos 2004",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2004</span>"
+						},
+						{
+							"id": "k_luftbild2002",
+							"name": "Digitale Orthophotos s/w 2002",
+							"layerAttribution": "<span>Geoportal Berlin / Digitale Orthophotos 2002</span>"
+						},
+						{
+							"id": "k_luftbild1953:1",
+							"name": "Luftbilder s/w 1953",
+							"layerAttribution": "<span>Geoportal Berlin / Luftbilder 1953</span>"
+						},
+						{
+							"id": "k_luftbild1928:1",
+							"name": "Luftbilder s/w 1928",
+							"layerAttribution": "<span>Geoportal Berlin / Luftbilder 1928</span>"
+						}
+					]
+				},
+				{
+					"Titel": "Luftbilder Gesamtareal 2022",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "20221222_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 22.12.2022"
+						},
+						{
+							"id": "20221215_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 15.12.2022"
+						},
+						{
+							"id": "20221201_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 01.12.2022"
+						},
+						{
+							"id": "20221117_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 17.11.2022"
+						},
+						{
+							"id": "20221103_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 03.11.2022"
+						},
+						{
+							"id": "20221027_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 27.10.2022"
+						},
+						{
+							"id": "20221013_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 13.10.2022"
+						},
+						{
+							"id": "20221006_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 06.10.2022"
+						},
+						{
+							"id": "20220929_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 29.09.2022"
+						},
+						{
+							"id": "20220922_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 22.09.2022"
+						},
+						{
+							"id": "20220915_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 15.09.2022"
+						},
+						{
+							"id": "20220901_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 01.09.2022"
+						},
+						{
+							"id": "20220825_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 25.08.2022"
+						},
+						{
+							"id": "20220818_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 18.08.2022"
+						},
+						{
+							"id": "20220728_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 28.07.2022"
+						},
+						{
+							"id": "20220714_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 14.07.2022"
+						},
+						{
+							"id": "20220706_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 06.07.2022"
+						},					
+						{
+							"id": "20220505_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 05.05.2022"
+						},
+						{
+							"id": "20220428_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 28.04.2022"
+						},
+						{
+							"id": "20220421_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 21.04.2022"
+						},
+						{
+							"id": "20220413_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 13.04.2022"
+						},
+						{
+							"id": "20220331_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 31.03.2022"
+						},
+						{
+							"id": "20220311_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 11.03.2022"
+						},
+						{
+							"id": "20220210_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 10.02.2022"
+						},
+						{
+							"id": "20220105_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 05.01.2022"
+						}
+					]
+				},
+				{
+					"Titel": "Luftbilder Gesamtareal 2023",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "20230511_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 11.05.2023"
+						},
+						{
+							"id": "20230504_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 04.05.2023"
+						},
+						{
+							"id": "20230427_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 27.04.2023"
+						},
+						{
+							"id": "20230420_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 20.04.2023"
+						},
+						{
+							"id": "20230413_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 13.04.2023"
+						},
+						{
+							"id": "20230406_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 06.04.2023"
+						},
+						{
+							"id": "20230323_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 23.03.2023"
+						},
+						{
+							"id": "20230223_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 23.02.2023"
+						},
+						{
+							"id": "20230216_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 16.02.2023"
+						},
+						{
+							"id": "20230209_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 09.02.2023"
+						},
+						{
+							"id": "20230202_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 02.02.2023"
+						},
+						{
+							"id": "20230126_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 26.01.2023"
+						},
+						{
+							"id": "20230119_Gesamtareal_dop_cog",
+							"name": "Luftbild vom 19.01.2023"
+						}
+					]
+				}
+			]
+		},
+		"Fachdaten_3D": {
+            "Layer": [
+                {
+                    "id": "3d_entwurf",
+                    "name": "Städtebauliches Modell 2018",
+                    "visibility": false
+                },
+                {
+                    "id": "3d_bestand",
+                    "name": "Gebäude Bestand",
+                    "visibility": true
+                },
+                {
+                    "id": "3d_umg_geb",
+                    "name": "Umgebungsgebäude",
+                    "visibility": false
+                },
+                {
+                    "id": "3d_bestand_fisbroker",
+                    "name": "Gebäude FIS Broker (Stand 04.2022)",
+                    "visibility": false
+                }
+            ]
+        },
+		"Fachdaten": {
+			"Ordner": [
+				{
+					"Titel": "Kataster",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "006",
+							"name": "Flurstücke Stand 06.05.2022"
+						},
+						{
+							"id": "alk_flur",
+							"name": "Flurstücke mit Eigentümerangaben vom 22.01.2023",
+							"layerAttribution": "<span> Auszug Geobasisdaten Online vom 22.01.2023 (Amtliches Liegenschaftskatasterinformationssystem)</span>"
+						},
+						{
+							"id": "AlkisSW",
+							"name": "ALKIS s/w (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / ALKIS Berlin s/w (Amtliches Liegenschaftskatasterinformationssystem)</span>",
+							"visibility": false
+						},
+						{
+							"id": "s_wfs_alkis",
+							"name": "ALKIS Flurstücke (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / ALKIS Berlin Flurstücke</span>",
+							"styleId": "s_wfs_alkis",
+							"visibility": false
+						},
+						{
+							"id": "bimakaufgegenstand",
+							"name": "Kaufgegenstand BImA (Teilobjekt 1c)"
+						}
+					]
+				},
+				{
+					"Titel": "Bestand",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "vermess",
+							"name": "Vermesserplan 17.03.2022",
+							"children": [
+								{
+									"id": "vermess1",
+									"name": "Vermesserplan"
+								},
+								{
+									"id": "vermess2",
+									"name": "myLayer_2",
+									"isNeverVisibleInTree": true
+								}
+							]
+						},
+						{
+							"id": "BzStr",
+							"name": "Baustraßen"
+						},
+						{
+							"id": "008",
+							"name": "Gebäudebestand Stand 19.04.2023",
+							"visibility": false
+						},
+						{
+							"id": "009",
+							"name": "Gebäudebestand Anbau Stand 19.04.2023"
+						},
+						{
+							"id": "gebhoehen",
+							"name": "Gebäudehöhen (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Gebäudehöhen (Umweltatlas)</span>",
+							"children": [
+								{
+									"id": "gebhoehen",
+									"name": "Gebäudehöhen"
+								},
+								{
+									"id": "gebhoehen_wfs",
+									"name": "Gebäudehöhen Sachdaten",
+									"transparency": 100,
+									"styleId": "wsg"
+								}
+							]
+						},						
+						{
+							"id": "beleuchtung",
+							"name": "Öffentliche Beleuchtung (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Öffentliche Beleuchtung</span>"
+						},
+						{
+							"id": "isk",
+							"name": "Infrastrukturkanal"
+						},
+						{
+							"id": "dgnb",
+							"name": "DGNB-Zertifizierungsgebiet"
+						},
+						{
+							"id": "baumbestand",
+							"name": "Bäume",
+							"styleId": "baum"
+						},
+						{
+							"id": "507",
+							"name": "Baumbestand (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Baumbestand Berlin</span>",
+							"children": [
+								{
+									"id": "507",
+									"name": "Baumbestand"
+								},
+								{
+									"id": "baum_wfs",
+									"name": "Baumbestand Straßenbäume",
+									"transparency": 100,
+									"styleId": "wsg"
+								},
+								{
+									"id": "baum_wfs_anl",
+									"name": "Baumbestand Anlagenbäume",
+									"transparency": 100,
+									"styleId": "wsg"
+								}
+							]
+						},
+						{
+							"id": "gruen_frei",
+							"name": "Grün- und Freiflächenbestand (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Gebäudehöhen (Umweltatlas)</span>",
+							"children": [
+								{
+									"id": "gruen_frei",
+									"name": "Grün- und Freiflächenbestand"
+								},
+								{
+									"id": "gruen_frei_wfs",
+									"name": "Grün- und Freiflächenbestand Sachdaten",
+									"transparency": 100,
+									"styleId": "wsg"
+								}
+							]
+						},						
+						{
+							"id": "bdom",
+							"name": "Bildbasiertes Digitales Oberflächenmodell (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / bDOM - Bildbasiertes Digitales Oberflächenmodell</span>"
+						},
+						{
+							"id": "503",
+							"name": "ATKIS Digitales Geländemodell (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / ATKIS DGM - Digitales Geländemodell</span>",
+							"visibility": false
+						}
+					]
+				},
+				{
+					"Titel": "Planung",
+					"isFolderSelectable": false,
+					"Ordner": [						
+						{
+							"Titel": "Basisdaten",
+							"isFolderSelectable": false,
+                            "Layer": [
+							{
+								"id": "003",
+								"name": "Baufelder Stand 06.05.2022"
+							},
+							{
+								"id": "bph",
+								"name": "Bauphasen"
+							},
+							{
+								"id": "005",
+								"name": "Bebauungsplan Geltungsbereiche Stand 06.05.2022"
+							},
+							{
+								"id": "007",
+								"name": "Städtebauliche Planung Stand 06.05.2022"
+							},
+							{
+								"id": "004",
+								"name": "Musterparzellierung Stand 06.05.2022"
+							},
+							{
+								"id": "001",
+								"name": "Projektgrenze",
+								"visibility": true
+							},
+							{
+								"id": "002",
+								"name": "Teilräume",
+								"visibility": false
+							}
+							]
+						},
+						{
+							"Titel": "Baufelder - Alte Stände",
+							"isFolderSelectable": false,
+							"Layer": [
+								{
+									"id": "bfeld21",
+									"name": "Baufelder Stand 06.04.2021"
+								},
+								{
+									"id": "bfeld20",
+									"name": "Baufelder Stand 10.09.2020"
+								},
+								{
+									"id": "bfeld19",
+									"name": "Baufelder Stand 21.10.2019"
+								},
+								{
+									"id": "bfeld18",
+									"name": "Baufelder Stand 08.10.2018"
+								},
+								{
+									"id": "bfeld17",
+									"name": "Baufelder Stand 11.11.2017"
+								},
+								{
+									"id": "bfeld16",
+									"name": "Baufelder Stand 09.09.2016"
+								},
+								{
+									"id": "bfeld15",
+									"name": "Baufelder Stand 15.08.2015"
+								},
+								{
+									"id": "bfeld14",
+									"name": "Baufelder Stand 11.11.2014"
+								},
+								{
+									"id": "bfeld13",
+									"name": "Baufelder Stand 30.08.2013"
+								}
+							]
+						},
+						{
+							"Titel": "BIL-Leitungsauskunft",
+							"isFolderSelectable": false,
+							"Layer": [
+								{
+									"id": "bil_bau",
+									"styleId": "bil_bau",
+									"name": "Bau"
+								},
+								{
+									"id": "bil_plan",
+									"styleId": "bil_plan",
+									"name": "Planung / Zuständigkeitsermittlung"
+								}
+							]
+						},
+						{
+							"Titel": "Energie",
+							"isFolderSelectable": false,
+							"Layer":[
+								{
+									"id": "010",
+									"name": "Wärmeenergieverbrauch der Baufelder",
+									"visibility": false
+								},
+								{
+									"id": "011",
+									"name": "Wärme/Kälte-Versorgung pro Parzelle"
+								}
+							]
+						},
+						{
+							"Titel": "Haushaltsunterlagen (VPU / BPU)",
+							"isFolderSelectable": false,
+							"Layer":[
+								{
+									"id": "LP-VPU_Landschaftspark",							
+									"name": "VPU Landschaftspark, genehmigt 29.06.2021"
+								},
+								{
+									"id": "SQ-VPU_Äußere_Erschließung",							
+									"name": "SQ VPU Äußere Erschließung, genehmigt: 19.05.2022"
+								},
+								{
+									"id": "SQ-BPU_Innere_Erschließung",							
+									"name": "SQ BPU Innere Erschließung (Auszug Verkehrswege), eingereicht am 29.06.2022"
+								},
+								{
+									"id": "SQ-BPU_Innere_Erschließung_Beleuchtung",							
+									"name": "SQ BPU Innere Erschließung (Auszug Beleuchtung)"
+								},
+								{
+									"id": "SQ-BPU_Innere_Erschließung_Entwässerung",							
+									"name": "SQ BPU Innere Erschließung (Auszug Entwässerung)"
+								},
+								{
+									"id": "SQ-BPU_Quartierspark",							
+									"name": "SQ BPU Quartierspark, eingereicht am 29.08.2022"
+								}
+							]
+						},
+						{
+							"Titel": "Uranusquartier",
+							"isFolderSelectable": false,
+							"Layer":[
+								{
+									"id": "baufUQ",
+									"name": "Uranusquartier Baufelder Stand 06.05.2022"
+								},
+								{
+									"id": "GebUQ",
+									"name": "Uranusquartier Städtebauliche Planung Stand 06.05.2022"
+								},
+								{
+									"id": "parzUQ",
+									"name": "Uranusquartier Musterparzellierung Stand 06.05.2022"
+								}
+							]
+						}
+							]					
+				},
+				{
+					"Titel": "Bewirtschaftung",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "fiktivegrundstuecke",
+							"name": "Fiktive Grundstücke",
+							"visibility": false
+						}
+					]
+				},
+				{
+					"Titel": "Events",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "012",
+							"styleId": "012",
+							"name": "Events",
+							"visibility": false
+						}
+					]
+				},
+				{
+					"Titel": "Umwelt",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "biotope",
+							"name": "Biotope Schutzstatus (Sen UMVK von 2014)",
+							"layerAttribution": "<span>Datenquelle: Senatsverwaltung für Umwelt, Mobilität, Verbraucher- und Klimaschutz</span>",
+							"visibility": false
+						},
+						{
+							"id": "saatKr",
+							"name": "Saatkrähen Schutzradius"
+						},
+						{
+							"id": "gwm",
+							"name": "Grundwassermessstellen"
+						},
+						{
+							"id": "gw_gleichen",
+							"name": "Grundwassergleichen 2020 (FIS Broker)",
+							"layerAttribution": "<span>Grundwassergleichen 2020 (Umweltatlas)</span>"
+						},
+						{
+							"id": "ZeHGW",
+							"name": "Zu erwartender höchster Grundwasserstand (FIS Broker)",
+							"layerAttribution": "<span>Zu erwartender höchster Grundwasserstand (Umweltatlas)</span>"
+						},
+						{
+							"id": "wasser",
+							"name": "Wasserschutzgebiete (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Wasserschutzgebiete</span>",
+							"children": [
+								{
+									"id": "wsg",
+									"name": "Wasserschutzgebiete WMS"
+								},
+								{
+									"id": "s_wsg",
+									"name": "Wasserschutzgebiete",
+									"transparency": 100,
+									"styleId": "wsg"
+								}
+							]
+						},
+						{
+							"id": "versieg",
+							"name": "Versiegelung 2016 (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Versiegelung 2016 (Umweltatlas) (Programmplan)</span>"
+						},
+						{
+							"id": "bohrpunkte",
+							"name": "Geologische Bohrdaten (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Geologische Bohrdaten</span>",
+							"children": [
+									{
+										"id": "506",
+										"name": "Geologische Bohrdaten"
+									},
+									{
+										"id": "bohrpunkte_WFS",
+										"name": "Geologische Bohrdaten Sachdaten",
+										"transparency": 100,
+										"styleId": "wsg"
+									}
+								]									
+						},
+						{
+							"id": "bodart",
+							"name": "Bodenarten 2015 (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Bodenarten 2015 (Umweltatlas)</span>"
+						},
+						{
+							"id": "boges",
+							"name": "Bodengesellschaften 2015 (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Bodengesellschaften 2015 (Umweltatlas)</span>"
+						},
+						{
+							"id": "niederradar",
+							"name": "Niederschlagsradar",
+							"layerAttribution": "<span>Quelle: Deutscher Wetterdienst</span>"
+						}
+					],
+					"Ordner": [
+						{
+							"Titel": "Biotopkompensation (Vorplanung, Stand: 2021)",
+							"Layer": [
+								{
+									"id": "bioweidelaraum",
+									"name": "Weideflächen Umrisse"
+								},
+								{
+									"id": "bioweide",
+									"name": "Flächen innerhalb Weide"
+								},
+								{
+									"id": "biokompaus",
+									"name": "Flächen außerhalb Weide"
+								},
+								{
+									"id": "biokomplp",
+									"name": "Landschaftspark"
+								},
+								{
+									"id": "biokompgeh",
+									"name": "Neue Gehölzflächen"
+								},
+								{
+									"id": "biokompwald",
+									"name": "Waldaufwertung"
+								},
+								{
+									"id": "biokompverl",
+									"name": "Verlust geschützter Biotope"
+								}
+							]
+						}
+					]
+				},
+				{
+					"Titel": "Kampfmittel & Altlasten",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "kmrstatus",
+							"name": "Kampfmittelräumung Status"
+						},
+						{
+							"id": "sst",
+							"name": "Sprengstandorte"
+						},
+						{
+							"id": "spr",
+							"name": "Sprengradien"
+						}
+					]
+				},
+				{
+					"Titel": "Stadtentwicklung",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "wmsk_aufgrabeverbote:1",
+							"name": "Aufgrabeverbote (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Aufgrabeverbote"
+						},
+						{
+							"id": "<span>Geoportal Berlin / Bebauungspläne, vorhabenbezogene Bebauungspläne (Geltungsbereiche)</span>",
+							"name": "Bebauungspläne (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Bebauungspläne, vorhabenbezogene Bebauungspläne (Geltungsbereiche)</span>",
+							"children": [
+								{
+									"id": "bplaene",
+									"name": "Bebauungspläne"
+								},
+								{
+									"id": "bplaene_wfs",
+									"name": "Bebauungspläne Sachdaten",
+									"transparency": 100,
+									"styleId": "wsg"
+								}
+							]
+						},
+						{
+							"id": "denkmal",
+							"name": "Denkmalkarte Berlin (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Denkmalkarte Berlin</span>",
+							"children": [
+									{
+										"id": "denkmal",
+										"name": "Denkmalkarte Berlin"
+									},
+									{
+										"id": "denkmal_WFS",
+										"name": "Denkmalkarte Berlin Sachdaten",
+										"transparency": 100,
+										"styleId": "wsg"
+									}
+								]									
+						},
+						{
+							"id": "fnp_arbeitskarte",
+							"name": "Flächennutzungsplan, aktuelle Arbeitskarte (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / FNP (Flächennutzungsplan Berlin), aktuelle Arbeitskarte</span>",
+							"children": [
+								{
+									"id": "fnp_arbeitskarte",
+									"name": "Flächennutzungsplan"
+								},
+								{
+									"id": "fnp_arbeitskarte_wfs",
+									"name": "Flächennutzungsplan Sachdaten",
+									"transparency": 100,
+									"styleId": "wsg"
+								}
+							]
+						},
+						{
+							"id": "505",
+							"name": "LaPro Beschlussfassung: Biotop- und Artenschutz (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / LaPro Beschlussfassung: Biotop- und Artenschutz (Programmplan)</span>",
+							"visibility": false
+						},
+						{
+							"id": "laproerhol",
+							"name": "LaPro Beschlussfassung: Erholung und Freiraumnutzung (Programmplan) (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / LaPro Beschlussfassung: Erholung und Freiraumnutzung (Programmplan)</span>"
+						},
+						{
+							"id": "lapronatur",
+							"name": "LaPro Beschlussfassung: Naturhaushalt/Umweltschutz (Programmplan) (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / LaPro Beschlussfassung: Biotop- und Artenschutz (Programmplan)</span>",
+							"visibility": false
+						},
+						{
+							"id": "stadtentwicklungsplan",
+							"name": "Stadtentwicklungsplan (StEP) Wohnen 2030 (FIS Broker)",
+							"layerAttribution": "<span>Datenquelle: Senatsverwaltung für Umwelt, Mobilität, Verbraucher- und Klimaschutz</span>"
+						}
+					],
+					"Ordner": [
+						{
+							"Titel": "Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (FIS Broker)",
+							"isFolderSelectable": false,
+							"Layer": [
+								{
+									"id": "verschat",
+									"name": "Verschattung im Öffentlichen Raum",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "begruen",
+									"name": "Begrünung und Verschattung von Parkplätzen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "redukwae",
+									"name": "Reduktion anthropogener Wärmeemissionen aus dem Verkehr",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "begrglei",
+									"name": "Begrünung von Gleistrassen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "rueckbau",
+									"name": "Rückbau/Entdichtung",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "entsieg",
+									"name": "Entsiegelung",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "pocket",
+									"name": "Schaffung von Pocket-Parks",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "erreichgruen",
+									"name": "Verbesserung der Erreichbarkeit von Grünflächen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "innenhint",
+									"name": "Innen-/Hinterhofbegrünung",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "verschatgeb",
+									"name": "Verschattung von Gebäuden",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "albedo",
+									"name": "Erhöhung der Oberflächen-Albedo",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "anlagwas",
+									"name": "Anlage von offenen Wasserflächen im öffentlichen Raum",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "energgeb",
+									"name": "Energetische Gebäudesanierung",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "dachbegr",
+									"name": "Dachbegrünung",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "fassbegr",
+									"name": "Fassadenbegrünung",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "waermeschutz",
+									"name": "Sommerlicher Wärmeschutz an Gebäuden",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "raumnutzkonz",
+									"name": "Anpassung des Raumnutzungskonzeptes",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "gebkueh",
+									"name": "Technische Gebäudekühlung",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "optgebaus",
+									"name": "Optimierung der Gebäudeausrichtung und der Bebauungsdichte bei Neubauten",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "entkoppneu",
+									"name": "Stadtklimatische Entkopplung von Neubau- und Nachverdichtungsgebieten",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "soznetz",
+									"name": "Förderung stadtgesellschaftlicher sozialer Netzwerke und Projekte",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "mikrokl",
+									"name": "Erhöhung der mikroklimatischen Vielfalt in öffentlichen Grünflächen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "kaltluha",
+									"name": "Schutz von für den Kaltlufthaushalt relevanter Flächen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "vernetzkaltluha",
+									"name": "Vernetzung von für den Kaltlufthaushalt relevanter Flächen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "vermeidaus",
+									"name": "Vermeidung von Austauschbarrieren",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "verbesluf",
+									"name": "Verbesserung der Luftqualität in Kaltluftleitbahnen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "schutzpagr",
+									"name": "Schutz bestehender großflächiger Parks / Grünflächen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "anlapagr",
+									"name": "Anlage neuer großflächiger Parks / Grünflächen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "schutzwald",
+									"name": "Schutz von Waldflächen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								},
+								{
+									"id": "schutzwass",
+									"name": "Schutz von offenen Wasserflächen",
+									"layerAttribution": "<span>Geoportal Berlin / Klimamodell Berlin: Planungshinweise Stadtklima 2015 - Maßnahmen (Umweltatlas)</span>"
+								}
+							]
+						}
+					]
+				},
+				{
+					"Titel": "Mobilität",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "Verkehrslage",
+							"name": "Verkehrslage (VIZ Berlin)",
+							"layerAttribution": "<span>VIZ Verkehrsinformationszentrale Berlin / Senatsverwaltung für Umwelt, Mobilität, Verbraucher- und Klimaschutz</span>",
+							"visibility": false
+						},
+						{
+							"id": "verkmeng2019",
+							"name": "Verkehrsmengen DTV 2019 (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Verkehrsmengen DTV 2019 (Umweltatlas)</span>"
+						},
+						{
+							"id": "k_ereignisse",
+							"name": "Planbare Ereignisse im öffentlichen Straßenland (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Planbare Ereignisse im öffentlichen Straßenland</span>",
+							"children": [
+									{
+										"id": "k_ereignisse",
+										"name": "Planbare Ereignisse im öffentlichen Straßenland"
+									},
+									{
+										"id": "k_ereignisse_wfs",
+										"name": "Planbare Ereignisse im öffentlichen Straßenland Sachdaten",
+										"transparency": 100,
+										"styleId": "wsg"
+									}
+								]
+									
+						},
+						{
+							"id": "Baustellen_OCIT",
+							"name": "Baustellen, Sperrungen und sonstige Störungen (VIZ Berlin)",
+							"layerAttribution": "<span>VIZ Verkehrsinformationszentrale Berlin / Senatsverwaltung für Umwelt, Mobilität, Verbraucher- und Klimaschutz</span>",
+							"styleId": "Baustellen_OCIT",
+							"visibility": false
+						},
+						{
+							"id": "k_fussgaengernetz",
+							"name": "Fußgängernetz (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Fußgängernetz Berlin</span>"
+						},
+						{
+							"id": "radverkehrsnetz",
+							"name": "Radverkehrsnetz (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Radverkehrsnetz Berlin</span>",
+							"visibility": false
+						},
+						{
+							"id": "wmsk_radverkehrsanlagen",
+							"name": "Radverkehrsanlagen (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Radverkehrsanlagen Berlin</span>",
+							"visibility": false
+						},
+						{
+							"id": "detailnetz",
+							"name": "Detailnetz Straßen (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Detailnetz Berlin</span>",
+							"visibility": false
+						},
+						{
+							"id": "Strassennetz",
+							"name": "Übergeordnetes Straßennetz (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Übergeordnetes Straßennetz Bestand</span>",
+							"visibility": false
+						},
+						{
+							"id": "bfernstr",
+							"name": "Bundesfernstraßen (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Bundesfernstraßen</span>",
+							"visibility": false
+						},
+						{
+							"id": "lichtsignal",
+							"name": "Lichtsignalanlagen (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Lichtsignalanlagen</span>"
+						},
+						{
+							"id": "wegweisung",
+							"name": "Wegweisung (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Wegweisung</span>"
+						},
+						{
+							"id": "eladeinfrastr",
+							"name": "Öffentlich zugängliche Ladeinfrastruktur für E-Fahrzeuge (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / Öffentlich zugängliche Ladeinfrastruktur für E-Fahrzeuge</span>",
+							"children": [
+								{
+									"id": "eladeinfrastr",
+									"name": "Öffentlich zugängliche Ladeinfrastruktur"
+								},
+								{
+									"id": "eladeinfrastr_wfs",
+									"name": "Elektro-Ladesäulen - Standorte",
+									"transparency": 100,
+									"styleId": "wsg"
+								}
+							]
+						},
+						{
+							"id": "luftno2",
+							"name": "Luftqualität - Stickstoffdioxid (NO2) (VIZ Berlin)",
+							"layerAttribution": "<span>VIZ Verkehrsinformationszentrale Berlin / Senatsverwaltung für Umwelt, Mobilität, Verbraucher- und Klimaschutz</span>"
+						},
+						{
+							"id": "luftfein",
+							"name": "Luftqualität - Feinstaub (Partikel) (VIZ Berlin)",
+							"layerAttribution": "<span>VIZ Verkehrsinformationszentrale Berlin / Senatsverwaltung für Umwelt, Mobilität, Verbraucher- und Klimaschutz</span>"
+						}
+					]
+				},
+				{
+					"Titel": "Sensordaten",
+					"isFolderSelectable": false,
+					"Layer": [
+						{
+							"id": "live-100",
+							"name": "Wetterstation",
+							"layerAttribution": "<span>© 2022 Kachelmann GmbH</span>",
+							"visibility": true,
+							"autoRefresh": "10000"
+						},
+						{
+							"id": "live-110",
+							"name": "Sensebox Umweltdaten",
+							"visibility": false,
+							"autoRefresh": "10000"
+						},
+						{
+							"id": "live-130",
+							"name": "CO2 Monitoring Infocenter",
+							"visibility": false,
+							"autoRefresh": "10000"
+						}
+					]
+				},
+				{
+					"Titel": "Verwaltungsgrenzen",
+					"isFolderSelectable": false,
+					"Layer":[
+						{
+							"id": "Bezirke",
+							"name": "Bezirke (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / ALKIS Berlin Bezirke</span>"
+						},
+						{
+							"id": "Ortsteile",
+							"name": "Ortsteile (FIS Broker)",
+							"layerAttribution": "<span>Geoportal Berlin / ALKIS Berlin Ortsteile(Umweltatlas)</span>",
+							"children": [
+								{
+									"id": "Ortsteile",
+									"name": "Ortsteile"
+								},
+								{
+									"id": "Ortsteile_WFS",
+									"name": "Ortsteile Sachdaten",
+									"transparency": 100,
+									"styleId": "wsg"
+								}
+							]
+						},	
+						{
+							"id": "lor",
+							"name": "Lebensweltlich orientierte Räume (FIS Broker)",
+							"layerAttribution": "<span>Amt für Statistik Berlin-Brandenburg</span>",
+							"children": [
+								{
+									"id": "lor",
+									"name": "Lebensweltlich orientierte Räume"
+								},
+								{
+									"id": "lor_prognose",
+									"name": "Prognoseräume",
+									"transparency": 100,
+									"styleId": "wsg"
+								},
+								{
+									"id": "lor_bezirk",
+									"name": "Bezirksregionen",
+									"transparency": 100,
+									"styleId": "wsg"
+								},
+								{
+									"id": "lor_planung",
+									"name": "Planungsräume",
+									"transparency": 100,
+									"styleId": "wsg"
+								}
+							]
+						}				
+					]
+				}
+			]
+		}
+	}
+}

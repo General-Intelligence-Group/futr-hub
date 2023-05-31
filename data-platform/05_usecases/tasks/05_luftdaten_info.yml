@@ -1,0 +1,137 @@
+---
+- name: Create private luftdaten-info network
+  docker_network:
+    name: luftdaten-info-flow
+    driver: bridge
+    state: present
+
+# Create data volumes for nodered containers
+- name: Create volume nr-luftdaten-info-data
+  docker_volume:
+    name: "nr-luftdaten-info-data"
+
+# Create settings file, used for all nodered containers
+- name: Ensure remote directory exists for Nodered Settings
+  file:
+    path: /opt/scp/ansible/nodered
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create Nodered Settings luftdaten-info
+  template:
+    src: nodered/settings.js.j2
+    dest: /opt/scp/ansible/nodered/luftdaten-info-settings.js
+    owner: '{{ CREATE_USER }}'
+    mode: '0755'
+
+# Create luftdaten-info container
+- name: Deploy without project set
+  docker_container:
+    name: nr-luftdaten-info
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    volumes:
+      - nr-luftdaten-info-data:/data
+      - /opt/scp/ansible/nodered/luftdaten-info-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "luftdaten-info-flow"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "luftdaten-info-flow"
+
+- name: Clone Repo to nr-luftdaten-info container
+  command: docker exec nr-luftdaten-info bash -l -c "rm -rf /data/node_modules;rm -rf /data/projects/{{ NR_REPO_TARGET_FOLDER }};git clone https://{{ NR_GIT_LOGIN }}:{{ NR_GIT_TOKEN }}@{{ LUFTDATEN_INFO_FLOW_PROJECT }} /data/projects/{{ NR_REPO_TARGET_FOLDER }}"  # noqa 204
+  changed_when: True
+
+- name: Install modules for nr-luftdaten-info
+  command: docker exec nr-luftdaten-info bash -l -c "cd /data/projects/{{ NR_REPO_TARGET_FOLDER }}; npm install"
+  changed_when: True
+
+# - name: Link node_modules directory for nr-luftdaten-info
+#   command: docker exec nr-luftdaten-info bash -l -c "ln -s -b /data/projects/{{ NR_REPO_TARGET_FOLDER }}/node_modules /data/"
+#   changed_when: True
+
+- name: Deploy nr-luftdaten-info with cloned project set
+  docker_container:
+    name: nr-luftdaten-info
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    env:
+      FLOWS: "{{ NR_REPO_TARGET_FOLDER }}"
+      LUFTDATEN_INFO_SENSOR_ID: "{{ LUFTDATEN_INFO_SENSOR_ID }}"
+      SC_ORION_SERVER: "http://orion-v2:1026"
+      DM_QL_SERVER: "http://quantumleap:8668"
+    volumes:
+      - nr-luftdaten-info-data:/data
+      - /opt/scp/ansible/nodered/luftdaten-info-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "luftdaten-info-flow"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    restart: yes
+    labels:
+      com.docker.compose.project: "luftdaten-info-flow"
+
+- name: Deploy Keycloak Gatekeeper for nr-luftdaten-info
+  docker_container:
+    name: nr-luftdaten-info-kc
+    image: keycloak/keycloak-gatekeeper:7.0.0
+    restart_policy: always
+    entrypoint:
+      - /opt/keycloak-gatekeeper
+      - --discovery-url=https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}
+      - --client-id={{ IDM_CLIENT }}
+      - --client-secret={{ IDM_CLIENT_SECRET }}
+      - --listen=0.0.0.0:3000
+      - --redirection-url=https://nr-admin-luftdaten-info.{{ DOMAIN }}
+      - --enable-refresh-tokens=true
+      - --upstream-url=http://nr-luftdaten-info:1880
+      - --encryption-key={{ AUTH_ENCRYPTION_KEY }}
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "public"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Nodered Admin
+      traefik.http.routers.nr-luftdaten-info-kc.rule: "Host(`nr-admin-luftdaten-info.{{ DOMAIN }}`)"
+      traefik.http.routers.nr-luftdaten-info-kc.entrypoints: "websecure"
+      traefik.http.routers.nr-luftdaten-info-kc.service: "nr-luftdaten-info-kc"
+      traefik.http.routers.nr-luftdaten-info-kc.tls: "true"
+      traefik.http.routers.nr-luftdaten-info-kc.tls.certresolver: "le"
+      traefik.http.services.nr-luftdaten-info-kc.loadbalancer.server.port: "3000"
+
+- name: Ensure remote temp directory exists
+  file:
+    path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create grafana dashboard from template
+  template:
+    src: grafana/dashboards/05_tsdb_luftdaten_info.json.j2
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/05_tsdb_luftdaten_info.json
+    mode: '0666'
+
+- name: (Re-)Import Grafana Dashboard
+  community.grafana.grafana_dashboard:
+        grafana_url: https://grafana.{{ DOMAIN }}
+        url_username: admin
+        url_password: "{{ GRAFANA_ADMIN_PASSWORD }}"
+        state: present
+        commit_message: Updated by ansible
+        overwrite: yes
+        path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/05_tsdb_luftdaten_info.json

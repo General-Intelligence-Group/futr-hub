@@ -1,0 +1,75 @@
+ {
+        "clientId": "{{ IDM_CLIENT }}",
+        "rootUrl": "https://keycloak.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}/central",
+        "adminUrl": "https://keycloak.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}/central",
+        "surrogateAuthRequired": false,
+        "enabled": true,
+        "alwaysDisplayInConsole": false,
+        "clientAuthenticatorType": "client-secret",
+        "redirectUris": [
+              "https://portainer.{{ DOMAIN }}/oauth/callback",
+              "https://nr-admin-ext.{{ DOMAIN }}/oauth/callback",
+              "https://nr-admin-sensebox.{{ DOMAIN }}/oauth/callback",
+              "https://nr-admin-switch-lights.{{ DOMAIN }}/oauth/callback",
+              "https://nr-admin-indicate-energy.{{ DOMAIN }}/oauth/callback",
+              "https://nr-admin-luftdaten-info.{{ DOMAIN }}/oauth/callback",
+              "https://nr-admin-show-tweet.{{ DOMAIN }}/oauth/callback",
+              "https://pgadmin.{{ DOMAIN }}/oauth/callback",
+              "https://rp.{{ DOMAIN }}/oauth/callback",
+              "https://grafana.{{ DOMAIN }}/login/generic_oauth",
+              "https://monitoring.{{ DOMAIN }}/login/generic_oauth",
+              "https://api.{{ DOMAIN }}",
+              "https://api.{{ DOMAIN }}/manage/",
+              "https://api.{{ DOMAIN }}/user/login",
+              "https://blob.{{ DOMAIN }}/minio/login/openid"
+        ],
+        "webOrigins": [
+            "https://keycloak.{{ DOMAIN }}"
+        ],
+        "notBefore": 0,
+        "bearerOnly": false,
+        "consentRequired": false,
+        "standardFlowEnabled": true,
+        "implicitFlowEnabled": true,
+        "directAccessGrantsEnabled": true,
+        "serviceAccountsEnabled": false,
+        "publicClient": false,
+        "frontchannelLogout": false,
+        "protocol": "openid-connect",
+        "attributes": {
+            "saml.assertion.signature": "false",
+            "saml.force.post.binding": "false",
+            "saml.multivalued.roles": "false",
+            "saml.encrypt": "false",
+            "saml.server.signature": "false",
+            "saml.server.signature.keyinfo.ext": "false",
+            "exclude.session.state.from.auth.response": "false",
+            "saml_force_name_id_format": "false",
+            "saml.client.signature": "false",
+            "tls.client.certificate.bound.access.tokens": "false",
+            "saml.authnstatement": "false",
+            "display.on.consent.screen": "false",
+            "saml.onetimeuse.condition": "false"
+        },
+        "authenticationFlowBindingOverrides": {},
+        "fullScopeAllowed": true,
+        "nodeReRegistrationTimeout": -1,
+        "defaultClientScopes": [
+            "web-origins",
+            "role_list",
+            "profile",
+            "roles",
+            "email"
+        ],
+        "optionalClientScopes": [
+            "address",
+            "phone",
+            "offline_access",
+            "microprofile-jwt"
+        ],
+        "access": {
+            "view": true,
+            "configure": true,
+            "manage": true
+        }
+    }

@@ -1,0 +1,159 @@
+{
+  "labels" : [
+
+  ],
+  "tags" : [
+
+  ],
+  "proxy" : {
+    "groups" : [
+      {
+        "proxy" : {
+          "enabled" : false,
+          "host" : "null",
+          "type" : "HTTP",
+          "port" : 0
+        },
+        "services" : {
+          "discovery" : {
+            "enabled" : false
+          }
+        },
+        "http" : {
+          "idleTimeout" : 60000,
+          "pipelining" : false,
+          "connectTimeout" : 5000,
+          "keepAlive" : true,
+          "followRedirects" : false,
+          "maxConcurrentConnections" : 100,
+          "useCompression" : true,
+          "encodeURI" : false,
+          "readTimeout" : 10000
+        },
+        "ssl" : {
+          "trustAll" : false,
+          "hostnameVerifier" : false
+        },
+        "endpoints" : [
+          {
+            "target" : "{{ orion_api_endpoint }}",
+            "weight" : 1,
+            "backup" : false,
+            "inherit" : true,
+            "type" : "HTTP",
+            "healthcheck" : {
+              "trigger" : {
+                "unit" : "SECONDS",
+                "rate" : 60
+              },
+              "enabled" : true,
+              "steps" : [
+                {
+                  "name" : "default-step",
+                  "request" : {
+                    "path" : "{{ orion_api_healthcheckPath }}",
+                    "method" : "GET",
+                    "fromRoot" : false
+                  },
+                  "response" : {
+                    "assertions" : [
+                      "#response.status == 200"
+                    ]
+                  }
+                }
+              ],
+              "inherit" : false
+            },
+            "name" : "{{ orion_api_endpointName }}"
+          }
+        ],
+        "load_balancing" : {
+          "type" : "ROUND_ROBIN"
+        },
+        "name" : "Local Deployment"
+      }
+    ],
+    "preserve_host" : false,
+    "virtual_hosts" : [
+      {
+        "path" : "{{ orion_api_publicPath }}"
+      }
+    ],
+    "strip_context_path" : false
+  },
+  "disable_membership_notifications" : false,
+  "visibility" : "public",
+  "name" : "{{ orion_api_name }}",
+  "version" : "1.0",
+  "services" : {
+    "health-check" : {
+      "enabled" : true,
+      "trigger" : {
+        "unit" : "SECONDS",
+        "rate" : 60
+      },
+      "steps" : [
+        {
+          "name" : "default-step",
+          "request" : {
+            "path" : "{{ orion_api_healthcheckPath }}",
+            "method" : "GET",
+            "fromRoot" : false
+          },
+          "response" : {
+            "assertions" : [
+              "#response.status == 200"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "response_templates" : {
+
+  },
+  "resources" : [
+
+  ],
+  "paths" : {
+    "/" : [ {
+        "methods": [
+          "CONNECT",
+          "DELETE",
+          "GET",
+          "HEAD",
+          "OPTIONS",
+          "PATCH",
+          "POST",
+          "PUT",
+          "TRACE"
+        ],
+        "groovy": {
+          "onResponseScript": "",
+          "onRequestScript": "def value = request.parameters().find{ key, val -> key ==~ /maxDistance:\\d+/ }\nif (value) {\ndef k = value.key\nrequest.parameters().'georel' = 'near;' + k\nrequest.parameters().remove(k)\n}"
+          },
+          "description": "NGSI Georel Policy",
+          "enabled": true
+          }
+        ]
+  },
+  "path_mappings" : [
+    "/v2/op/notify",
+    "/v2/entities",
+    "/v2/registrations",
+    "/v2/subscriptions",
+    "/v2/entities/:entityId/attrs",
+    "/v2/entities/:entityId/attrs/:attrName",
+    "/v2/entities/:entityId/attrs/:attrName/value",
+    "/v2/registrations/:registrationId",
+    "/v2",
+    "/v2/types/",
+    "/v2/op/query",
+    "/v2/types/:entityType",
+    "/v2/subscriptions/:subscriptionId",
+    "/v2/op/update",
+    "/v2/entities/:entityId"
+  ],
+  "description" : "{{ orion_api_description }}",
+  "lifecycle_state": "PUBLISHED"
+  }

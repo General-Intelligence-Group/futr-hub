@@ -1,0 +1,16 @@
+{
+  "id": "{{ keycloak_client_client_role_mapper_id }}",
+  "name": "client roles",
+  "protocol": "openid-connect",
+  "protocolMapper": "oidc-usermodel-client-role-mapper",
+  "consentRequired": false,
+  "config": {
+    "multivalued": "true",
+    "user.attribute": "foo",
+    "access.token.claim": "true",
+    "claim.name": "roles",
+    "jsonType.label": "String",
+    "userinfo.token.claim": "true",
+    "id.token.claim": "true"
+  }
+}

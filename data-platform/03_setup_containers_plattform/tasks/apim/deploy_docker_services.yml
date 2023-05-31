@@ -1,0 +1,209 @@
+---
+- name: Create private apim network
+  docker_network:
+    name: api-management
+    driver: bridge
+    state: present
+
+- name: Create volume apim-mongo-data
+  docker_volume:
+    name: "apim-mongo-data"
+
+- name: Deploy Mongo DB for API Management
+  docker_container:
+    name: apim-mongo
+    image: mongo:3.6
+    pull: true
+    restart_policy: always
+    env:
+      MONGO_INITDB_DATABASE: "gravitee"
+    networks:
+      - name: "api-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "api-management"
+    state: started
+    sysctls:
+      net.core.somaxconn: 65535
+    volumes:
+      - apim-mongo-data:/data/db
+    labels:
+      com.docker.compose.project: "api-management"
+
+- name: Create volume apim-elastic-data
+  docker_volume:
+    name: "apim-elastic-data"
+
+- name: Deploy Elastic Search for API Management
+  docker_container:
+    name: apim-elastic
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    pull: true
+    restart_policy: always
+    env:
+      http.host: "0.0.0.0"
+      transport.host: "0.0.0.0"
+      xpack.security.enabled: "false"
+      xpack.monitoring.enabled: "false"
+      cluster.name: "elasticsearch"
+      bootstrap.memory_lock: "true"
+      discovery.type: "single-node"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ulimits: nofile:262144:262144
+    networks:
+      - name: "api-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "api-management"
+    sysctls:
+      net.core.somaxconn: 65535
+    state: started
+    volumes:
+      - apim-elastic-data:/usr/share/elasticsearch/data
+    labels:
+      com.docker.compose.project: "api-management"
+
+- name: Create volume apim-gateway-data
+  docker_volume:
+    name: "apim-gateway-data"
+
+- name: Deploy API Management "Gateway"
+  docker_container:
+    name: apim-gateway
+    image: graviteeio/apim-gateway:3.7.0
+    pull: true
+    env:
+      gravitee_management_mongodb_uri: "mongodb://apim-mongo:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000"
+      gravitee_ratelimit_mongodb_uri: "mongodb://apim-mongo:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000"
+      gravitee_reporters_elasticsearch_endpoints_0: http://apim-elastic:9200
+    restart_policy: always
+    networks:
+      - name: "api-management"
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    sysctls:
+      net.core.somaxconn: 65535
+    volumes:
+      - apim-gateway-data:/opt/graviteeio-gateway/logs
+    state: started
+    labels:
+      com.docker.compose.project: "api-management"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      traefik.http.routers.graviteeio-apim-gateway.rule: "Host(`apigw.{{ DOMAIN }}`)"
+      traefik.http.routers.graviteeio-apim-gateway.entrypoints: "websecure"
+      traefik.http.routers.graviteeio-apim-gateway.service: "graviteeio-apim-gateway"
+      traefik.http.routers.graviteeio-apim-gateway.tls: "true"
+      traefik.http.routers.graviteeio-apim-gateway.tls.certresolver: "le"
+      traefik.http.services.graviteeio-apim-gateway.loadbalancer.server.port: "8082"
+
+- name: Create volume apim-management-api-data
+  docker_volume:
+    name: "apim-management-api-data"
+
+- name: Deploy API Management "Management API" (new)
+  docker_container:
+    name: apim-management
+    image: graviteeio/apim-management-api:3.7.0
+    pull: true
+    env:
+      gravitee_management_mongodb_uri: "mongodb://apim-mongo:27017/gravitee?serverSelectionTimeoutMS=5000&connectTimeoutMS=5000&socketTimeoutMS=5000"
+      gravitee_analytics_elasticsearch_endpoints_0: "http://apim-elastic:9200"
+      gravitee_jwt_cookiepath: "/"
+      gravitee_jwt_cookiesecure: "true"
+      gravitee_jwt_cookiedomain: "api.{{ DOMAIN }}"
+    restart_policy: always
+    networks:
+      - name: "public"
+      - name: "api-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    sysctls:
+      net.core.somaxconn: 65535
+    volumes:
+      - apim-management-api-data:/opt/graviteeio-management-api/logs
+    state: started
+    labels:
+      com.docker.compose.project: "api-management"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      traefik.http.routers.graviteeio-apim-management-api.rule: "Host(`api.{{ DOMAIN }}`) && (PathPrefix(`/management`) || PathPrefix(`/portal`))"
+      traefik.http.routers.graviteeio-apim-management-api.entrypoints: "websecure"
+      traefik.http.routers.graviteeio-apim-management-api.service: "graviteeio-apim-management-api"
+      traefik.http.routers.graviteeio-apim-management-api.tls: "true"
+      traefik.http.routers.graviteeio-apim-management-api.tls.certresolver: "le"
+      traefik.http.services.graviteeio-apim-management-api.loadbalancer.server.port: "8083"
+
+- name: Create volume apim-management-ui-data
+  docker_volume:
+    name: "apim-management-ui-data"
+
+# APIM Console
+- name: Deploy API Management "Management UI"
+  docker_container:
+    name: apim-management-ui
+    image: graviteeio/apim-management-ui:3.7.0
+    pull: true
+    env:
+      MGMT_API_URL: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT"
+    restart_policy: always
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    sysctls:
+      net.core.somaxconn: 65535
+    volumes:
+      - apim-management-ui-data:/var/log/httpd
+    state: started
+    labels:
+      com.docker.compose.project: "api-management"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      traefik.http.routers.graviteeio-apim-management-ui.rule: "Host(`api.{{ DOMAIN }}`) && PathPrefix(`/manage`)"
+      traefik.http.routers.graviteeio-apim-management-ui.entrypoints: "websecure"
+      traefik.http.routers.graviteeio-apim-management-ui.service: "graviteeio-apim-management-ui"
+      traefik.http.routers.graviteeio-apim-management-ui.tls: "true"
+      traefik.http.routers.graviteeio-apim-management-ui.tls.certresolver: "le"
+      traefik.http.services.graviteeio-apim-management-ui.loadbalancer.server.port: "8080"
+      traefik.http.routers.graviteeio-apim-management-ui.middlewares: "manage-stripprefix"
+      traefik.http.middlewares.manage-stripprefix.stripprefix.prefixes: "/manage"
+
+
+- name: Create volume apim-portal-ui-data
+  docker_volume:
+    name: "apim-portal-ui-data"
+
+# APIM Portal
+- name: Deploy API Management "Portal UI"
+  docker_container:
+    name: apim-portal-ui
+    image: graviteeio/apim-portal-ui:3.7.0
+    pull: true
+    env:
+      PORTAL_API_URL: "https://api.{{ DOMAIN }}/portal/environments/DEFAULT"
+    restart_policy: always
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    sysctls:
+      net.core.somaxconn: 65535
+    volumes:
+      - apim-portal-ui-data:/var/log/httpd
+    state: started
+    labels:
+      com.docker.compose.project: "api-management"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      traefik.http.routers.graviteeio-apim-portal-ui.rule: "Host(`api.{{ DOMAIN }}`)"
+      traefik.http.routers.graviteeio-apim-portal-ui.entrypoints: "websecure"
+      traefik.http.routers.graviteeio-apim-portal-ui.service: "graviteeio-apim-portal-ui"
+      traefik.http.routers.graviteeio-apim-portal-ui.tls: "true"
+      traefik.http.routers.graviteeio-apim-portal-ui.tls.certresolver: "le"
+      traefik.http.services.graviteeio-apim-portal-ui.loadbalancer.server.port: "8080"

@@ -1,0 +1,21 @@
+---
+- name: Check if local acme.json exists
+  stat: path=files/traefik/{{ inventory_hostname }}/acme.json
+  delegate_to: localhost
+  register: result
+  become: no
+
+- name: 'Fail if acme.json already exists.'
+  fail:
+    msg: "acme.json already exists locally"
+  when: result.stat.exists
+
+- name: Copy acme.json file from traefic container
+  command:
+    cmd: docker cp traefik:/certs/acme.json .
+  when: not result.stat.exists
+
+- name: Store file into files/traefik/acme.json
+  fetch:
+    src: acme.json
+    dest: files/traefik/

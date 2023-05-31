@@ -1,0 +1,116 @@
+---
+- name: Create private switch lights network
+  docker_network:
+    name: switch-lights
+    driver: bridge
+    state: present
+
+# Create data volumes for nodered containers
+- name: Create volume nr-switch-lights-data
+  docker_volume:
+    name: "nr-switch-lights-data"
+
+# Create settings file, used for all nodered containers
+- name: Ensure remote directory exists for Nodered Settings
+  file:
+    path: /opt/scp/ansible/nodered
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create Nodered Settings switch-lights
+  template:
+    src: nodered/settings_ui.js.j2
+    dest: /opt/scp/ansible/nodered/switch-lights-settings.js
+    owner: '{{ CREATE_USER }}'
+    mode: '0755'
+
+# Create switch-lights container
+- name: Deploy without project set
+  docker_container:
+    name: nr-switch-lights
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    volumes:
+      - nr-switch-lights-data:/data
+      - /opt/scp/ansible/nodered/switch-lights-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "switch-lights"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "switch-lights"
+
+- name: Clone Repo to nr-switch-lights container
+  command: docker exec nr-switch-lights bash -l -c "rm -rf /data/node_modules;rm -rf /data/projects/{{ NR_REPO_TARGET_FOLDER }};git clone https://{{ NR_GIT_LOGIN }}:{{ NR_GIT_TOKEN }}@{{ SWITCH_LIGHTS_FLOW_PROJECT }} /data/projects/{{ NR_REPO_TARGET_FOLDER }}"  # noqa 204
+  changed_when: True
+
+- name: Install modules for nr-switch-lights
+  command: docker exec nr-switch-lights bash -l -c "cd /data/projects/{{ NR_REPO_TARGET_FOLDER }}; npm install"
+  changed_when: True
+
+- name: Link node_modules directory for nr-switch-lights
+  command: docker exec nr-switch-lights bash -l -c "ln -s -b /data/projects/{{ NR_REPO_TARGET_FOLDER }}/node_modules /data/"
+  changed_when: True
+
+- name: Deploy nr-switch-lights with cloned project set
+  docker_container:
+    name: nr-switch-lights
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    env:
+      FLOWS: "{{ NR_REPO_TARGET_FOLDER }}"
+      SC_ORION_SERVER: "http://orion-v2:1026"
+      SC_FROST_SERVER: "http://frost:8080"
+      DM_QL_SERVER: "http://quantumleap:8668"
+      # EXT_MQTT_SERVER: ""
+      EXT_MQTT_PORT: "1884"
+    volumes:
+      - nr-switch-lights-data:/data
+      - /opt/scp/ansible/nodered/switch-lights-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "switch-lights"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    restart: yes
+    labels:
+      com.docker.compose.project: "switch-lights"
+
+- name: Deploy Keycloak Gatekeeper for nr-switch-lights
+  docker_container:
+    name: nr-switch-lights-kc
+    image: keycloak/keycloak-gatekeeper:7.0.0
+    restart_policy: always
+    entrypoint:
+      - /opt/keycloak-gatekeeper
+      - --discovery-url=https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}
+      - --client-id={{ IDM_CLIENT }}
+      - --client-secret={{ IDM_CLIENT_SECRET }}
+      - --listen=0.0.0.0:3000
+      - --redirection-url=https://nr-admin-switch-lights.{{ DOMAIN }}
+      - --enable-refresh-tokens=true
+      - --upstream-url=http://nr-switch-lights:1880
+      - --encryption-key={{ AUTH_ENCRYPTION_KEY }}
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "public"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Nodered Admin
+      traefik.http.routers.nr-switch-lights-kc.rule: "Host(`nr-admin-switch-lights.{{ DOMAIN }}`)"
+      traefik.http.routers.nr-switch-lights-kc.entrypoints: "websecure"
+      traefik.http.routers.nr-switch-lights-kc.service: "nr-switch-lights-kc"
+      traefik.http.routers.nr-switch-lights-kc.tls: "true"
+      traefik.http.routers.nr-switch-lights-kc.tls.certresolver: "le"
+      traefik.http.services.nr-switch-lights-kc.loadbalancer.server.port: "3000"

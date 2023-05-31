@@ -1,0 +1,24 @@
+---
+# Use Case 01
+TWITTER_FLOW_PROJECT: 'gitlab.com/berlintxl/futr-hub/use-cases/show-latest-tweet-of-twitter-account/platform-node-red-flows.git'
+
+# Use Case 03
+WEBSCRAPER_REGISTRY: 'registry.gitlab.com/berlintxl/futr-hub/use-cases/scrape-energy-data-from-smard-de/webscraper-smard:smard-de-webscraper'
+
+# Use Case 06
+LUFTDATEN_INFO_FLOW_PROJECT: 'gitlab.com/berlintxl/futr-hub/use-cases/visualize-air-quality/luftdaten.info-integration.git'
+
+# Use Case 06
+SENSEBOX_FLOW_PROJECT: 'gitlab.com/berlintxl/futr-hub/use-cases/sense-sound-light-environment/sensebox-integration.git'
+
+# Use Case 07
+SWITCH_LIGHTS_FLOW_PROJECT: 'gitlab.com/berlintxl/futr-hub/use-cases/switch-lights-on-off/platform-node-red-flows.git'
+
+# Use Case 08
+INDICATE_ENERGY_FLOW_PROJECT: 'gitlab.com/berlintxl/futr-hub/use-cases/indicate-energy-with-lights/platform-node-red-flows.git'
+
+# Use Case 09
+PAX_FLOW_PROJECT: 'gitlab.com/berlintxl/futr-hub/use-cases/count-people/count-people-flows.git'
+
+# Use Case 11
+TALKING_TREE_FLOW_PROJECT: 'gitlab.com/berlintxl/futr-hub/talking-tree.git'

@@ -1,0 +1,25 @@
+workflow: # run pipeline jobs for tags and pushes to master by default
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == "master"
+
+services:
+  - docker:dind
+
+stages:
+  - build
+
+do build:
+  tags:
+    - shared
+  image: docker:stable
+  stage: build
+  before_script:
+    - docker info
+    - env
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+  script:
+    - docker build -t webgis-masterportal .
+    - docker tag webgis-masterportal "$CI_REGISTRY_IMAGE:webgis-masterportal"
+    - docker push "$CI_REGISTRY_IMAGE:webgis-masterportal"

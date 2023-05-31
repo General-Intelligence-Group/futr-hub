@@ -1,0 +1,75 @@
+[
+  {
+    "id": "004",
+    "name": "CSW Test",
+    "url": "https://registry.gdi-de.org/id/de.be.csw?service=CSW&version=2.0.2&request=GetRecordById&typeNames=csw:Record&elementsetname=full",
+    "typ": "CSW",
+    "roles": [
+       "ds_open_data"
+    ]
+  },
+  {
+    "id": "1",
+    "name": "CSW HMDK Summary",
+    "url": "http://metaver.de/csw?service=CSW&version=2.0.2&request=GetRecordById&typeNames=csw:Record&elementsetname=summary",
+    "typ": "CSW",
+    "roles": [
+       "ds_open_data"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "CSW HMDK Full",
+    "url": "http://metaver.de/csw?service=CSW&version=2.0.2&request=GetRecordById&typeNames=csw:Record&elementsetname=full",
+    "typ": "CSW",
+    "roles": [
+       "ds_open_data"
+    ]
+  },
+  {
+    "id" : "2",
+    "name" : "Metadaten-URL",
+    "url" : "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/",
+    "typ" : "URL",
+    "roles": [
+       "ds_open_data"
+    ]
+  },
+  {
+    "id" : "10",
+    "name" : "OSM Suche",
+    "url" : "https://nominatim.openstreetmap.org/search?",
+    "typ" : "WFS",
+    "roles": [
+       "ds_open_data"
+    ]
+  },
+  {
+    "id" : "11",
+    "name" : "Komoot Photon Suche",
+    "url" : "https://photon.komoot.io/api/?",
+    "typ" : "WFS",
+    "roles": [
+       "ds_open_data"
+    ]
+},
+  {
+    "id" : "80002",
+    "name" : "Email Service by PHP",
+    "url" : "https://geoportal-hamburg.de/smtp/sendmail.php",
+    "typ" : "EmailService",
+    "roles": [
+       "ds_open_data"
+    ]
+  },
+  {
+    "id": "mapfish_printservice",
+    "name": "Print Service Prod",
+    "url": "FUTR-HUB-PRINTSERVER-URL/print/",
+    "typ": "Print",
+    "roles": [
+       "ds_nda"
+    ]
+  }
+
+]

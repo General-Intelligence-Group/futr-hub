@@ -1,0 +1,23 @@
+---
+- name: Ensure remote temp directory exists
+  file:
+    path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create grafana dashboard from template
+  template:
+    src: grafana/dashboards/10_camera_dashboard.json.j2
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/10_camera_dashboard.json
+    mode: '0666'
+
+- name: (Re-)Import Grafana Dashboard
+  community.grafana.grafana_dashboard:
+        grafana_url: https://grafana.{{ DOMAIN }}
+        url_username: admin
+        url_password: "{{ GRAFANA_ADMIN_PASSWORD }}"
+        state: present
+        commit_message: Updated by ansible
+        overwrite: yes
+        path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/10_camera_dashboard.json

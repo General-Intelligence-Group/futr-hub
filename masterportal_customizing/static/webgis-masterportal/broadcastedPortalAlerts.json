@@ -1,0 +1,15 @@
+{
+    "globalAlerts": ["AlertId1"],
+
+    "alerts": {
+        "AlertId1": {
+            "displayClass": "info",
+            "category": "Willkommen im Geoportal von Berlin TXL!",
+            "content": "<p>Das Portal wurde am 13.01.2022 aktualisiert. Folgende Inhalte sind u. a. neu: </p><ul> <li> Aktuelle und historische Luftbilder, zu finden unter > Themen > Fachdaten</li> <li>Die Zeitreihen-Funktion, zu finden unter > Werkzeuge > Zeitreihe</li> <li> Die Filterfunktion für die Flächennutzung ist jetzt sichtbarer im Hauptmenü verortet.</li> </ul>Viel Spaß beim Stöbern in den Geodaten.",
+            "displayFrom": "2022-01-11 00:00:00",
+            "displayUntil": "2022-03-11 00:00:00",
+            "mustBeConfirmed": false,
+            "once": true
+        }
+    }
+}

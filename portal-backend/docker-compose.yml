@@ -1,0 +1,38 @@
+# Default compose file for development.
+# Should be used directly only in development.
+
+version: "3.6"
+services:
+  portal-backend:
+    hostname: portal-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT}:${PORT}"
+    networks:
+      - webnet
+    environment:
+      # General configurations
+      PORT: ${PORT}
+
+      #Keycloak configurations
+      KEYCLOAK_HOST: ${KEYCLOAK_HOST}
+      KEYCLOAK_GRANT_TYPE: ${KEYCLOAK_GRANT_TYPE}
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM}
+      KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID}
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_CLIENT_SECRET}
+      KEYCLOAK_USERNAME: ${KEYCLOAK_USERNAME}
+      KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD}
+
+      #File path
+      INPUT_FILE_PATH: '${INPUT_FILE_PATH}'
+      SERVICE_INTERNET_INPUT_FILE: '${SERVICE_INTERNET_INPUT_FILE}'
+      REST_SERVICES_INTERNET_INPUT_FILE: '${REST_SERVICES_INTERNET_INPUT_FILE}'
+      CONFIG_INPUT_FILE: '${CONFIG_INPUT_FILE}'
+      INPUT_FILES_EXTENTION: '${INPUT_FILES_EXTENTION}'
+      OUTPUT_FILES_EXTENTION: '${OUTPUT_FILES_EXTENTION}'
+      OUTPUT_FILE_PATH: '${OUTPUT_FILE_PATH}'
+
+networks:
+  webnet:

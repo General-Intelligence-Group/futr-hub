@@ -1,0 +1,27 @@
+---  # noqa 106
+
+# Example setting facts so that they will be persisted in the fact cache
+
+- name: Create public network
+  docker_network:
+    name: "public"
+    driver: bridge
+    state: present
+
+# Set Performance Tuning Parameter
+
+- name: Set max Connections for performance of the plattform
+  sysctl:
+    name: net.core.somaxconn
+    value: '65535'
+    sysctl_set: yes
+    state: present
+
+# Ensure Elastic Search Processes have enough RAM to run
+
+- name: Set max memory to allow ElasticSearch to start
+  sysctl:
+    name: vm.max_map_count
+    value: '280530'
+    sysctl_set: yes
+    state: present

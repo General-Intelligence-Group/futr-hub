@@ -1,0 +1,89 @@
+#################################################
+# Playbook for Installing Docker Engine and Tools
+#################################################
+---
+- hosts: all
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - name: Install aptitude using apt
+      apt: name=aptitude state=present force_apt_get=yes
+
+    - name: Install required system packages
+      apt: name={{ item }} state=present update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'git', 'htop', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+    - name: Install required modules for python
+      pip: name={{ item }}
+      loop: [ 'cryptography']
+
+    ##############################
+    # Start Distribution Settings
+    ##############################
+
+    ## Add Ubuntu specific entries
+    - name: Add Docker GPG apt Key for Ubuntu
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Add Docker Repository for Ubuntu
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce=5:20.10.5~3-0~ubuntu-bionic state=present
+      when: ansible_distribution == 'Ubuntu'
+
+    ## Add Debian specific entries
+    - name: Add Docker GPG apt Key for Debian
+      apt_key:
+        url: https://download.docker.com/linux/debian/gpg
+        state: present
+      when: ansible_distribution == 'Debian'
+
+    - name: Add Docker Repository for Debian
+      apt_repository:
+        repo: deb https://download.docker.com/linux/debian buster stable
+        state: present
+      when: ansible_distribution == 'Debian'
+
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce=5:20.10.5~3-0~debian-buster state=present
+      when: ansible_distribution == 'Debian'
+
+    ##############################
+    # End Distribution Settings
+    ##############################
+
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce=5:20.10.5~3-0~ubuntu-bionic state=present
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Ensure docker daemon.json file exists
+      copy:
+        content: '{ "live-restore": true }'
+        dest: /etc/docker/daemon.json
+        force: true
+        mode: 0644
+
+    - name: Restart docker service
+      service:
+        name: docker
+        state: restarted
+
+    - name: Install docker-compose
+      apt: name=docker-compose state=present
+
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+
+    - name: Install jmespath python module
+      pip:
+        name: jmespath

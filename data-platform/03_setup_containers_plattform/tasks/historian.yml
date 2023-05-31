@@ -1,0 +1,301 @@
+---
+- name: Create private data-management network
+  docker_network:
+    name: data-management
+    driver: bridge
+    state: present
+
+- name: Create a new regular user with sudo privileges
+  user:
+    name: "postgres"
+    state: present
+    groups: wheel
+    append: true
+    create_home: false
+
+- name: Create volume historian-timescale-data
+  docker_volume:
+    name: "historian-timescale-data"
+
+- name: Ensure remote timescale directory exists
+  file:
+    path: /opt/scp/ansible/timescale
+    recurse: yes
+    state: directory
+    mode: '0600'
+
+- name: Copy postgis activation Script
+  copy:
+    src: timescale/activate_postgis.sql
+    dest: /opt/scp/ansible/timescale/activate_postgis.sql
+    mode: '0666'
+
+- name: Deploy TimescaleDB
+  docker_container:
+    name: "{{ TIMESCALE_POSTGRES_HOST }}"
+    image: timescale/timescaledb-postgis:1.7.5-pg9.6
+    restart_policy: always
+    env:
+      POSTGRES_PASSWORD: "{{ TIMESCALE_PASSWORD }}"
+    user: postgres
+    ports:
+      - 15432:5432
+    volumes:
+      - historian-timescale-data:/var/lib/postgresql/data
+      - /opt/scp/ansible/timescale/:/opt/timescale/
+    networks:
+      - name: "data-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "data-management"
+    state: started
+    labels:
+      com.docker.compose.project: "data-management"
+    command:
+      - -c ssl=off
+
+- name: Copy SQL File
+  command: docker exec -u 0 {{ TIMESCALE_POSTGRES_HOST }} ash -l -c "cp /opt/timescale/activate_postgis.sql /opt/activate_postgis.sql"
+  changed_when: True
+
+- name: Change Owner for SQL File
+  command: docker exec -u 0 {{ TIMESCALE_POSTGRES_HOST }} ash -l -c "chown postgres:postgres /opt/activate_postgis.sql"
+  changed_when: True
+
+- name: Change Permissions for SQL File
+  command: docker exec -u 0 {{ TIMESCALE_POSTGRES_HOST }} ash -l -c "chmod 0600 /opt/activate_postgis.sql"
+  changed_when: True
+
+- name: Activate postgis extension
+  command: docker exec {{ TIMESCALE_POSTGRES_HOST }} bash -l -c "export PGPASSWORD='{{ TIMESCALE_PASSWORD }}';psql -h 127.0.0.1 -d postgres -U postgres -f /opt/activate_postgis.sql" # noqa 204
+  register: result
+  until: result.rc == 0
+  retries: 50
+  delay: 5
+  changed_when: True
+
+- name: Create volume historian-timescale-data
+  docker_volume:
+    name: "historian-pgadmin-data"
+
+- name: Ensure remote pgadmin directory exists
+  file:
+    path: /opt/scp/ansible/pgadmin
+    recurse: yes
+    state: directory
+    mode: '0600'
+
+- name: Create servers.json from template
+  template:
+    src: pgadmin/servers.json.j2
+    dest: /opt/scp/ansible/pgadmin/servers.json
+    mode: '0666'
+
+- name: Create pgpass file from template
+  template:
+    src: pgadmin/pgpass.j2
+    dest: /opt/scp/ansible/pgadmin/pgpass
+    mode: '0666'
+
+- name: Deploy pgAdmin4
+  docker_container:
+    name: pgadmin
+    image: dpage/pgadmin4:5.1
+    restart_policy: always
+    env:
+      PGADMIN_DEFAULT_EMAIL: "admin@{{ DOMAIN }}"
+      PGADMIN_DEFAULT_PASSWORD: "{{ SC_ADMIN_PASSWORD }}"
+      PGADMIN_SERVER_JSON_FILE: "/opt/pgadmin/servers.json"
+    networks:
+      - name: "data-management"
+      - name: "idm"
+      - name: "context-management"
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    volumes:
+      - historian-pgadmin-data:/root/.pgadmin
+      - /opt/scp/ansible/pgadmin/servers.json:/opt/pgadmin/servers.json
+      - /opt/scp/ansible/pgadmin/pgpass:/opt/pgadmin/pgpassfile
+    labels:
+      com.docker.compose.project: "platform-management"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Grafana UI
+      traefik.http.routers.pgadmin.rule: "Host(`pgadmin.{{ DOMAIN }}`)"
+      traefik.http.routers.pgadmin.entrypoints: "websecure"
+      traefik.http.routers.pgadmin.service: "pgadmin"
+      traefik.http.routers.pgadmin.tls: "true"
+      traefik.http.routers.pgadmin.tls.certresolver: "le"
+      traefik.http.services.pgadmin.loadbalancer.server.port: "80"
+
+- name: Create Directory for Password File
+  command: docker exec pgadmin ash -l -c "mkdir -p -m 700 /var/lib/pgadmin/storage/admin_{{ DOMAIN }}"
+  changed_when: True
+
+- name: Copy Password File
+  command: docker exec -u 0 pgadmin ash -l -c "cp /opt/pgadmin/pgpassfile /var/lib/pgadmin/storage/admin_{{ DOMAIN }}/pgpassfile"
+  changed_when: True
+
+# - name: Change Owner for Password File
+#   command: docker exec -u 0 pgadmin ash -l -c "chown pgadmin:pgadmin /var/lib/pgadmin/storage/admin_{{ DOMAIN }}/pgpassfile"
+#   changed_when: True
+
+# - name: Change Permissions for Password File
+#   command: docker exec pgadmin ash -l -c "chmod 0600 /var/lib/pgadmin/storage/admin_{{ DOMAIN }}/pgpassfile"
+#   changed_when: True
+
+# - name: Copy Servers.json
+#   command: docker exec -u 0 pgadmin ash -l -c "cp /opt/pgadmin/servers.json /var/lib/pgadmin/storage/admin_{{ DOMAIN }}/servers.json"
+#   changed_when: True
+
+# - name: Change Owner for Servers.json
+#   command: docker exec -u 0 pgadmin ash -l -c "chown pgadmin:pgadmin /var/lib/pgadmin/storage/admin_{{ DOMAIN }}/servers.json"
+#   changed_when: True
+
+# - name: Change Permissions for Servers.json
+#   command: docker exec pgadmin ash -l -c "chmod 0600 /var/lib/pgadmin/storage/admin_{{ DOMAIN }}/servers.json"
+#   changed_when: True
+
+# - name: Load servers.json
+#   command: docker exec pgadmin ash -l -c "/usr/bin/python3 /pgadmin4/setup.py --load-servers /var/lib/pgadmin/storage/admin_{{ DOMAIN }}/servers.json --user admin@{{ DOMAIN }}"  # noqa 204
+#   changed_when: True
+
+- name: Create volume data-management-grafana_data
+  docker_volume:
+    name: "data-management-grafana_data"
+
+- name: Ensure remote dashboard directory exists
+  file:
+    path: /opt/scp/ansible/grafana/data-management/provisioning/dashboards/dashboard_files
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Ensure remote datasource directory exists
+  file:
+    path: /opt/scp/ansible/grafana/data-management/provisioning/datasources
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create weather dashboard from template (TSDB)
+  template:
+    src: grafana/provisioning/dashboards/dashboard_files/tsdb_weather.json.j2
+    dest: /opt/scp/ansible/grafana/data-management/provisioning/dashboards/dashboard_files/tsdb_weather.json
+    mode: '0666'
+
+- name: Create DWD weather dashboard from template (TSDB)
+  template:
+    src: grafana/provisioning/dashboards/dashboard_files/tsdb_weather_DWD.json.j2
+    dest: /opt/scp/ansible/grafana/data-management/provisioning/dashboards/dashboard_files/tsdb_weather_DWD.json
+    mode: '0666'
+
+- name: Create particulate dust dashboard from template (TSDB)
+  template:
+    src: grafana/provisioning/dashboards/dashboard_files/tsdb_particulate_matter.json.j2
+    dest: /opt/scp/ansible/grafana/data-management/provisioning/dashboards/dashboard_files/tsdb_particulate_matter.json
+    mode: '0666'
+
+- name: Create weather dashboard from template (SensorThings FROST)
+  template:
+    src: grafana/provisioning/dashboards/dashboard_files/sensorthings_weather_frost.json.j2
+    dest: /opt/scp/ansible/grafana/data-management/provisioning/dashboards/dashboard_files/sensorthings_weather_frost.json
+    mode: '0666'
+
+- name: Create weather dashboard from template (SensorThings PostGIS)
+  template:
+    src: grafana/provisioning/dashboards/dashboard_files/sensorthings_weather_postgis.json.j2
+    dest: /opt/scp/ansible/grafana/data-management/provisioning/dashboards/dashboard_files/sensorthings_weather_postgis.json
+    mode: '0666'
+
+- name: Create dashboard.yaml from template
+  template:
+    src: grafana/provisioning/dashboards/dashboards.yaml.j2
+    dest: /opt/scp/ansible/grafana/data-management/provisioning/dashboards/dashboards.yaml
+    mode: '0666'
+
+- name: Create datasource.yaml from template
+  template:
+    src: grafana/provisioning/datasources/data-management-datasources.yaml.j2
+    dest: /opt/scp/ansible/grafana/data-management/provisioning/datasources/datasources.yaml
+    mode: '0666'
+
+- name: Deploy Grafana
+  docker_container:
+    name: grafana
+    image: grafana/grafana:7.5.0
+    env:
+      GF_SECURITY_ADMIN_PASSWORD: "{{ GRAFANA_ADMIN_PASSWORD }}"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: "{{ IDM_CLIENT }}"
+      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: "{{ IDM_CLIENT_SECRET }}"
+      GF_AUTH_GENERIC_OAUTH_SCOPES: "{{ SCOPE }}"
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: "{{ IDM_ENDP_AUTHORIZE }}"
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "{{ IDM_ENDP_TOKEN }}"
+      GF_AUTH_GENERIC_OAUTH_API_URL: "{{ IDM_ENDP_USER_INFO }}"
+      GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
+      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(roles[*], 'adminTech') && 'Admin' || contains(roles[*], 'dataProducer') && 'Editor' || 'Viewer'"
+      GF_SERVER_ROOT_URL: "https://grafana.{{ DOMAIN }}"
+      GF_LOG_LEVEL: "debug"
+      GF_SECURITY_ALLOW_EMBEDDING: "true"
+      GF_SECURITY_COOKIE_SAMESITE: "lax"
+      GF_INSTALL_PLUGINS: "linksmart-sensorthings-datasource, grafana-worldmap-panel, grafana-piechart-panel, marcusolsson-dynamictext-panel, dalvany-image-panel, michaeldmoore-multistat-panel"  # noqa 204
+    restart_policy: always
+    volumes:
+      - data-management-grafana_data:/var/lib/grafana
+      - /opt/scp/ansible/grafana/data-management/provisioning/:/etc/grafana/provisioning
+    networks:
+      - name: "data-management"
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "data-management"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Grafana UI
+      traefik.http.routers.grafana.rule: "Host(`grafana.{{ DOMAIN }}`)"
+      traefik.http.routers.grafana.entrypoints: "websecure"
+      traefik.http.routers.grafana.service: "grafana"
+      traefik.http.routers.grafana.tls: "true"
+      traefik.http.routers.grafana.tls.certresolver: "le"
+      traefik.http.services.grafana.loadbalancer.server.port: "3000"
+
+- name: "Wait for Grafana to be active"
+  uri:
+    url: "https://grafana.{{ DOMAIN }}"
+    status_code: 200
+  register: result
+  until: result.status == 200
+  retries: 50
+  delay: 2
+
+- name: Ensure remote temp directory exists
+  file:
+    path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create sensor overview dashboard from template
+  template:
+    src: grafana/provisioning/dashboards/dashboard_files/sensor_overview.json.j2
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/sensor_overview.json
+    mode: '0666'
+
+- name: (Re-)Import Grafana Dashboard
+  community.grafana.grafana_dashboard:
+        grafana_url: https://grafana.{{ DOMAIN }}
+        url_username: admin
+        url_password: "{{ GRAFANA_ADMIN_PASSWORD }}"
+        state: present
+        commit_message: Updated by ansible
+        overwrite: yes
+        path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/sensor_overview.json

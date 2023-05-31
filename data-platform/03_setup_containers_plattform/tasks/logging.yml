@@ -1,0 +1,62 @@
+---
+- name: Create private monitoring&logging network
+  docker_network:
+    name: monitoring_logging
+    driver: bridge
+    state: present
+
+- name: Install loki docker driver
+  command: docker plugin install grafana/loki-docker-driver:2.2.0 --alias loki --grant-all-permissions
+  register: plugin
+  changed_when: "'Installed plugin grafana/loki-docker-driver:2.2.0' in plugin.stdout"
+  failed_when: "(not 'Installed plugin grafana/loki-docker-driver:2.2.0' in plugin.stdout)
+                  and (plugin.stderr != 'Error response from daemon: plugin loki:latest already exists')"
+
+- name: Deploy loki
+  docker_container:
+    name: loki
+    image: grafana/loki:2.2.0
+    restart_policy: always
+    published_ports: 127.0.0.1:3100:3100
+    container_default_behavior: no_defaults
+    networks:
+      - name: "monitoring_logging"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "monitoring_logging"
+    state: started
+    command: -config.file=/etc/loki/local-config.yaml
+    labels:
+      com.docker.compose.project: "loki"
+
+- name: Ensure docker daemon.json file exists
+  copy:
+    content: '{ "live-restore": true }'
+    dest: /etc/docker/daemon.json
+    force: false
+    mode: 0644
+
+- name: Load contents of /etc/docker/daemon.json
+  slurp:
+    src: /etc/docker/daemon.json
+  register: imported_var
+
+- name: Append log configuration
+  set_fact:
+    imported_var: '{{ imported_var.content|b64decode|from_json | default([]) |
+                      combine({"log-driver": "loki", "log-opts": { "loki-url": "http://localhost:3100/loki/api/v1/push", "loki-batch-size": "400" }}) }}'
+
+- name: Write /etc/docker/daemon.json
+  copy:
+    content: "{{ imported_var | to_nice_json }}"
+    dest: /etc/docker/daemon.json
+    mode: 0644
+
+- name: Restart docker service
+  service:
+    name: docker
+    state: restarted
+
+- name: Pause for 10 seconds to build app cache
+  pause:
+    seconds: 10

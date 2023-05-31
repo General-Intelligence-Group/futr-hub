@@ -1,0 +1,156 @@
+---
+- name: Create private sensebox network
+  docker_network:
+    name: sensebox-flow
+    driver: bridge
+    state: present
+
+# Create data volumes for nodered containers
+- name: Create volume nr-sensebox-data
+  docker_volume:
+    name: "nr-sensebox-data"
+
+# Create settings file, used for all nodered containers
+- name: Ensure remote directory exists for Nodered Settings
+  file:
+    path: /opt/scp/ansible/nodered
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create Nodered Settings sensebox
+  template:
+    src: nodered/settings.js.j2
+    dest: /opt/scp/ansible/nodered/sensebox-settings.js
+    owner: '{{ CREATE_USER }}'
+    mode: '0755'
+
+# Create sensebox container
+- name: Deploy without project set
+  docker_container:
+    name: nr-sensebox
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    volumes:
+      - nr-sensebox-data:/data
+      - /opt/scp/ansible/nodered/sensebox-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "sensebox-flow"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "sensebox-flow"
+
+- name: Clone Repo to nr-sensebox container
+  command: docker exec nr-sensebox bash -l -c "rm -rf /data/node_modules;rm -rf /data/projects/{{ NR_REPO_TARGET_FOLDER }};git clone https://{{ NR_GIT_LOGIN }}:{{ NR_GIT_TOKEN }}@{{ SENSEBOX_FLOW_PROJECT }} /data/projects/{{ NR_REPO_TARGET_FOLDER }}"  # noqa 204
+  changed_when: True
+
+- name: Install modules for nr-sensebox
+  command: docker exec nr-sensebox bash -l -c "cd /data/projects/{{ NR_REPO_TARGET_FOLDER }}; npm install"
+  changed_when: True
+
+# - name: Link node_modules directory for nr-sensebox
+#   command: docker exec nr-sensebox bash -l -c "ln -s -b /data/projects/{{ NR_REPO_TARGET_FOLDER }}/node_modules /data/"
+#   changed_when: True
+
+- name: Deploy nr-sensebox with cloned project set
+  docker_container:
+    name: nr-sensebox
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    env:
+      FLOWS: "{{ NR_REPO_TARGET_FOLDER }}"
+      SENSEBOX_SENSOR_ID: "{{ SENSEBOX_SENSOR_ID }}"
+      SC_ORION_SERVER: "http://orion-v2:1026"
+      SC_FROST_SERVER: "http://frost:8080"
+      DM_QL_SERVER: "http://quantumleap:8668"
+      # EXT_MQTT_SERVER: ""
+      EXT_MQTT_PORT: "1884"
+    volumes:
+      - nr-sensebox-data:/data
+      - /opt/scp/ansible/nodered/sensebox-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "sensebox-flow"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    restart: yes
+    labels:
+      com.docker.compose.project: "sensebox-flow"
+
+- name: Deploy Keycloak Gatekeeper for nr-sensebox
+  docker_container:
+    name: nr-sensebox-kc
+    image: keycloak/keycloak-gatekeeper:7.0.0
+    restart_policy: always
+    entrypoint:
+      - /opt/keycloak-gatekeeper
+      - --discovery-url=https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}
+      - --client-id={{ IDM_CLIENT }}
+      - --client-secret={{ IDM_CLIENT_SECRET }}
+      - --listen=0.0.0.0:3000
+      - --redirection-url=https://nr-admin-sensebox.{{ DOMAIN }}
+      - --enable-refresh-tokens=true
+      - --upstream-url=http://nr-sensebox:1880
+      - --encryption-key={{ AUTH_ENCRYPTION_KEY }}
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "public"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Nodered Admin
+      traefik.http.routers.nr-sensebox-kc.rule: "Host(`nr-admin-sensebox.{{ DOMAIN }}`)"
+      traefik.http.routers.nr-sensebox-kc.entrypoints: "websecure"
+      traefik.http.routers.nr-esensebox-kc.service: "nr-sensebox-kc"
+      traefik.http.routers.nr-sensebox-kc.tls: "true"
+      traefik.http.routers.nr-sensebox-kc.tls.certresolver: "le"
+      traefik.http.services.nr-sensebox-kc.loadbalancer.server.port: "3000"
+
+- name: Ensure remote temp directory exists
+  file:
+    path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create grafana dashboard from template
+  template:
+    src: grafana/dashboards/06_postgis_sensebox.json.j2
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/06_postgis_sensebox.json
+    mode: '0666'
+
+- name: Create grafana dashboard from template
+  template:
+    src: grafana/dashboards/06_tsdb_sensebox.json.j2
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/06_tsdb_sensebox.json
+    mode: '0666'
+
+- name: (Re-)Import Grafana Dashboard
+  community.grafana.grafana_dashboard:
+        grafana_url: https://grafana.{{ DOMAIN }}
+        url_username: admin
+        url_password: "{{ GRAFANA_ADMIN_PASSWORD }}"
+        state: present
+        commit_message: Updated by ansible
+        overwrite: yes
+        path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/06_postgis_sensebox.json
+
+- name: (Re-)Import Grafana Dashboard
+  community.grafana.grafana_dashboard:
+        grafana_url: https://grafana.{{ DOMAIN }}
+        url_username: admin
+        url_password: "{{ GRAFANA_ADMIN_PASSWORD }}"
+        state: present
+        commit_message: Updated by ansible
+        overwrite: yes
+        path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/temp/06_tsdb_sensebox.json

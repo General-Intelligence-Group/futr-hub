@@ -1,0 +1,120 @@
+#########################################
+# Inventory for Urban Data Platform Setup
+#########################################
+
+#########################################################################
+# The "servers" groups contains the remote hosts
+#########################################################################
+
+[servers]
+demo ansible_host=<IP>
+
+##########################################################################
+# Makes sure we use Python 3 (/usr/bin/python3) on remote hosts.
+# [servers:vars] sets global values for all nodes in the "servers" group.
+# This is necessary because by default Ansible will try to use
+# /usr/bin/python, which is not available on newer Ubuntu versions.
+#########################################################################
+
+[servers:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_pipelining=true
+
+####################################################
+# External Data - please provide valid configuration
+####################################################
+
+# Subdomain for the PoC Installation
+DOMAIN=<server.domain.com>
+# Emails Address for Let's Encrypt Registration
+EMAIL=dns@urban-data.cloud
+
+# Unix User Name to run to Platform
+CREATE_USER=mrdocker
+
+# Filename template of private and public ssh key to use - standard: id_rsa_sc_admin
+# Filenames will be ~/.ssh/$SSH_KEY_NAME for private key and ~/.ssh/$SSH_KEY_NAME.pub for public key
+SSH_KEY_NAME='id_rsa_sc_admin'
+# Password for the central platform admin (to be created with frist installation)
+SC_ADMIN_PASSWORD='<password>'
+
+# Sender Email Address for generated Emails
+SC_EMAIL_FROM='demo@<server.domain.com>'
+# Email SMTP Server
+SC_EMAIL_SERVER='<email.domain.com>'
+# Email Server Login
+SC_EMAIL_USER='<user>'
+# Email Server Password
+SC_EMAIL_PASSWORD='<password>'
+
+# Keycloak DB Password
+KEYCLOAK_POSTGRES_PASSWORD='<password>'
+# Keycloak master realm name (change only, of you know what you are doing)
+KEYCLOAK_REALM_MASTER: 'master'
+# Keycloak default realm name
+IDM_REALM: '<default_realm>'
+# Keycloak default client name
+IDM_CLIENT: '<default_client>'
+
+# API Key for Open Weather Map Access
+SC_OWM_API_KEY='<OWN_API_KEY>'
+# ID of wished OWM Station
+SC_OWM_STATION='OWM_STATION_ID'
+# ID of Wished Open Sense Map Sensor
+SC_OSM_SENSOR_ID='<OSM_SENSOR_ID>'
+
+# Gitlab User used to to clone the needed repos in node red
+NR_GIT_LOGIN='<user>'
+# Git Token used to to clone the needed repos in node red.
+# Depending on your authentication method please provide you login credentials (e.g. if you use 2FA use a specific token and so on)
+NR_GIT_TOKEN='<token>'
+# Repo for external flows (external API Integration)
+# Example: gitlab.com/urban-data/demo-flows/urban-data-external-demo-flows.git
+NR_EXT_GIT_REPO='gitlab.com/urban-data/demo-flows/urban-data-external-demo-flows.git'
+# Repo for connector flows (Connector Integration)
+# Example: gitlab.com/urban-data/demo-flows/urban-data-conn-demo-flows.git
+NR_CON_GIT_REPO='gitlab.com/urban-data/demo-flows/urban-data-conn-demo-flows.git'
+# Repo Target folder
+NR_REPO_TARGET_FOLDER='sc-node-red-flows'
+# Key to encrypt/decrypt Nodered Secrets in Node Red Project
+NR_SECRETS_KEY='<nodered_secrets_key>'
+
+# TimescaleDB Password
+TIMESCALE_PASSWORD='<password>'
+
+# FROST-DB Password
+FROST_DB_PASSWORD='<password>'
+
+# Key for Session Encryption of keycloak-gatekeyer (16 or 32 signs)
+AUTH_ENCRYPTION_KEY='<AUTH_KEY>'
+
+# Grafana Admin Password. Necessary to import Dashboards after deployment.
+GRAFANA_ADMIN_PASSWORD='<grafana_admin_password>'
+
+# Only applicable if Gitlab Docker Registry is used
+# Gitlab registry username
+REGISTRY_ACCESS_USER='<USERNAME>'
+# Gitlab registry RW access token
+REGISTRY_ACCESS_TOKEN='<ACCESS_TOKEN>'
+
+# AWS S3 compatibel Access Key for min.io, access key length should be at least 3
+MINIO_ACCESS_KEY='minio'
+# AWS S3 compatibel Secret Key for min.io, secret key length at least 8 characters
+MINIO_SECRET_KEY='minio123'
+# AWS S3 compatibel Region Name for min.io
+MINIO_REGION_NAME='de-fra-rack2'
+
+# Organization Name to be used in several Configurations - only descriptive
+ORGANIZATION_NAME="<company/organization_name>"
+
+# Use Case 01 - Twitter
+# Generate Bearer Token with:
+# curl -u "$API_KEY:$API_SECRET_KEY" --data 'grant_type=client_credentials' 'https://api.twitter.com/oauth2/token'
+TWITTER_BEARER_TOKEN="AAAAAAAAAAAAAAAAAAAAA..."
+TWITTER_ID="B_TXL"
+
+# Use Case 05 - Luftdaten.info Sensor ID - to be set before Use Case 5 is deployed (normally 5 digits)
+LUFTDATEN_INFO_SENSOR_ID='<sensor_id>'
+
+# Use Case 06 - Sensebox Sensor ID - to be set before Use Case 6 is deployed - con be taken from opensensemap Backend
+SENSEBOX_SENSOR_ID='<sensor_id>'

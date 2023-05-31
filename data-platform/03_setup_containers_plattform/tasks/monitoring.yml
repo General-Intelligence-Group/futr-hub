@@ -1,0 +1,174 @@
+---
+- name: Create private monitoring&logging network
+  docker_network:
+    name: monitoring_logging
+    driver: bridge
+    state: present
+
+- name: Create volume prometheus-data
+  docker_volume:
+    name: "prometheus-data"
+
+- name: Ensure remote directory exists for prometheus Settings
+  file:
+    path: /opt/scp/ansible/prometheus
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create prometheus Settings
+  template:
+    src: prometheus/prometheus.yml.j2
+    dest: /opt/scp/ansible/prometheus/prometheus.yml
+    owner: '{{ CREATE_USER }}'
+    mode: '0755'
+
+- name: Deploy Prometheus
+  docker_container:
+    name: prometheus
+    image: prom/prometheus:v2.25.2
+    restart_policy: always
+    volumes:
+        - prometheus-data:/prometheus
+        - /opt/scp/ansible/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+        - name: "public"
+        - name: "monitoring_logging"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+        com.docker.compose.project: "monitoring_logging"
+
+- name: Deploy Node Exporter
+  docker_container:
+    name: node-exporter
+    image: prom/node-exporter:v1.1.2
+    restart_policy: always
+    networks:
+        - name: "monitoring_logging"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "monitoring_logging"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - --path.procfs=/host/proc
+      - --path.rootfs=/rootfs
+      - --path.sysfs=/host/sys
+      - --collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)
+    state: started
+    labels:
+        com.docker.compose.project: "monitoring_logging"
+
+- name: Deploy cadvisor
+  docker_container:
+    name: cadvisor
+    image: google/cadvisor:v0.32.0
+    restart_policy: always
+    networks:
+        - name: "monitoring_logging"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "monitoring_logging"
+    state: started
+    volumes:
+        - /:/rootfs:ro
+        - /var/run:/var/run:rw
+        - /sys:/sys:ro
+        - /var/lib/docker/:/var/lib/docker:ro
+    command:
+        - --housekeeping_interval=30s
+        - --docker_only=true
+        - --disable_metrics=disk,tcp,udp,percpu,sched,process
+    labels:
+        com.docker.compose.project: "monitoring_logging"
+
+- name: Create volume data-management-grafana_data
+  docker_volume:
+    name: "monitoring-grafana_data"
+
+- name: Ensure remote dashboard directory exists
+  file:
+    path: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/dashboard_files
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Ensure remote datasource directory exists
+  file:
+    path: /opt/scp/ansible/grafana/monitoring/provisioning/datasources
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Copy basic system monitoring dashboard from template
+  copy:
+    src: grafana/provisioning/dashboards/dashboard_files/basic_system.json
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/dashboard_files/basic_system.json
+    mode: '0666'
+
+- name: Copy docker monitoring dashboard from template
+  copy:
+    src: grafana/provisioning/dashboards/dashboard_files/docker_monitoring.json
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/dashboard_files/docker_monitoring.json
+    mode: '0666'
+
+- name: Create dashboard.yaml from template
+  template:
+    src: grafana/provisioning/dashboards/dashboards.yaml.j2
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/dashboards/dashboards.yaml
+    mode: '0666'
+
+- name: Create datasource.yaml from template
+  template:
+    src: grafana/provisioning/datasources/monitoring-datasources.yaml.j2
+    dest: /opt/scp/ansible/grafana/monitoring/provisioning/datasources/datasources.yaml
+    mode: '0666'
+
+- name: Deploy Grafana
+  docker_container:
+    name: monitoring
+    image: grafana/grafana:7.5.0
+    env:
+      GF_SECURITY_ADMIN_PASSWORD: "{{ GRAFANA_ADMIN_PASSWORD }}"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: "{{ IDM_CLIENT }}"
+      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: "{{ IDM_CLIENT_SECRET }}"
+      GF_AUTH_GENERIC_OAUTH_SCOPES: "{{ SCOPE }}"
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: "{{ IDM_ENDP_AUTHORIZE }}"
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "{{ IDM_ENDP_TOKEN }}"
+      GF_AUTH_GENERIC_OAUTH_API_URL: "{{ IDM_ENDP_USER_INFO }}"
+      GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
+      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(roles[*], 'adminTech') && 'Admin' || contains(roles[*], 'dataProducer') && 'Editor' || 'Viewer'"
+      GF_SERVER_ROOT_URL: "https://monitoring.{{ DOMAIN }}"
+      GF_LOG_LEVEL: "debug"
+      GF_SECURITY_ALLOW_EMBEDDING: "true"
+      GF_SECURITY_COOKIE_SAMESITE: "lax"
+    restart_policy: always
+    volumes:
+      - monitoring-grafana_data:/var/lib/grafana
+      - /opt/scp/ansible/grafana/monitoring/provisioning/:/etc/grafana/provisioning
+    networks:
+      - name: "monitoring_logging"
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "monitoring_logging"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Grafana UI
+      traefik.http.routers.monitoring.rule: "Host(`monitoring.{{ DOMAIN }}`)"
+      traefik.http.routers.monitoring.entrypoints: "websecure"
+      traefik.http.routers.monitoring.service: "monitoring"
+      traefik.http.routers.monitoring.tls: "true"
+      traefik.http.routers.monitoring.tls.certresolver: "le"
+      traefik.http.services.monitoring.loadbalancer.server.port: "3000"

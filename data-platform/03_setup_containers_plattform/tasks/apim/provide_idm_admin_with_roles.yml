@@ -1,0 +1,172 @@
+---
+- name: Login into APIM management API using local admin user
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user/login"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: "{{ GRAVITEE_DEFAULT_BASIC_AUTH }}"
+    status_code: 200
+  register: local_user
+
+
+- name: Get user id
+  uri:
+    method: GET
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: local_user_id
+
+
+
+
+
+####################################
+#### LOG IN IDENTITY PROVIDER   ####
+####################################
+
+
+- name: Login into APIM management API using IDM provider
+  uri:
+    method: POST
+    url: "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/token"
+    return_content: yes
+    body_format: form-urlencoded
+    body:
+    - [ grant_type, "password" ]
+    - [ username, "admin@{{ DOMAIN }}" ]
+    - [ password, "{{ SC_ADMIN_PASSWORD }}" ]
+    - [ client_id, "platform-central-main" ]
+    - [ client_secret, "{{ IDM_CLIENT_SECRET }}" ]
+    headers:
+      Accept: application/json
+    status_code: 200
+  register: user
+
+
+  # - debug:
+  #     var: user
+
+- name: Exchange token at APIM
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/auth/oauth2/keycloak/exchange?token={{ user.json.access_token }}"
+    return_content: yes
+    headers:
+      Accept: application/json
+    status_code: 200
+  register: new_token
+
+# - debug:
+#     var: new_token
+
+
+- name: Get IDM user id
+  uri:
+    method: GET
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ new_token.json.token }}
+    status_code: 200
+  register: idm_user_id
+
+
+
+
+########################################
+#### PROVIDE IDM ADMIN WITH ROLES   ####
+########################################
+
+
+
+
+- name: Get organization roles
+  uri:
+    method: GET
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/configuration/rolescopes/ORGANIZATION/roles"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200,403
+  register: org_roles
+
+- debug:
+    msg: "Failed. Local admin user does not have admin rights anymore?"
+  when: org_roles.status == 403
+
+
+- set_fact:
+    org_admin_role_id: "{{ org_roles.json | json_query(query) }}"
+  vars:
+    query: "[?name == 'ADMIN'].id | [0]"
+  when: org_roles.status != 403
+
+
+- name: Get environment roles
+  uri:
+    method: GET
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/configuration/rolescopes/ENVIRONMENT/roles"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: env_roles
+  when: org_roles.status != 403
+
+
+- set_fact:
+    env_admin_role_id: "{{ env_roles.json | json_query(query) }}"
+  vars:
+    query: "[?name == 'ADMIN'].id | [0]"
+  when: org_roles.status != 403
+
+
+- name: Add admin roles to IDM admin user (1/2)
+  uri:
+    method: PUT
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/users/{{ idm_user_id.json.id }}/roles"
+    return_content: yes
+    body_format: json
+    body: |
+      {
+        "user": "{{ idm_user_id.json.id }}",
+        "referenceId": "DEFAULT",
+        "referenceType": "ENVIRONMENT",
+        "roles": ["{{ env_admin_role_id }}"]
+      }
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: portal_config
+  when: org_roles.status != 403
+
+
+- name: Add admin roles to IDM admin user (2/2)
+  uri:
+    method: PUT
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/users/{{ idm_user_id.json.id }}/roles"
+    return_content: yes
+    body_format: json
+    body: |
+      {
+        "user":"{{ idm_user_id.json.id }}",
+        "referenceId":"DEFAULT",
+        "referenceType":"ORGANIZATION",
+        "roles":["{{ org_admin_role_id }}"]
+      }
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: portal_config
+  when: org_roles.status != 403

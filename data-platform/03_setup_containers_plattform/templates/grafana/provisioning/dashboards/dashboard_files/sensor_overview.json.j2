@@ -1,0 +1,1292 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 12,
+  "iteration": 1610950471559,
+  "links": [],
+  "panels": [
+    {
+      "circleMaxSize": "8",
+      "circleMinSize": "8",
+      "colors": [
+        "#73BF69",
+        "#FADE2A",
+        "#FF9830",
+        "#FF7383"
+      ],
+      "datasource": "-- Mixed --",
+      "decimals": 0,
+      "esMetric": "Count",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 10,
+        "x": 0,
+        "y": 0
+      },
+      "hideEmpty": false,
+      "hideZero": false,
+      "id": 8,
+      "initialZoom": "6",
+      "locationData": "table",
+      "mapCenter": "custom",
+      "mapCenterLatitude": "51.37251",
+      "mapCenterLongitude": "10.52654",
+      "maxDataPoints": 1,
+      "mouseWheelZoom": true,
+      "pluginVersion": "7.3.4",
+      "showLegend": false,
+      "stickyLabels": false,
+      "tableQueryOptions": {
+        "geohashField": "geohash",
+        "labelField": "name",
+        "latitudeField": "latitude",
+        "longitudeField": "longitude",
+        "metricField": "metric",
+        "queryType": "geohash"
+      },
+      "targets": [
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT entity_id as name, ST_GeoHash(location) as geohash, EXTRACT (Epoch from (now()::timestamp - time_index::timestamp)) as metric FROM (\n  SELECT entity_id, MAX(time_index) as time_index, location\n  FROM mtmainservice.etdatasymobserved\n  GROUP BY entity_id, location\n  ORDER BY time_index desc ) a\nWHERE entity_id in ('testngsi2',${Datasim})\nAND 'Orion (NGSI)' in (${Source})\nAND time_index >= now() - interval '${Interval}'",
+          "refId": "E",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "hide": true,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT entity_id as name, ST_GeoHash(ST_GeomFromGeoJSON(location)) as geohash, EXTRACT (Epoch from (now()::timestamp - time_index::timestamp)) as metric FROM (\n  SELECT entity_id, MAX(time_index) as time_index, location\n  FROM mtmainservice.etairqualityobserved\n  GROUP BY entity_id, location\n  ORDER BY time_index desc ) a\nWHERE entity_id in (${AirQualityObserved})\nAND 'Orion (NGSI)' in (${Source})\nAND time_index >= now() - interval '${Interval}'",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "PostGIS",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT a.name, ST_GeoHash(ST_GeomFromGeoJSON(\"LOCATIONS\".\"LOCATION\")) as geohash, a.metric FROM\n(\n  SELECT DISTINCT on (\"THINGS\".\"NAME\") \"THINGS\".\"NAME\" as name, EXTRACT( Epoch from (now()::timestamp - \"DATASTREAMS\".\"RESULT_TIME_END\"::timestamp)) as metric\n  FROM \"THINGS\", \"DATASTREAMS\"\n  WHERE \"DATASTREAMS\".\"THING_ID\"=\"THINGS\".\"ID\"\n    AND \"THINGS\".\"NAME\" in (${Sensors})\n    AND \"DATASTREAMS\".\"RESULT_TIME_END\" >= now() - interval '${Interval}'\n    AND 'FROST (SensorThings)' in (${Source})\n  ORDER BY \"THINGS\".\"NAME\", metric asc\n) a, \"LOCATIONS\", \"THINGS\", \"THINGS_LOCATIONS\"\nWHERE a.name = \"THINGS\".\"NAME\"\nAND \"THINGS_LOCATIONS\".\"THING_ID\" = \"THINGS\".\"ID\"\nAND \"THINGS_LOCATIONS\".\"LOCATION_ID\" = \"LOCATIONS\".\"ID\"\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"RESULT_NUMBER\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "\"OBSERVATIONS\"",
+          "timeColumn": "\"PHENOMENON_TIME_START\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "--SELECT entity_id as name, ST_GeoHash(ST_GeomFromGeoJSON(location)) as geohash FROM (\n--  SELECT entity_id, MAX(dateobserved) as dateobserved, location\n--  FROM mtmainservice.etenergyobserved\n--  GROUP BY entity_id, location\n--  ORDER BY dateobserved desc ) a\n--WHERE entity_id in (${EnergyObserved})\n",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "--SELECT entity_id as name, ST_GeoHash(ST_GeomFromGeoJSON(location)) as geohash FROM (\n--  SELECT entity_id, MAX(dateobserved) as dateobserved, location\n--  FROM mtmainservice.etweatherforecast\n--  GROUP BY entity_id, location\n--  ORDER BY dateobserved desc ) a\n--WHERE entity_id in (${WeatherForecast})\n",
+          "refId": "D",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": "600,1800,3600",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "All Positions",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ],
+      "type": "grafana-worldmap-panel",
+      "unitPlural": "seconds",
+      "unitSingle": "",
+      "unitSingular": "second",
+      "valueName": "total"
+    },
+    {
+      "Aggregate": "last",
+      "BarPadding": 20,
+      "BaseLineColor": "#ff0000",
+      "BaseLineValue": null,
+      "BaseLineWidth": 1,
+      "CurveType": "Catmull-Rom",
+      "DateFormat": "YYYY-MM-DD HH:mm:ss",
+      "DateTimeColName": "date",
+      "DotColor": "white",
+      "DotSize": 10,
+      "EvenRowColor": "rgba(61, 61, 64, 0.78)",
+      "FlashHighLimitBar": false,
+      "FlashLowLimitBar": false,
+      "GroupColName": "source",
+      "GroupCols": 1,
+      "GroupGap": 5,
+      "GroupLabelColor": "#73BF69",
+      "GroupLabelFontSize": "200%",
+      "GroupNameFilter": "",
+      "GroupSortString": "",
+      "HighAxisColor": "#ffffff",
+      "HighAxisWidth": 2,
+      "HighBarColor": "#73BF69",
+      "HighLimitBarColor": "#ff0000",
+      "HighLimitBarFlashColor": "#ffa500",
+      "HighLimitBarFlashTimeout": 1000,
+      "HighLimitLineColor": "#ff0000",
+      "HighLimitValue": 3600,
+      "HighLmitLineWidth": 1,
+      "HighSideMargin": 22,
+      "Horizontal": true,
+      "LabelColName": "sensor",
+      "LabelColor": "#ffffff",
+      "LabelFontSize": "100%",
+      "LabelMargin": null,
+      "LabelNameFilter": "",
+      "LableAngle": 0,
+      "LineColor": "blue",
+      "LineWidth": 5,
+      "Links": [],
+      "LowAxisColor": "#ffffff",
+      "LowAxisWidth": 2,
+      "LowBarColor": "teal",
+      "LowLimitBarColor": "#ff0000",
+      "LowLimitBarFlashColor": "#ffa500",
+      "LowLimitBarFlashTimeout": 200,
+      "LowLimitLineColor": "#ff0000",
+      "LowLimitValue": null,
+      "LowLmitLineWidth": 1,
+      "LowSideMargin": 22,
+      "MaxLineColor": "rgb(74, 232, 12)",
+      "MaxLineValue": 4000,
+      "MaxLineWidth": 1,
+      "MinLineColor": "#ff0000",
+      "MinLineValue": null,
+      "MinLineWidth": 1,
+      "OddRowColor": "rgba(33, 33, 34, 0.92)",
+      "OutOfRangeLabelColor": "#ffffff",
+      "OutlineColor": "rgba(245, 255, 0, 0.1)",
+      "RecolorColName": null,
+      "RecolorHighLimitBar": true,
+      "RecolorLowLimitBar": false,
+      "RecolorRules": [],
+      "ScaleFactor": 1,
+      "ShowBars": true,
+      "ShowBaseLine": false,
+      "ShowDate": false,
+      "ShowGroupLabels": true,
+      "ShowHighLimitLine": true,
+      "ShowLabels": true,
+      "ShowLeftAxis": true,
+      "ShowLines": false,
+      "ShowLowLimitLine": false,
+      "ShowMaxLine": false,
+      "ShowMinLine": false,
+      "ShowRightAxis": true,
+      "ShowTooltips": true,
+      "ShowValues": true,
+      "SortColName": "value",
+      "SortDirection": "ascending",
+      "TZOffsetHours": 0,
+      "TooltipDateFormat": "YYYY-MM-DD HH:mm:ss",
+      "ValueColName": "epoch",
+      "ValueColor": "#ffffff",
+      "ValueDecimals": 0,
+      "ValueFontSize": "100%",
+      "ValuePosition": "bar end",
+      "datasource": "-- Mixed --",
+      "description": "Shows elapsed time since last update per sensor.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 60
+              },
+              {
+                "color": "light-yellow",
+                "value": 120
+              },
+              {
+                "color": "orange",
+                "value": 180
+              },
+              {
+                "color": "red",
+                "value": 300
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 13,
+        "x": 10,
+        "y": 0
+      },
+      "id": 4,
+      "pluginVersion": "7.3.4",
+      "targets": [
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - dateobserved::timestamp)) as epoch, 'Orion (NGSI)' as source FROM (\n    SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", dateobserved\n  FROM mtmainservice.etenergyobserved\n  WHERE dateobserved is not null\n  AND dateobserved >= now() - interval '${Interval}'\n  AND 'Orion (NGSI)' in (${Source})\n  order by entity_id, dateobserved desc) a\nWHERE entity_id in (${EnergyObserved})\norder by epoch",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - dateobserved::timestamp)) as epoch, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", dateobserved\n  FROM mtmainservice.etairqualityobserved\n  WHERE dateobserved is not null\n    AND dateobserved::timestamp >= now() - interval '${Interval}'\n    AND 'Orion (NGSI)' in (${Source})\n  order by entity_id, dateobserved desc) a\nWHERE entity_id in (${AirQualityObserved})\norder by epoch",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - time_index::timestamp)) as epoch, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", time_index\n  FROM mtmainservice.etpost\n  WHERE time_index is not null\n  AND time_index >= now() - interval '${Interval}'\n  AND 'Orion (NGSI)' in (${Source})\n  order by entity_id, time_index desc) a\nWHERE entity_id in (${Post})\norder by epoch",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - dateobserved::timestamp)) as epoch, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", dateobserved\n  FROM mtmainservice.etweatherobserved\n  WHERE dateobserved is not null\n  AND dateobserved >= now() - interval '${Interval}'\n  AND 'Orion (NGSI)' in (${Source})\n  order by entity_id, dateobserved desc) a\nWHERE entity_id in (${WeatherObserved})\norder by epoch",
+          "refId": "D",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - time_index::timestamp)) as epoch, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", time_index\n  FROM mtmainservice.etweatherforecast\n  WHERE time_index is not null\n  AND time_index >= now() - interval '${Interval}'\n  AND 'Orion (NGSI)' in (${Source})\n  order by entity_id, time_index desc) a\nWHERE entity_id in (${WeatherForecast})\norder by epoch",
+          "refId": "E",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "TimescaleDB",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - time_index::timestamp)) as epoch, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", time_index\n  FROM mtmainservice.etdatasymobserved\n  WHERE time_index is not null\n  AND time_index >= now() - interval '${Interval}'\n  AND 'Orion (NGSI)' in (${Source})\n  order by entity_id, time_index desc) a\nWHERE entity_id in (${Datasim})\norder by epoch",
+          "refId": "G",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": "PostGIS",
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT DISTINCT on (\"THINGS\".\"NAME\") \"THINGS\".\"NAME\"  as sensor, EXTRACT( Epoch from (now()::timestamp - \"DATASTREAMS\".\"RESULT_TIME_END\"::timestamp)) as epoch, 'FROST (Sensorthings)' as source\r\nFROM \"DATASTREAMS\", \"THINGS\"\r\nWHERE \"DATASTREAMS\".\"THING_ID\"=\"THINGS\".\"ID\"\r\n  AND \"THINGS\".\"NAME\" in (${Sensors})\r\n  AND \"DATASTREAMS\".\"RESULT_TIME_END\" >= now() - interval '${Interval}'\r\n  AND 'FROST (SensorThings)' in (${Source})\r\nORDER BY \"THINGS\".\"NAME\", epoch asc",
+          "refId": "F",
+          "select": [
+            [
+              {
+                "params": [
+                  "\"RESULT_NUMBER\""
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "\"OBSERVATIONS\"",
+          "timeColumn": "\"PHENOMENON_TIME_START\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Sensors",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ],
+      "type": "michaeldmoore-multistat-panel"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 11,
+      "panels": [
+        {
+          "datasource": "-- Mixed --",
+          "description": "Shows extended data for each sensor",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": null,
+                "filterable": false
+              },
+              "decimals": 0,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "s"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "sensor"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 375
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "last_update"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 143
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "hardware_serial"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 139
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "last_data"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 277
+                  },
+                  {
+                    "id": "unit",
+                    "value": "string"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "properties"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 355
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "datastream"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 236
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 45,
+            "w": 24,
+            "x": 0,
+            "y": 24
+          },
+          "id": 9,
+          "options": {
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": false,
+                "displayName": "sensor"
+              }
+            ]
+          },
+          "pluginVersion": "7.3.4",
+          "targets": [
+            {
+              "datasource": "TimescaleDB",
+              "format": "table",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::time - dateobserved::time)) as last_update, '' as last_data, entity_type as properties, 'Orion (NGSI)' as source FROM (\n    SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", dateobserved\n  FROM mtmainservice.etenergyobserved\n  WHERE dateobserved is not null\n  order by entity_id, dateobserved desc) a\nWHERE entity_id in (${EnergyObserved})\norder by last_update",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "datasource": "TimescaleDB",
+              "format": "table",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - dateobserved::timestamp)) as last_update, '' as last_data, entity_type as properties, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", dateobserved\n  FROM mtmainservice.etairqualityobserved\n  WHERE dateobserved is not null\n  order by entity_id, dateobserved desc) a\nWHERE entity_id in (${AirQualityObserved})\norder by last_update",
+              "refId": "B",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "datasource": "TimescaleDB",
+              "format": "table",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - time_index::timestamp)) as last_update, a.last_update as last_data, entity_type as properties, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", time_index, mtmainservice.etpost.text as last_update\n  FROM mtmainservice.etpost\n  WHERE time_index is not null\n  order by entity_id, time_index desc) a\nWHERE entity_id in (${Post})\norder by last_update",
+              "refId": "C",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "datasource": "TimescaleDB",
+              "format": "table",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - dateobserved::timestamp)) as last_update, '' as last_data, entity_type as properties, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", dateobserved\n  FROM mtmainservice.etweatherobserved\n  WHERE dateobserved is not null\n  order by entity_id, dateobserved desc) a\nWHERE entity_id in (${WeatherObserved})\norder by last_update",
+              "refId": "D",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "datasource": "TimescaleDB",
+              "format": "table",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - time_index::timestamp)) as last_update, '' as last_data, entity_type as properties, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", time_index\n  FROM mtmainservice.etweatherforecast\n  WHERE time_index is not null\n  order by entity_id, time_index desc) a\nWHERE entity_id in (${WeatherForecast})\norder by last_update",
+              "refId": "E",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "datasource": "TimescaleDB",
+              "format": "table",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT entity_id as sensor, EXTRACT (Epoch from (now()::timestamp - time_index::timestamp)) as last_update, '' as last_data, entity_type as properties, 'Orion (NGSI)' as source FROM (\n  SELECT DISTINCT on (\"entity_id\") \"entity_id\", \"entity_type\", time_index\n  FROM mtmainservice.etdatasymobserved\n  WHERE time_index is not null\n  order by entity_id, time_index desc) a\nWHERE entity_id in (${Datasim})\norder by last_update",
+              "refId": "G",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "datasource": "PostGIS",
+              "format": "table",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT \"THINGS\".\"NAME\" as sensor, \r\n  \"DATASTREAMS\".\"DESCRIPTION\" as datastream, \r\n  EXTRACT( Epoch from (now()::timestamp - \"OBSERVATIONS\".\"RESULT_TIME\"::timestamp)) as last_update, \r\n  \"OBSERVATIONS\".\"RESULT_STRING\" as last_data, \r\n  \"THINGS\".\"PROPERTIES\" as properties, \r\n  \"THINGS\".\"PROPERTIES\" ->> 'hardware_serial' as hardware_serial, \r\n  \"THINGS\".\"DESCRIPTION\" as desc, \r\n  'FROST (SensorThings)' as source\r\nFROM \"OBSERVATIONS\", \"DATASTREAMS\", \"THINGS\"\r\nWHERE \"OBSERVATIONS\".\"ID\" in (\r\n    SELECT MAX(\"ID\") AS last_id_per_datastream\r\n    FROM \"OBSERVATIONS\"\r\n\t  WHERE \"RESULT_TIME\" >= now() - interval '${Interval}'\r\n    GROUP BY \"DATASTREAM_ID\"\r\n  )\r\n  AND \"DATASTREAMS\".\"ID\" = \"OBSERVATIONS\".\"DATASTREAM_ID\" \r\n  AND \"THINGS\".\"ID\" = \"DATASTREAMS\".\"THING_ID\"\r\nORDER BY \"THINGS\".\"NAME\"",
+              "refId": "F",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "\"RESULT_NUMBER\""
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "\"OBSERVATIONS\"",
+              "timeColumn": "\"PHENOMENON_TIME_START\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Sensor Data",
+          "transformations": [
+            {
+              "id": "merge",
+              "options": {}
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {},
+                "indexByName": {
+                  "datastream": 2,
+                  "desc": 7,
+                  "hardware_serial": 6,
+                  "last_data": 5,
+                  "last_update": 3,
+                  "properties": 4,
+                  "sensor": 1,
+                  "source": 0
+                },
+                "renameByName": {}
+              }
+            }
+          ],
+          "type": "table"
+        }
+      ],
+      "title": "Expand for additional Sensor Data",
+      "type": "row"
+    }
+  ],
+  "refresh": "5m",
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "auto": false,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "selected": true,
+          "text": "7d",
+          "value": "7d"
+        },
+        "error": null,
+        "hide": 0,
+        "label": null,
+        "name": "Interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": true,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "queryValue": "",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "FROST (SensorThings)",
+            "Orion (NGSI)"
+          ],
+          "value": [
+            "FROST (SensorThings)",
+            "Orion (NGSI)"
+          ]
+        },
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": true,
+        "name": "Source",
+        "options": [
+          {
+            "selected": true,
+            "text": "FROST (SensorThings)",
+            "value": "FROST (SensorThings)"
+          },
+          {
+            "selected": true,
+            "text": "Orion (NGSI)",
+            "value": "Orion (NGSI)"
+          }
+        ],
+        "query": "FROST (SensorThings), Orion (NGSI)",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "blecounter",
+            "wificounter",
+            "MQTT_Bielefeld_2949186",
+            "Bielefeld_2949186",
+            "optical_sensor_04",
+            "optical-sensor-04",
+            "optical-sensor-05"
+          ],
+          "value": [
+            "blecounter",
+            "wificounter",
+            "MQTT_Bielefeld_2949186",
+            "Bielefeld_2949186",
+            "optical_sensor_04",
+            "optical-sensor-04",
+            "optical-sensor-05"
+          ]
+        },
+        "datasource": "PostGIS",
+        "definition": "SELECT \"THINGS\".\"NAME\"  as sensor FROM \"THINGS\"",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": true,
+        "name": "Sensors",
+        "options": [],
+        "query": "SELECT \"THINGS\".\"NAME\"  as sensor FROM \"THINGS\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "urn:ngsi-v2:EnergyObserved:Germany-EnergyObserved"
+          ],
+          "value": [
+            "urn:ngsi-v2:EnergyObserved:Germany-EnergyObserved"
+          ]
+        },
+        "datasource": "TimescaleDB",
+        "definition": "SELECT entity_id FROM mtmainservice.etenergyobserved",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": true,
+        "name": "EnergyObserved",
+        "options": [],
+        "query": "SELECT entity_id FROM mtmainservice.etenergyobserved",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "Post-B_TXL",
+          "value": "Post-B_TXL"
+        },
+        "datasource": "TimescaleDB",
+        "definition": "SELECT entity_id FROM mtmainservice.etpost",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": true,
+        "name": "Post",
+        "options": [],
+        "query": "SELECT entity_id FROM mtmainservice.etpost",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "urn:ngsi-ld:WeatherObserved:Germany-WeatherObserved-2949186",
+            "urn:ngsi-ld:WeatherObserved:DWD-Weather-BERLIN-TEGEL"
+          ],
+          "value": [
+            "urn:ngsi-ld:WeatherObserved:Germany-WeatherObserved-2949186",
+            "urn:ngsi-ld:WeatherObserved:DWD-Weather-BERLIN-TEGEL"
+          ]
+        },
+        "datasource": "TimescaleDB",
+        "definition": "SELECT entity_id FROM mtmainservice.etweatherobserved",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": true,
+        "name": "WeatherObserved",
+        "options": [],
+        "query": "SELECT entity_id FROM mtmainservice.etweatherobserved",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "urn:ngsi-ld:WeatherForecast:DWD-Weather-FC1-BERLIN-TEGEL",
+            "urn:ngsi-ld:WeatherForecast:DWD-Weather-FC2-BERLIN-TEGEL"
+          ],
+          "value": [
+            "urn:ngsi-ld:WeatherForecast:DWD-Weather-FC1-BERLIN-TEGEL",
+            "urn:ngsi-ld:WeatherForecast:DWD-Weather-FC2-BERLIN-TEGEL"
+          ]
+        },
+        "datasource": "TimescaleDB",
+        "definition": "SELECT entity_id FROM mtmainservice.etWeatherForecast",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": true,
+        "name": "WeatherForecast",
+        "options": [],
+        "query": "SELECT entity_id FROM mtmainservice.etWeatherForecast",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "urn:ngsi-ld:Germany-AirQualityObserved5f5bbba784e5a2001b480d34",
+            "urn:ngsi-v2:Germany-AirQualityObserved_Review_1101"
+          ],
+          "value": [
+            "urn:ngsi-ld:Germany-AirQualityObserved5f5bbba784e5a2001b480d34",
+            "urn:ngsi-v2:Germany-AirQualityObserved_Review_1101"
+          ]
+        },
+        "datasource": "TimescaleDB",
+        "definition": "SELECT entity_id FROM mtmainservice.etairqualityobserved",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": true,
+        "name": "AirQualityObserved",
+        "options": [],
+        "query": "SELECT entity_id FROM mtmainservice.etairqualityobserved",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "testngsi2"
+          ],
+          "value": [
+            "testngsi2"
+          ]
+        },
+        "datasource": "TimescaleDB",
+        "definition": "SELECT entity_id FROM mtmainservice.etdatasymobserved",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": true,
+        "name": "Datasim",
+        "options": [],
+        "query": "SELECT entity_id FROM mtmainservice.etdatasymobserved",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Sensorübersicht",
+  "uid": "cVLLYK-Mk",
+  "version": 34
+}

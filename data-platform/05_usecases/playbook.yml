@@ -1,0 +1,63 @@
+######################################################
+# Playbook for deplyment and configuration of usecases
+######################################################
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - import_tasks: tasks/01_show_last_tweet.yml
+      tags:
+        - usecase_01
+        - usecases
+        - grafana_dashboard_import
+
+    - import_tasks: tasks/03_webscraper.yml
+      tags:
+        - usecase_03
+        - usecases
+        - python
+        - from_docker_registry
+        - grafana_dashboard_import
+
+    - import_tasks: tasks/05_luftdaten_info.yml
+      tags:
+        - usecase_05
+        - usecases
+        - grafana_dashboard_import
+
+    - import_tasks: tasks/06_sensebox.yml
+      tags:
+        - usecase_06
+        - usecases
+        - grafana_dashboard_import
+
+    - import_tasks: tasks/07_switch_lights.yml
+      tags:
+        - usecase_07
+        - usecases
+
+    - import_tasks: tasks/08_indicate_energy.yml
+      tags:
+        - usecase_08
+        - usecases
+
+    - import_tasks: tasks/09_paxcounter.yml
+      tags:
+        - usecase_09
+        - usecases
+        - flows
+        - hardware
+        - grafana_dashboard_import
+
+    - import_tasks: tasks/10_camera.yml
+      tags:
+        - usecase_10
+        - usecases
+        - flows
+        - hardware
+        - grafana_dashboard_import

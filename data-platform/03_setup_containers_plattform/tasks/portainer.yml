@@ -1,0 +1,28 @@
+---
+- name: Create volume portainer-data
+  docker_volume:
+    name: "portainer-data"
+
+- name: Deploy Portainer
+  docker_container:
+    name: portainer
+    image: portainer/portainer:1.24.2
+    restart_policy: always
+    volumes:
+      - portainer-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    command:
+      - -H unix:///var/run/docker.sock
+#      - --admin-password='test2020'
+      - --no-auth
+    labels:
+      com.docker.compose.project: "platform-management"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+

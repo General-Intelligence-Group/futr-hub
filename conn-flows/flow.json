@@ -1,0 +1,526 @@
+[
+    {
+        "id": "6f48da2d.1a0114",
+        "type": "tab",
+        "label": "IN: Weather Observed to MQTT",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e919f858.6ce278",
+        "type": "tab",
+        "label": "IN: MQTT Weather Observed",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "24b003e1.eae97c",
+        "type": "mqtt-broker",
+        "name": "External Platform MQTT Broker",
+        "broker": "${EXT_MQTT_SERVER}",
+        "port": "${EXT_MQTT_PORT}",
+        "clientid": "EXT_MQTT_CON",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "e49d62d9.d3715",
+        "type": "http request",
+        "z": "6f48da2d.1a0114",
+        "name": "OWM Get",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "eebf7199.18196",
+                "5f4408c5.811368"
+            ]
+        ]
+    },
+    {
+        "id": "3b4cbb61.f73fc4",
+        "type": "inject",
+        "z": "6f48da2d.1a0114",
+        "name": "Trigger APIs",
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "1970b78e.2892e8"
+            ]
+        ]
+    },
+    {
+        "id": "1970b78e.2892e8",
+        "type": "function",
+        "z": "6f48da2d.1a0114",
+        "name": "Setup OWM Request",
+        "func": "msg.url = \"https://api.openweathermap.org/data/2.5/weather?id=\"+env.get(\"SC_OWM_STATION\")+\"&units=metric&appid=\"+env.get(\"SC_OWM_API_KEY\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "e49d62d9.d3715"
+            ]
+        ]
+    },
+    {
+        "id": "eebf7199.18196",
+        "type": "debug",
+        "z": "6f48da2d.1a0114",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 570,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d38b4c48.b657b",
+        "type": "comment",
+        "z": "6f48da2d.1a0114",
+        "name": "Get current weather data from OWM for one Station",
+        "info": "",
+        "x": 250,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "5f4408c5.811368",
+        "type": "function",
+        "z": "6f48da2d.1a0114",
+        "name": "Save OWM Response",
+        "func": "msg.topic = \"WeatherObserved\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 260,
+        "y": 300,
+        "wires": [
+            [
+                "e434e6d2.139368"
+            ]
+        ]
+    },
+    {
+        "id": "e434e6d2.139368",
+        "type": "mqtt out",
+        "z": "6f48da2d.1a0114",
+        "name": "",
+        "topic": "",
+        "qos": "1",
+        "retain": "",
+        "broker": "24b003e1.eae97c",
+        "x": 530,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "6022c92e.8a9e58",
+        "type": "function",
+        "z": "e919f858.6ce278",
+        "name": "Prepare NGSI Create Message",
+        "func": "var observed_at = new Date();\nmsg.payload={\n        \"id\": \"urn:ngsi-ld:WeatherObserved:Germany-WeatherObserved-\" + msg.owm.id,\n    \"type\": \"WeatherObserved\",\n    \"address\": {\n        \"type\": \"PostalAddress\",\n        \"value\": {\n            \"addressCountry\": \"DE\",\n            \"addressLocality\": \"None\"\n        }\n    },\n    \"atmosphericPressure\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.main.pressure\n    },\n    \"dataProvider\": {\n        \"type\": \"Text\",\n        \"value\": \"OWM\"\n    },\n    \"dateObserved\": {\n        \"type\": \"DateTime\",\n        \"value\": observed_at.toISOString()\n    },\n    \"location\": {\n        \"type\": \"geo:json\",\n        \"value\": {\n            \"type\": \"Point\",\n            \"coordinates\": msg.owm.coord\n        }\n    },\n    \"precipitation\": {\n        \"type\": \"Number\",\n        \"value\": \"None\"\n    },\n    \"pressureTendency\": {\n        \"type\": \"Number\",\n        \"value\": \"None\"\n    },\n    \"relativeHumidity\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.main.humidity\n    },\n    \"source\": {\n        \"type\": \"URL\",\n        \"value\": \"https://openweathermap.com\"\n    },\n    \"stationCode\": {\n        \"type\": \"Text\",\n        \"value\": msg.owm.id\n    },\n    \"stationName\": {\n        \"type\": \"Text\",\n        \"value\": msg.owm.name\n    },\n    \"temperature\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.main.temp\n    },\n    \"windDirection\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.wind.deg\n    },\n    \"windSpeed\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.wind.speed\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "b5ee8e79.f6088"
+            ]
+        ]
+    },
+    {
+        "id": "b5ee8e79.f6088",
+        "type": "http request",
+        "z": "e919f858.6ce278",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 270,
+        "y": 600,
+        "wires": [
+            [
+                "cabd43d2.e8fcb",
+                "e7bc19f9.aa46b8"
+            ]
+        ]
+    },
+    {
+        "id": "960a0087.f6503",
+        "type": "function",
+        "z": "e919f858.6ce278",
+        "name": "Setup NGSI Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/entities\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'mainservice';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 200,
+        "y": 480,
+        "wires": [
+            [
+                "6022c92e.8a9e58"
+            ]
+        ]
+    },
+    {
+        "id": "cabd43d2.e8fcb",
+        "type": "debug",
+        "z": "e919f858.6ce278",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 730,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "8ab67bac.7776a8",
+        "type": "function",
+        "z": "e919f858.6ce278",
+        "name": "Setup NGSI PUT Request",
+        "func": "msg.owm = msg.payload;\nmsg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/entities/urn:ngsi-ld:WeatherObserved:Germany-WeatherObserved-\"+msg.owm.id+\"/attrs\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'mainservice';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "d1b94b23.92eda8"
+            ]
+        ]
+    },
+    {
+        "id": "d1b94b23.92eda8",
+        "type": "function",
+        "z": "e919f858.6ce278",
+        "name": "Prepare NGSI Update Message",
+        "func": "var observed_at = new Date();\nmsg.payload={\n    \"atmosphericPressure\": {\n        \"value\": msg.owm.main.pressure\n    },\n    \"relativeHumidity\": {\n        \"value\": msg.owm.main.humidity\n    },\n    \"temperature\": {\n        \"value\": msg.owm.main.temp\n    },\n    \"windDirection\": {\n        \"value\": msg.owm.wind.deg\n    },\n    \"windSpeed\": {\n        \"value\": msg.owm.wind.speed\n    },\n    \"dateObserved\": {\n        \"value\": msg.owm.dt\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 270,
+        "y": 240,
+        "wires": [
+            [
+                "12dafe94.98ec51"
+            ]
+        ]
+    },
+    {
+        "id": "12dafe94.98ec51",
+        "type": "http request",
+        "z": "e919f858.6ce278",
+        "name": "http PUT Request",
+        "method": "PUT",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 270,
+        "y": 300,
+        "wires": [
+            [
+                "8e7226d9.cfb4c8",
+                "950733d7.5019b"
+            ]
+        ]
+    },
+    {
+        "id": "f007ba66.d8d508",
+        "type": "comment",
+        "z": "e919f858.6ce278",
+        "name": "Create Station",
+        "info": "",
+        "x": 150,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8e7226d9.cfb4c8",
+        "type": "switch",
+        "z": "e919f858.6ce278",
+        "name": "Switch on StatusCode other than 204 to Create",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "204",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "204",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 400,
+        "y": 360,
+        "wires": [
+            [],
+            [
+                "960a0087.f6503"
+            ]
+        ]
+    },
+    {
+        "id": "950733d7.5019b",
+        "type": "debug",
+        "z": "e919f858.6ce278",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 730,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "e7bc19f9.aa46b8",
+        "type": "function",
+        "z": "e919f858.6ce278",
+        "name": "Setup NGSI Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/subscriptions\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'mainservice';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 200,
+        "y": 740,
+        "wires": [
+            [
+                "7cb2b67b.760708",
+                "939af1e6.59c66"
+            ]
+        ]
+    },
+    {
+        "id": "a677d3a9.f309f",
+        "type": "comment",
+        "z": "e919f858.6ce278",
+        "name": "Create Subscriptions",
+        "info": "",
+        "x": 170,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "7cb2b67b.760708",
+        "type": "function",
+        "z": "e919f858.6ce278",
+        "name": "Prepare NGSI Subscription Create Message NR",
+        "func": "var observed_at = new Date();\nmsg.payload={\n  \"description\": \"Store Bielefeld Weather Data\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"idPattern\":\".*\",\n        \"type\": \"WeatherObserved\"\n      }\n    ],\n    \"condition\": {\n      \"attrs\": [\n        \"dateObserved\"\n      ]\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": env.get(\"SC_NOTIFY_SERVER\")+\"/notify\"\n    },\n    \"attrs\": [\n      \"temperature\",\n      \"relativeHumidity\",\n      \"atmosphericPressure\",\n      \"windDirection\",\n      \"windSpeed\",\n      \"dateObserved\"\n    ]\n  },\n  \"throttling\": 40\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 320,
+        "y": 800,
+        "wires": [
+            [
+                "307f69d6.444386"
+            ]
+        ]
+    },
+    {
+        "id": "307f69d6.444386",
+        "type": "http request",
+        "z": "e919f858.6ce278",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 270,
+        "y": 860,
+        "wires": [
+            [
+                "5113183c.6cb0d8"
+            ]
+        ]
+    },
+    {
+        "id": "5113183c.6cb0d8",
+        "type": "debug",
+        "z": "e919f858.6ce278",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 730,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "939af1e6.59c66",
+        "type": "function",
+        "z": "e919f858.6ce278",
+        "name": "Prepare NGSI Subscription Create Message QL",
+        "func": "var observed_at = new Date();\nmsg.payload={\n  \"description\": \"Store Bielefeld Weather Data\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"idPattern\":\".*\",\n        \"type\": \"WeatherObserved\"\n      }\n    ],\n    \"condition\": {\n      \"attrs\": [\n        \"dateObserved\"\n      ]\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": env.get(\"DM_QL_SERVER\")+\"/v2/notify\"\n    },\n    \"attrs\": [\n      \"temperature\",\n      \"relativeHumidity\",\n      \"atmosphericPressure\",\n      \"windDirection\",\n      \"windSpeed\",\n      \"dateObserved\"\n    ]\n  },\n  \"throttling\": 40\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 320,
+        "y": 940,
+        "wires": [
+            [
+                "e66a2849.e0d7b8"
+            ]
+        ]
+    },
+    {
+        "id": "e66a2849.e0d7b8",
+        "type": "http request",
+        "z": "e919f858.6ce278",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 270,
+        "y": 1000,
+        "wires": [
+            [
+                "d0d52d4a.7ac71"
+            ]
+        ]
+    },
+    {
+        "id": "d0d52d4a.7ac71",
+        "type": "debug",
+        "z": "e919f858.6ce278",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 730,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "b8cb4f1d.2fd79",
+        "type": "mqtt in",
+        "z": "e919f858.6ce278",
+        "name": "",
+        "topic": "WeatherObserved",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "24b003e1.eae97c",
+        "x": 210,
+        "y": 60,
+        "wires": [
+            [
+                "ef24bc9f.bc12c"
+            ]
+        ]
+    },
+    {
+        "id": "fcfd3d29.c9d97",
+        "type": "debug",
+        "z": "e919f858.6ce278",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 530,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ef24bc9f.bc12c",
+        "type": "json",
+        "z": "e919f858.6ce278",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "fcfd3d29.c9d97",
+                "8ab67bac.7776a8"
+            ]
+        ]
+    }
+]

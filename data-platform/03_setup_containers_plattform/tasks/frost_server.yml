@@ -1,0 +1,71 @@
+---
+- name: Create volume postgis_volume
+  docker_volume:
+    name: "postgis_volume"
+
+- name: Deploy postgis for frost
+  docker_container:
+    name: frost-postgis-db
+    image: postgis/postgis:11-2.5-alpine
+    restart_policy: always
+    networks:
+      - name: "context-management"
+      - name: "data-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "context-management"
+    state: started
+    env:
+      POSTGRES_DB: "{{ FROST_POSTGRES_DB }}"
+      POSTGRES_USER: "{{ FROST_POSTGRES_USER }}"
+      POSTGRES_PASSWORD: "{{ FROST_DB_PASSWORD }}"
+    ports:
+      - 5432:5432
+    sysctls:
+      net.core.somaxconn: 65535
+    volumes:
+      - postgis_volume:/var/lib/postgresql/data
+    labels:
+      com.docker.compose.project: "frost-server"
+
+- name: Deploy Frost
+  docker_container:
+    name: frost
+    image: fraunhoferiosb/frost-server:1.13.0
+    restart_policy: always
+    networks:
+      - name: "public"
+      - name: "context-management"
+      - name: "data-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    env:
+      serviceRootUrl: "http://localhost:8080/FROST-Server"
+      enableActuation: "true"
+      http_cors_enable: "true"
+      http_cors_allowed.origins: "*"
+      persistence_db_driver: "org.postgresql.Driver"
+      persistence_db_url: "jdbc:postgresql://frost-postgis-db:5432/sensorthings"
+      persistence_db_username: "{{ FROST_POSTGRES_USER }}"
+      persistence_db_password: "{{ FROST_DB_PASSWORD }}"
+      persistence_autoUpdateDatabase: "true"
+      plugins.plugins: "openApi"
+      plugins.openApi.enable: "true"
+    ports:
+      - 8080:8080
+      - 1883:1883
+      - 9876:9876
+    sysctls:
+      net.core.somaxconn: 65535
+    state: started
+    labels:
+      com.docker.compose.project: "frost-server"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      traefik.http.routers.frost.rule: "Host(`frost.{{ DOMAIN }}`)"
+      traefik.http.routers.frost.entrypoints: "websecure"
+      traefik.http.routers.frost.service: "frost"
+      traefik.http.routers.frost.tls: "true"
+      traefik.http.routers.frost.tls.certresolver: "le"
+      traefik.http.services.frost.loadbalancer.server.port: "1026"

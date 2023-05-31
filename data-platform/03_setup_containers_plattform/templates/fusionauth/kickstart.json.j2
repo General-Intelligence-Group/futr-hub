@@ -1,0 +1,205 @@
+{
+  "variables": {
+    "scUser": "#{UUID()}",
+    "scKeyRSA": "#{UUID()}",
+    "forgotPasswordEmailTemplateId": "#{UUID()}",
+    "setPasswordEmailTemplateId": "#{UUID()}",
+    "verificationEmailTemplateId": "#{UUID()}"
+  },
+  "apiKeys": [
+    {
+      "key": "{{ IDM_API_KEY }}"
+    }
+  ],
+  "requests": [
+    {
+      "method": "POST",
+      "url": "/api/key/generate/#{scKeyRSA}",
+      "body": {
+        "key": {
+          "algorithm": "RS256",
+          "name": "SC SHA-256 with RSA",
+          "length": 2048
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/api/email/template/#{forgotPasswordEmailTemplateId}",
+      "body": {
+        "emailTemplate": {
+          "defaultFromName": "SC Service - No Reply",
+          "defaultSubject": "Passwort zurücksetzen",
+          "defaultHtmlTemplate": "@{emails/sc_change_password.html}",
+          "defaultTextTemplate": "@{emails/sc_change_password.txt}",
+          "fromEmail": "{{ SC_EMAIL_FROM }}",
+          "name": "SC Reset Password"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/api/email/template/#{setPasswordEmailTemplateId}",
+      "body": {
+        "emailTemplate": {
+          "defaultFromName": "SC Service - No Reply",
+          "defaultSubject": "Passwort einrichten",
+          "defaultHtmlTemplate": "@{emails/sc_setup_password.html}",
+          "defaultTextTemplate": "@{emails/sc_setup_password.txt}",
+          "fromEmail": "{{ SC_EMAIL_FROM }}",
+          "name": "SC Setup Password"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/api/email/template/#{verificationEmailTemplateId}",
+      "body": {
+        "emailTemplate": {
+          "defaultFromName": "SC Service - No Reply",
+          "defaultSubject": "Email bestätigen",
+          "defaultHtmlTemplate": "@{emails/sc_verify_email.html}",
+          "defaultTextTemplate": "@{emails/sc_verify_email.txt}",
+          "fromEmail": "{{ SC_EMAIL_FROM }}",
+          "name": "SC Verify Email"
+        }
+      }
+    },
+    {
+      "method": "PATCH",
+      "url": "/api/tenant/#{FUSIONAUTH_TENANT_ID}",
+      "body": {
+        "tenant": {
+          "name": "SC Client",
+          "themeId": "{{ FUSIONAUTH_DEFAULT_THEME_ID }}",
+          "issuer": "{{ OIDC_ISSUER_PROD }}",
+          "jwtConfiguration": {
+            "accessTokenKeyId": "#{scKeyRSA}",
+            "idTokenKeyId": "#{scKeyRSA}",
+            "refreshTokenTimeToLiveInMinutes": 43200,
+            "timeToLiveInSeconds": 3600
+          },
+          "emailConfiguration": {
+            "defaultFromEmail": "{{ SC_EMAIL_FROM }}",
+            "defaultFromName": "{{ SC_EMAIL_FROM }}",
+            "host": "{{ SC_EMAIL_SERVER }}",
+            "password": "{{ SC_EMAIL_PASSWORD }}",
+            "port": 587,
+            "security": "TLS",
+            "username": "{{ SC_EMAIL_USER }}",
+            "forgotPasswordEmailTemplateId": "#{forgotPasswordEmailTemplateId}",
+            "setPasswordEmailTemplateId": "#{setPasswordEmailTemplateId}",
+            "verificationEmailTemplateId": "#{verificationEmailTemplateId}",
+            "verifyEmail": true,
+            "verifyEmailWhenChanged": true
+          },
+          "externalIdentifierConfiguration": {
+            "authorizationGrantIdTimeToLiveInSeconds": 30,
+            "changePasswordIdGenerator": {
+              "length": 32,
+              "type": "randomBytes"
+            },
+            "changePasswordIdTimeToLiveInSeconds": 86400,
+            "deviceCodeTimeToLiveInSeconds": 1800,
+            "deviceUserCodeIdGenerator": {
+              "length": 6,
+              "type": "randomAlphaNumeric"
+            },
+            "emailVerificationIdGenerator": {
+              "length": 32,
+              "type": "randomBytes"
+            },
+            "emailVerificationIdTimeToLiveInSeconds": 86400,
+            "externalAuthenticationIdTimeToLiveInSeconds": 300,
+            "oneTimePasswordTimeToLiveInSeconds": 60,
+            "passwordlessLoginGenerator": {
+              "length": 32,
+              "type": "randomBytes"
+            },
+            "passwordlessLoginTimeToLiveInSeconds": 180,
+            "registrationVerificationIdGenerator": {
+              "length": 32,
+              "type": "randomBytes"
+            },
+            "registrationVerificationIdTimeToLiveInSeconds": 86400,
+            "setupPasswordIdGenerator": {
+              "length": 32,
+              "type": "randomBytes"
+            },
+            "setupPasswordIdTimeToLiveInSeconds": 86400,
+            "twoFactorIdTimeToLiveInSeconds": 300,
+            "twoFactorTrustIdTimeToLiveInSeconds": 2592000
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/api/user/registration/#{scUser}",
+      "body": {
+        "user": {
+          "email": "{{ SC_ADMIN_USER }}",
+          "password": "{{ SC_ADMIN_PASSWORD }}",
+          "data": {
+            "Company": "Smart City AG"
+          }
+        },
+        "skipVerification": true,
+        "registration": {
+          "applicationId": "#{FUSIONAUTH_APPLICATION_ID}",
+          "roles": [
+            "admin"
+          ]
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/api/application/{{  SC_CLIENT_ID }}",
+      "body": {
+        "application": {
+          "name": "SC Basis",
+          "roles": [
+            "user",
+            "admin",
+            "API_MANAGER",
+            "Admin"
+          ],
+          "oauthConfiguration": {
+            "authorizedRedirectURLs": [
+              "https://oauth.{{ DOMAIN }}/_oauth",
+              "https://grafana.{{ DOMAIN }}/login/generic_oauth",
+              "https://api.{{ DOMAIN }}/manage/",
+              "https://api.{{ DOMAIN }}",
+              "https://api.{{ DOMAIN }}/user/login"
+            ],
+            "enabledGrants": [
+              "authorization_code",
+              "implicit",
+              "password"
+            ],
+            "clientSecret": "{{ SC_CLIENT_SECRET }}",
+            "clientId": "{{ SC_CLIENT_ID }}",
+            "generateRefreshToken": true,
+            "logoutBehavior": "AllApplications",
+            "requireClientAuthentication": true
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/api/user/registration/#{scUser}",
+      "body": {
+        "registration": {
+          "applicationId": "{{  SC_CLIENT_ID }}",
+          "roles": [
+            "admin",
+            "API_MANAGER",
+            "Admin"
+          ]
+        }
+      }
+    }
+  ]
+}

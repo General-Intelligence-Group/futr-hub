@@ -1,0 +1,39 @@
+---
+- name: Ensure remote directory exists
+  file:
+    path: /opt/scp/ansible/quantumleap
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Copy Mongo init Script
+  copy:
+    src: quantumleap/ql_config.yml
+    dest: /opt/scp/ansible/quantumleap/ql_config.yml
+    mode: '0666'
+
+- name: Deploy QuantumLeap
+  docker_container:
+    name: quantumleap
+    image: smartsdk/quantumleap:0.8
+    restart_policy: always
+    env:
+      QL_DB_PASS: "{{ TIMESCALE_PASSWORD }}"
+      POSTGRES_HOST: "{{ TIMESCALE_POSTGRES_HOST }}"
+      POSTGRES_DB_USER: "{{ TIMESCALE_POSTGRES_USER }}"
+      POSTGRES_DB_NAME: "{{ TIMESCALE_POSTGRES_DB }}"
+      POSTGRES_DB_PASS: "{{ TIMESCALE_PASSWORD }}"
+      QL_CONFIG: "/ql_config.yml"
+      QL_DEFAULT_DB: "timescale"
+      # LOGLEVEL: "debug"
+    networks:
+      - name: "data-management"
+      - name: "context-management"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "data-management"
+    state: started
+    volumes:
+      - /opt/scp/ansible/quantumleap/ql_config.yml:/ql_config.yml
+    labels:
+      com.docker.compose.project: "data-management"

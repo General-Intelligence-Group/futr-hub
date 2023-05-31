@@ -1,0 +1,99 @@
+---
+- name: Deploy Keycloak Gatekeeper for Portainer
+  docker_container:
+    name: portainer-kc
+    image: keycloak/keycloak-gatekeeper:7.0.0
+    restart_policy: always
+    entrypoint:
+      - /opt/keycloak-gatekeeper
+      - --discovery-url=https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}
+      - --client-id={{ IDM_CLIENT }}
+      - --client-secret={{ IDM_CLIENT_SECRET }}
+      - --listen=0.0.0.0:3000
+      - --redirection-url=https://portainer.{{ DOMAIN }}
+      - --enable-refresh-tokens=true
+      - --upstream-url=http://portainer:9000
+      - --encryption-key={{ AUTH_ENCRYPTION_KEY }}
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "public"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Dashboard Traefik
+      traefik.http.routers.portainer-kc.rule: "Host(`portainer.{{ DOMAIN }}`)"
+      traefik.http.routers.portainer-kc.entrypoints: "websecure"
+      traefik.http.routers.portainer-kc.service: "portainer-kc"
+      traefik.http.routers.portainer-kc.tls: "true"
+      traefik.http.routers.portainer-kc.tls.certresolver: "le"
+      traefik.http.services.portainer-kc.loadbalancer.server.port: "3000"
+
+- name: Deploy Keycloak Gatekeeper for nr-ext
+  docker_container:
+    name: nr-ext-kc
+    image: keycloak/keycloak-gatekeeper:7.0.0
+    restart_policy: always
+    entrypoint:
+      - /opt/keycloak-gatekeeper
+      - --discovery-url=https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}
+      - --client-id={{ IDM_CLIENT }}
+      - --client-secret={{ IDM_CLIENT_SECRET }}
+      - --listen=0.0.0.0:3000
+      - --redirection-url=https://nr-admin-ext.{{ DOMAIN }}
+      - --enable-refresh-tokens=true
+      - --upstream-url=http://nr-ext:1880
+      - --encryption-key={{ AUTH_ENCRYPTION_KEY }}
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "public"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Nodered Admin
+      traefik.http.routers.nr-ext-kc.rule: "Host(`nr-admin-ext.{{ DOMAIN }}`)"
+      traefik.http.routers.nr-ext-kc.entrypoints: "websecure"
+      traefik.http.routers.nr-ext-kc.service: "nr-ext-kc"
+      traefik.http.routers.nr-ext-kc.tls: "true"
+      traefik.http.routers.nr-ext-kc.tls.certresolver: "le"
+      traefik.http.services.nr-ext-kc.loadbalancer.server.port: "3000"
+
+# - name: Deploy Keycloak Gatekeeper for nr-con
+#   docker_container:
+#     name: nr-con-kc
+#     image: keycloak/keycloak-gatekeeper:7.0.0
+#     restart_policy: always
+#     entrypoint:
+#       - /opt/keycloak-gatekeeper
+#       - --discovery-url=https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}
+#       - --client-id={{ IDM_CLIENT }}
+#       - --client-secret={{ IDM_CLIENT_SECRET }}
+#       - --listen=0.0.0.0:3000
+#       - --redirection-url=https://nr-admin-con.{{ DOMAIN }}
+#       - --enable-refresh-tokens=true
+#       - --upstream-url=http://nr-con:1880
+#       - --encryption-key={{ AUTH_ENCRYPTION_KEY }}
+#     networks:
+#       - name: "public"
+#     networks_cli_compatible: yes
+#     purge_networks: yes
+#     network_mode: "public"
+#     state: started
+#     labels:
+#       com.docker.compose.project: "public"
+#       traefik.enable: "true"
+#       traefik.docker.network: "public"
+#       # Nodered Admin
+#       traefik.http.routers.nr-con-kc.rule: "Host(`nr-admin-con.{{ DOMAIN }}`)"
+#       traefik.http.routers.nr-con-kc.entrypoints: "websecure"
+#       traefik.http.routers.nr-con-kc.service: "nr-con-kc"
+#       traefik.http.routers.nr-con-kc.tls: "true"
+#       traefik.http.routers.nr-con-kc.tls.certresolver: "le"
+#       traefik.http.services.nr-con-kc.loadbalancer.server.port: "3000"

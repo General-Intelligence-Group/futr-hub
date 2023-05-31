@@ -1,0 +1,5320 @@
+[
+   {
+      "id": "fis_webatlas_sw",
+      "name": "WebAtlas Berlin (s/w)",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_webatlasberlin",
+      "typ": "WMS",
+      "format": "image/png",
+      "layers": "1",
+      "version": "1.1.1",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "cache": true,
+      "featureCount": "1",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_webatlas_grau.png",
+      "datasets": [
+         {
+            "md_id": "07ae7283-fe49-31f3-96c0-651e9acfbca6",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/8836430d-6124-398e-9111-4f428fcdda6e"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "501",
+      "name": "Berlin DOP20",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2019_rgb",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "cache": true,
+      "featureCount": "1",
+      "epsg": "EPSG:25833",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "21797ced-f0c0-311a-975e-eb364ee76953",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/2676bed6-175f-3f17-a3c3-51057db1f8ba"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild1928:1",
+      "name": "Luftbildplan 1928(Luftbilder 1928, Maßstab 1:4 000)",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild1928",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "bed1a566-7002-332a-bf87-f778b4f9fd5d",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/2ca8d68f-afc1-3111-82c2-a376d4141620"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild1953:1",
+      "name": "Luftbilder 1953(Luftbilder 1953, Maßstab 1:22 000)",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild1953",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "5a600fb6-cb83-38d2-8a46-baf44e8b4fd2",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/20021817-2ce2-367c-b214-e00b274b9894"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "503",
+      "name": "ATKIS",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dgm1",
+      "typ": "WMS",
+      "layers": "2,1",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "cache": true,
+      "featureCount": "1",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_dgm1.png",
+      "datasets": [
+         {
+            "md_id": "b0485f06-a39e-3cc2-b5e0-be7fcd425dab",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/a98210d0-8e08-3112-89f9-44d945ba69b3"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "vermess1",
+      "name": "Vermesserplan 2022",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "bes_vermesserplanj_lin",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "Layer": "Layer"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": false,
+      "cache": false,
+      "featureCount": "1",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "vermess2",
+      "name": "Vermesserplan 2022 Beschriftfung",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "bes_vermesserplanj_pkt",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": false,
+      "cache": false,
+      "featureCount": "1",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "001",
+      "name": "Berlin Tegel Projektgrenze",
+      "url": "GEOSERVER_URL/ds_open_data/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_projektgrenze_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": "ignore",
+      "legend": true,
+      "gfiTheme": "default",
+      "datasets": [
+         {
+            "md_id": "7e7a29e0-d8c9-4c14-8446-c8d4693fd53c",
+            "md_name": "Projektgrenze",
+            "csw_url": "GEOSERVER_URL/csw",
+            "show_doc_url": "GEOSERVER_URL/csw?service=CSW&version=2.0.2&request=GetRecordByID&typeNames=gmd:MD_Metadata&resultType=results&elementSetName=full&outputSchema=http://www.isotc211.org/2005/gmd&id="
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "002",
+      "name": "Berlin Tegel Teilräume",
+      "url": "GEOSERVER_URL/ds_open_data/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_teilraeume_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": "showAll",
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "003",
+      "name": "Berlin Tegel Baufelder",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "baufeld_id_": "Baufeld Nr.",
+         "baufeld_nutzung": "Baufeld Nutzung",
+         "baufeld_qm_": "Größe in m²",
+         "teilraum": "Teilraum",
+         "eigentümer_": "Eigentümer",
+         "straßennamen": "Straße",
+         "bauphase": "Bauphase",
+         "b_plan_": "B-Plan Nr.",
+         "nutzungsart_gemäß_bplan": "Nutzungsart gemäß B-Plan",
+         "nutzungsart_vermarktung": "Nutzungsart Vermarktung"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "004",
+      "name": "Musterparzellierung",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_musterparzellierung_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "parzellierung_id": "Parzelle Nr.",
+         "parzellierung_qm": "Größe in m²",
+         "baufeld": "Baufeld Nr.",
+         "b_plan": "B-Plan Nr.",
+         "teilraum": "Teilraum"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "005",
+      "name": "Berlin Tegel B-Plan Bereiche",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_bplanbereiche_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "bplan_nr": "B-Plan Nr.",
+         "fläche_qm_grafik_round": "Größe in m²",
+         "info": "Weitere Infornationen"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "006",
+      "name": "Berlin Tegel Flurstuecke",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_flurstuecke_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "flst_id": "Flurstück ID",
+         "gemarkung": "Gemarkung",
+         "flur": "Flur",
+         "flurstück": "Flurstück Nr.",
+         "fläche_qm_gb": "Größe in m² lt. Grundbuch",
+         "nutzung": "Nutzung"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "007",
+      "name": "Berlin Tegel Gebaeude_Planung",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_gebaeude_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "008",
+      "name": "Berlin Tegel Gebaeude Bestand",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "format": "image/png",
+      "layers": "bes_gebaeude_fla",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "id_geb": "Bezeichnung",
+         "kategorie": "Status"
+      },     
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "009",
+      "name": "Berlin Tegel Gebaeudeanbau Bestand",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "bes_gebaeudeanbau_lin",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "id_geb": "Bezeichnung",
+         "kategorie": "Status"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "010",
+      "name": "Berlin Tegel Baufelder Energieverbrauch",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "warmeenergieverbrauch",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "baufeld_id_": "Baufeld Nr.",
+         "baufeld_nutzung": "Baufeld Nutzung",
+         "baufeld_qm_": "Größe in m²",
+         "eek_kwh_m2_konventionell": "KWh/m² pro Jahr konventionell",
+         "Eek_kwh_m2_lowex": "KWh/m² pro Jahr LowEx",
+         "Eek_mwh_konventionell": "MWh pro Jahr je Baufeld konventionell",
+         "Eek_mwh_lowex": "MWh pro Jahr je Baufeld LowEx",
+         "Co2_tonnen_pro_jahr": "CO²-Ausstoß pro Jahr in t je Baufeld"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "011",
+      "name": "Berlin Tegel Parzellierung W K Versorgung",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "waerme_kalte",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiTheme": "default",
+      "gfiAttributes": {
+         "parzellierung_id": "Parzelle Nr.",
+         "baufeld_id": "Baufeld Nr.",
+         "jahr_erschliessung": "Jahr der Einschließung",
+         "jahr_energiebezug_jahr_installation": "Jahr Energiebezug und Installation",
+         "summe_plan_aw_warm_gm": "Anschlussleistung Wärme in kW",
+         "summe_planmenge_warm_gm": "Jahresverbrauch Wärme in MWh/a",
+         "summe_plan_aw_kalt_gm": "Anschlussleistung Kälte in kW",
+         "summe_planmenge_kalt_gm": "Jahresverbrauch Kälte in MWh/a"
+      },
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "012",
+      "name": "Flaechenzwischennutzung Events",
+      "url": "GEOSERVER_URL/ds_nda/ows",
+      "typ": "WFS",
+      "featureType": "evt_belegung_fla",
+      "featureNS": "http://www.qgis.org/gml",
+      "version": "1.1.0",
+      "gfiTheme": "default",
+      "legend": "GEOPORTAL_URL/resources/img/event_layer_legend.png",
+      "gfiAttributes": {
+         "name": "Veranstaltung",
+         "beginn": {
+            "name": "Fläche Beginn",
+            "condition": "contains",
+            "type": "date",
+            "format": "DD.MM.YYYY"
+         },
+         "ende": {
+            "name": "Fläche Ende",
+            "condition": "contains",
+            "type": "date",
+            "format": "DD.MM.YYYY"
+         },
+         "status": "Status",
+         "pnummer": "Projektnummer",
+         "bemerkung": "Bemerkungen",
+         "flaeche": "Fläche in m²",
+         "umring": "Umring in m"
+      },
+      "mouseHoverField": "name",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "gwm",
+      "name": "Grundwassermessstellen",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_gwm_pkt",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiTheme": "default",
+      "gfiAttributes": {
+         "name": "Bezeichnung",
+         "PoC_Logger": "Messstelle für automatisierte Pegelstandsmessung"
+      },
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "baumbestand",
+      "name": "baumbestand",
+      "url": "GEOSERVER_URL/ds_nda/ows",
+      "typ": "WFS",
+      "featureType": "bes_baeume_pkt",
+      "version": "1.1.0",
+      "legend": "GEOPORTAL_URL/resources/img/baum_legend.png",
+      "gfiAttributes": {
+         "beschreibung": "Beschreibung",
+         "flurstueck.flurstueckskennzeichen": "Flurstück Nr.",
+         "code": "CAFM Code",
+         "deeplink": "Weitere Informationen"
+      },
+      "gfiTheme": "default",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "biotope",
+      "name": "Biotope",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_biotope_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "layer": "Kategorie"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "sst",
+      "name": "Sprengstandorte",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "kmr_sprengstellen_pkt",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiTheme": "default",
+      "gfiAttributes": "showAll",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "spr",
+      "name": "Sprengradien",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "kmr_sprengstellen_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiTheme": "default",
+      "gfiAttributes": "showAll",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "Strassennetz",
+      "name": "Übergeordnetes Straßennetz",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/verkehr_strnetz",
+      "typ": "WMS",
+      "layers": "1",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_verkehr_strnetz.png",
+      "cache": true,
+      "featureCount": "1",
+      "datasets": [
+         {
+            "md_id": "ad40f76d-64e7-3873-acea-a6fbfb326195",
+            "md_name": "translate#common:berlinLayers.step",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "detailnetz",
+      "name": "Straßen Detailnetz",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_vms_detailnetz_wms_spatial",
+      "typ": "WMS",
+      "layers": "0,1,2",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "cache": true,
+      "featureCount": "1",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_detailnetz.png",
+      "datasets": [
+         {
+            "md_id": "cf374cd3-d0b8-3e6a-92c3-75e18dd595a1",
+            "md_name": "Detailnetz",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "radverkehrsnetz",
+      "name": "Radverkehrsnetz",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_radverkehrsnetz",
+      "typ": "WMS",
+      "layers": "0,1,2",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "cache": true,
+      "featureCount": "1",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_radverkehrsnetz.png",
+      "datasets": [
+         {
+            "md_id": "31d9ed95-95ae-30ea-8364-41c3706f153d",
+            "md_name": "Radverkehrsnetz",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "Verkehrslage",
+      "name": "Verkehrslage",
+      "url": "https://api.viz.berlin.de/geoserver/mdh/wms",
+      "typ": "WMS",
+      "layers": "inrixosm",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "1500",
+      "maxScale": "3000000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "featureCount": "1",
+      "epsg": "EPSG:25833",
+      "legend": "https://api.viz.berlin.de/geoserver/www/legende_los.png",
+      "datasets": [
+         {
+            "md_id": "verkehrslage",
+            "md_name": "Verkehrslage",
+            "csw_url": "https://api.viz.berlin.de/csw",
+            "show_doc_url": "https://api.viz.berlin.de/csw?service=CSW&version=2.0.2&request=GetRecordById&typeNames=csw:Record&elementsetname=full&id="
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "505",
+      "name": "Biotop- und Artenschutz",
+      "crs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/laprobiot",
+      "typ": "WMS",
+      "layers": "laprobiot",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_lapro_ba.png",
+      "datasets": [
+         {
+            "md_id": "ba7840ef-1719-322f-a281-3860f5e4d2a0",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/333cbe96-bb92-3eb6-8c2e-0500ef964f09"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "506",
+      "name": "Bohrpunkte",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/bohrpunkte",
+      "typ": "WMS",
+      "layers": "5,6,7,8,9",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/geologie/bohrpunkte/leg_bohrpunkte.png",
+      "cache": true,
+      "featureCount": "1",
+      "datasets": [
+         {
+            "md_id": "42126f28-35a4-3aa6-8fd3-f0a42efe727b",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/94800fd2-5e0d-315e-806a-de032a97bd6b"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "507",
+      "name": "Baumbestand",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_wfs_baumbestand",
+      "typ": "WMS",
+      "layers": "1,0,4,3",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "cache": true,
+      "featureCount": "1",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_baumbestand.png",
+      "datasets": [
+         {
+            "md_id": "52e6ddaa-43c4-33b7-9254-a657e5eeae39",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/101a1c6e-4991-3df3-afbd-078495cb2f37"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "AlkisSW",
+      "name": "ALKIS s/w",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_alkis_sw",
+      "typ": "WMS",
+      "layers": "30,4,19,21,0,24,13,9,8,18,25,20,17,12,34,28,6,22,29,26,47,46,44,42",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_alkis_sw.png",
+      "cache": true,
+      "featureCount": "1",
+      "datasets": [
+         {
+            "md_id": "270c2fae-feb3-3d1a-bb07-4421f79bc3a2",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "s_wfs_alkis",
+      "name": "ALKIS Berlin Flurstücke",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_alkis",
+      "typ": "WFS",
+      "epsg": "EPSG:25833",
+      "featureType": "fis:s_wfs_alkis",
+      "version": "1.1.0",
+      "featureNS": "http://www.berlin.de/broker",
+      "outputFormat": "XML",
+      "format": "image/png",
+      "wfsFilter": "resources/filter/wfs_alkis.xml",
+      "legend": "GEOPORTAL_URL/resources/img/flurstuecke_legend.png",
+      "gfiAttributes": {
+         "BEZEICH": "AAA-Beschreibung",
+         "FSKO": "Flurstückskennzeichen",
+         "ZAE": "Flurstückskennzeichen (Zähler)",
+         "NEN": "Flurstückskennzeichen (Nenner)",
+         "GMK": "Gemarkungsschlüssel",
+         "NAMGMK": "Gemarkungsname",
+         "FLN": "Flurnummer",
+         "GDZ": "Gemeindekennzeichen",
+         "NAMGEM": "Gemeindename",
+         "ZDE": "Zeitpunkt der Entstehung",
+         "DST": "Zuständige Stelle",
+         "BEG": {
+            "name": "Laufzeitintervall (Beginn)",
+            "condition": "contains",
+            "type": "date",
+            "format": "DD.MM.YYYY"
+         },
+         "STATUSDAT": "Zeitpunkt des Bearbeitungsstatus"
+      },
+      "infoFormat": "application/json",
+      "datasets": [
+         {
+            "md_id": "22e633ff-a3cc-3ac7-b599-91588f77c5c3",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/cb2897d1-4258-3312-a3db-7ceb2ad86be7"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "wsg",
+      "name": "Wasserschutzgebiete",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wsg",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_wsg.png",
+      "datasets": [
+         {
+            "md_id": "3100e6cf-57fb-3005-bc28-195765940143",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/1c058a53-844f-313a-890b-d26913f4a67a"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "s_wsg",
+      "name": "Wasserschutzgebiete_WFS",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wsg",
+      "typ": "WFS",
+      "featureType": "fis:s_wsg",
+      "version": "1.1.0",
+      "featureNS": "http://www.berlin.de/broker",
+      "outputFormat": "XML",
+      "format": "image/png",
+      "legend": false,
+      "gfiAttributes": {
+         "Wasserwerk": "Wasserwerk",
+         "Gebietsnr": "Gebietsnr.",
+         "Zone": "Zone",
+         "Verordnung": "Verordnung",
+         "Datum": "Datum",
+         "Gvbl": "GVBl",
+         "Veror_link1": "Verordnung Link"
+      },
+      "datasets": [
+         {
+            "md_id": "577270ae-d249-3244-bab7-d265797e941b",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/1c058a53-844f-313a-890b-d26913f4a67a",
+            "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "wmsk_aufgrabeverbote:1",
+      "name": "Aufgrabeverbote",
+      "name_lang": "Aufgrabeverbote(Aufgrabeverbote)",
+      "crs": "http://www.opengis.net/def/crs/EPSG/0/25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_aufgrabeverbote",
+      "typ": "WMS",
+      "layers": "1",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_aufgrabeverbote.png",
+      "datasets": [
+         {
+            "md_id": "a697f424-c189-32ea-8054-5e1857fe01cf",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/c82a3e72-1c2b-3021-aa27-c9fa56c1c78c"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "denkmal",
+      "name": "Denkmalkarte Berlin",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/denkmal",
+      "typ": "WMS",
+      "layers": "denkmal",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/denkmal/leg_denkmal.png",
+      "datasets": [
+         {
+            "md_id": "1892d073-2635-351c-bcef-b91ff82fea9c",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/bda48992-adb7-36c1-80e3-3b7234092079"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "live-100",
+      "name": "Kachelmann Wetter",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "Wetterstation",
+      "featureType": "Wetterstation",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "infoFormat": "application/vnd.ogc.gml",
+      "gfiTheme": "default",
+      "gfiAttributes": {
+         "information": ""
+      },
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "datasets": [],
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "live-110",
+      "name": "Sensebox Wetter",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "Sensebox",
+      "featureType": "Sensebox",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "infoFormat": "application/vnd.ogc.gml",
+      "gfiTheme": "default",
+      "gfiAttributes": {
+         "information": ""
+      },
+      "layerAttribution": "nicht vorhanden",
+      "cache": false,
+      "featureCount": "3",
+      "datasets": [],
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bil_bau",
+      "name": "BIL-Leitungsauskunft_Bau",
+      "url": "GEOSERVER_URL/ds_nda/ows",
+      "typ": "WFS",
+      "epsg": "EPSG:25833",
+      "featureType": "BIL-Leitungsauskunft_Bau",     
+      "version": "1.1.0",     
+      "gfiTheme": "default",
+      "gfiAttributes": {
+         "name": "Name",
+         "yourid": "Externe ID",
+         "type": "Typ",
+         "category": "Kategorie",
+         "subCategory": "Unterkategorie",
+         "start_string": "Geplanter Beginn",
+         "end_string": "Geplantes Ende",
+         "description": "Beschreibung",
+         "areadescription": "Gebietsbeschreibung",
+         "created_string": "Erstellt",
+         "inguiryid": "Anfrage ID",
+         "inquirytype": "Anfrage Typ",
+         "customer": "Kunde",
+         "execcompany": "Ausführendes Unternehmen",
+         "answerstatede": "Beantwortungsstatus"
+      },
+      "layerAttribution": "nicht vorhanden",
+      "legend": "GEOPORTAL_URL/resources/img/BIL_legend.png",
+      "cache": false,
+      "featureCount": "1",     
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bil_plan",
+      "name": "BIL-Leitungsauskunft_Planung",
+      "url": "GEOSERVER_URL/ds_nda/ows",
+      "typ": "WFS",
+      "epsg": "EPSG:25833",
+      "featureType": "BIL-Leitungsauskunft_Planung",     
+      "version": "1.1.0",     
+      "gfiTheme": "default",
+      "gfiAttributes": {
+         "name": "Name",
+         "yourid": "Externe ID",
+         "type": "Typ",
+         "category": "Kategorie",
+         "subCategory": "Unterkategorie",
+         "start_string": "Geplanter Beginn",
+         "end_string": "Geplantes Ende",
+         "description": "Beschreibung",
+         "areadescription": "Gebietsbeschreibung",
+         "created_string": "Erstellt",
+         "inguiryid": "Anfrage ID",
+         "inquirytype": "Anfrage Typ",
+         "customer": "Kunde",
+         "execcompany": "Ausführendes Unternehmen",
+         "answerstatede": "Beantwortungsstatus"
+      },
+      "layerAttribution": "nicht vorhanden",
+      "legend": "GEOPORTAL_URL/resources/img/BIL_legend.png",
+      "cache": false,
+      "featureCount": "1",     
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "live-130",
+      "name": "CO2 Monitoring Infocenter",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "CO2-Sensor",
+      "featureType": "CO2-Sensor",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "infoFormat": "application/vnd.ogc.gml",
+      "gfiTheme": "default",
+      "gfiAttributes": {
+         "information": ""
+      },
+      "layerAttribution": "nicht vorhanden",
+      "cache": false,
+      "featureCount": "3",
+      "datasets": [],
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "bph",
+      "name": "Bauphasen",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "bauphasen",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiTheme": "default",
+      "gfiAttributes": {
+         "baufeldnummer": "Baufeld Nr.",
+         "teilraum": "Teilraum",
+         "bauphase": "Bauphase",
+         "beginn": {
+            "name": "Beginn Bauphase",
+            "condition": "contains",
+            "type": "date",
+            "format": "DD.MM.YYYY"
+         },
+         "ende": {
+            "name": "Ende Bauphase",
+            "condition": "contains",
+            "type": "date",
+            "format": "DD.MM.YYYY"
+         }
+      },
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bioweidelaraum",
+      "name": "Weideflächen",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_biokompweidenlaraum_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": "ignore",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bioweide",
+      "name": "Flächen innerhalb Weide",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_biokompin_fla,umw_biokompwegin_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "layer": "Flächentyp",
+         "shape_area_round": "Fläche in m²"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "biokompaus",
+      "name": "Flächen außerhalb Weide",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_biokompaus_fla,umw_biokomphund,umw_biokompentsiegel_fla,umw_biokompwegaus_fla,umw_biokompaufenthalt_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "layer": "Flächentyp",
+         "layer_1": "Flächentyp",
+         "shape_area_round": "Fläche in m²"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "biokompgeh",
+      "name": "Gehölze",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_biokompgehoelzin_fla,umw_biokompgehoelzaus_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "layer": "Flächentyp",
+         "shape_area_round": "Fläche in m²"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "biokomplp",
+      "name": "Landschaftspark",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_biokompweidenlapark_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "layer_1": "Flächentyp",
+         "shape_area_round": "Fläche in m²"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "biokompverl",
+      "name": "Verlust geschützter Biotope",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_biokompverlust_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "layer": "Flächentyp",
+         "shape_area_round": "Fläche in m²"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "biokompwald",
+      "name": "Waldaufwertung",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_biokompwald_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "layer_1": "Flächentyp",
+         "shape_area_round": "Fläche in m²"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "isk",
+      "name": "Infrastrukturkanal",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "bes_isk_lin,bes_isk_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "dgnb",
+      "name": "DGNB-Zertifizierungsgebiet",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_dgn_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "alk_flur",
+      "name": "Flurstücke Eigentümer",
+      "url": "GEOSERVER_URL/ds_intern/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "alk_flurstuecke_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "zae": "Zähler",
+         "nen": "Nenner",
+         "namgem": "Gemeinde",
+         "namgmk": "Gemarkung",
+         "fln": "Flurnummer",
+         "buchungsart": "Buchungsart",
+         "eigentuemer": "Eigentümer"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "stadtentwicklungsplan",
+      "name": "Stadtentwicklungsplan",
+      "url": " https://fbinter.stadt-berlin.de/fb/wms/senstadt/stepwohn2030_rs",
+      "typ": "WMS",
+      "layers": "stepwohn2030_rs",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "cache": true,
+      "featureCount": "1",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/stapl/leg_step2030_Wo01.png",
+      "datasets": [
+         {
+            "md_id": "611897f6-2083-3b0f-a4d0-cee5de2a8e1e",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/d8b96548-6e58-3e39-a32e-80531b045da6"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "luftbild2021",
+      "name": "k_luftbild2021_rgb",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2021_rgb",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "2cb7b21f-45bf-3d75-a745-3170f0627be4",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/2676bed6-175f-3f17-a3c3-51057db1f8ba"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "luftbild2020",
+      "name": "k_luftbild2020_true_rgb",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2020_true_rgb",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "34be72e7-5030-3a72-8dbf-e629a1b62f38",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/2676bed6-175f-3f17-a3c3-51057db1f8ba"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "luftbild2022",
+      "name": "Digitale farbige TrueOrthophotos 2022 (DOP20RGBI)",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2022_true_rgbi",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "bf885681-6daa-4ce7-8bc5-15fdba32f268",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/38140514-3995-3513-82e5-753bd246ae31",
+            "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "bplaene",
+      "name": "Bebauungspläne",
+      "name_lang": "Bebauungspläne, vorhabenbezogene Bebauungspläne (Geltungsbereiche)",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/bplan",
+      "typ": "WMS",
+      "layers": "bplan",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_bplan.png",
+      "datasets": [
+         {
+            "md_id": "38b5dc12-0388-3847-b6d4-193b850c2b95",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/4bfc4a9b-d4f9-3963-84a5-dd6779e0ded4"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "bfernstr",
+      "name": "Bundesfernstraßen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/bundesfernstr",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_bundesfernstr.png",
+      "datasets": [
+         {
+            "md_id": "7b3dccf7-c31e-34ee-95ea-1ad5cb3e497c",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/8a8497b1-e077-34d9-82a3-5f3b55533981"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_fussgaengernetz",
+      "name": "Fußgängernetz",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_fussgaengernetz",
+      "typ": "WMS",
+      "layers": "k_fussgaengernetz",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_fussgaengernetz.png",
+      "datasets": [
+         {
+            "md_id": "40ed5008-2dc6-3fa7-a351-8819d768d26d",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/688e7d50-7fd6-376a-9479-191614fd8aee",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "eladeinfrastr",
+      "name": "Ladeinfrastruktur",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/eladeinfrastr",
+      "typ": "WMS",
+      "layers": "eladeinfrastr",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_eladeinfrstr.png",
+      "datasets": [
+         {
+            "md_id": "75ce7c97-d23e-463f-863e-d787116c5439",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/67aba489-fd1d-3d4e-a7d8-6aebcc19a516",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "eladeinfrastr_wfs",
+      "name": "Ladeinfrastruktur WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_lades_standort",
+      "typ": "WFS",
+      "version": "2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_lades_standort",
+      "gfiAttributes": {
+         "adresse": "Adresse",
+         "plz": "Postleitzahl",
+         "bezirk": "Bezirk",
+         "oeffentlicher_raum": "Zugang",
+         "art_ladeeinrichtung": "Art der Ladeeinrichtung",
+         "anzahl_ladepunkte": "Anzahl der Ladepunkte",
+         "ladeleistung_1": "Leistung von Ladepunkt 1 [kW]",
+         "anschluss_1": "Anschlusstyp von Ladepunkt 1",
+         "ladeleistung_2": "Leistung von Ladepunkt 2 [kW]",
+         "anschluss_2": "Anschlusstyp von Ladepunkt 2",
+         "ladeleistung_3": "Leistung von Ladepunkt 3 [kW]",
+         "anschluss_3": "Anschlusstyp von Ladepunkt 3",
+         "ladeleistung_4": "Leistung von Ladepunkt 4 [kW]",
+         "anschluss_4": "Anschlusstyp von Ladepunkt 4",
+         "betreiber": "Betreiber",
+         "datenquelle": "Datenquelle"
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "ignore",
+      "datasets": [
+         {
+            "md_id": "296596d0-dde2-3a73-b769-5853fe3d8f80",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/eeebbc13-75dd-3122-965f-2efeabbfc358",
+            "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_ereignisse",
+      "name": "Ereignisse im Straßenland",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_ereignisse",
+      "typ": "WMS",
+      "layers": "1,2",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_ereignisse.png",
+      "datasets": [
+         {
+            "md_id": "d97ffaff-2702-36da-b2c5-7c68e298e936",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/34453f3f-b54d-385f-a10d-5bb24fd5d5e0",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "wmsk_radverkehrsanlagen",
+      "name": "Radverkehrsanlagen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_radverkehrsanlagen",
+      "typ": "WMS",
+      "layers": "wmsk_radverkehrsanlagen",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_radverkehrsanlagen.png",
+      "datasets": [
+         {
+            "md_id": "363c80e1-9fc8-3f9a-9c6d-c7f1fc1f8df0",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/7398fd3e-0a97-3f21-96e4-9372b3fb4318",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "gebhoehen",
+      "name": "Gebäudehöhen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_06_10_1gebhoehen",
+      "typ": "WMS",
+      "layers": "k_06_10_1gebhoehen",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_06_10_1gebhoehen2021.png",
+      "datasets": [
+         {
+            "md_id": "d8b0505d-f1a8-433b-a8e0-867f106cecb3",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/526dadb1-dfa1-3de9-92a2-a0d319bbf11f",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "fnp_arbeitskarte",
+      "name": "FNP, aktuelle Arbeitskarte",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/fnp_ak",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_fnp_ak.png",
+      "datasets": [
+         {
+            "md_id": "7a799d22-7b22-3a6e-bfcf-5f783d350202",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/26adea7b-7659-3ea0-9768-21cbc94d43bd",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "fnp_2015",
+      "name": "FNP, Neubekanntmachung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/fnp_2015",
+      "typ": "WMS",
+      "layers": "fnp_2015",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_fnp2015.png",
+      "datasets": [
+         {
+            "md_id": "a46e6243-393d-333e-8dc9-35a03a757cae",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/7f8f98b2-eb4c-3ee0-b78e-17a4b93739eb",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "verschat",
+      "name": "Verschattung im Öffentlichen Raum",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "3",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "begruen",
+      "name": "Begrünung und Verschattung von Parkplätzen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "4",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "redukwae",
+      "name": "Reduktion anthropogener Wärmeemissionen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "5",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "begrglei",
+      "name": "Begrünung von Gleistrassen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "6",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "rueckbau",
+      "name": "Rückbau/Entdichtung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "7",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "entsieg",
+      "name": "Entsiegelung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "8",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "pocket",
+      "name": "Schaffung von Pocket-Parks",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "9",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "erreichgruen",
+      "name": "Verbesserung der Erreichbarkeit von Grünflächen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "10",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "innenhint",
+      "name": "Innen-/Hinterhofbegrünung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "11",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "verschatgeb",
+      "name": "Verschattung von Gebäuden",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "12",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "albedo",
+      "name": "Erhöhung der Oberflächen-Albedo",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "13",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "anlagwas",
+      "name": "Anlage von offenen Wasserflächen im öffentlichen Raum",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "14",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "energgeb",
+      "name": "Energetische Gebäudesanierung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "15",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "dachbegr",
+      "name": "Dachbegrünung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "16",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "fassbegr",
+      "name": "Fassadenbegrünung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "17",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "waermeschutz",
+      "name": "sommerlicher Wärmeschutz an Gebäuden",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "18",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "raumnutzkonz",
+      "name": "Anpassung des Raumnutzungskonzeptes",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "19",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "gebkueh",
+      "name": "Technische Gebäudekühlung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "20",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "optgebaus",
+      "name": "Optimierung der Gebäudeausrichtung und der Bebauungsdichte bei Neubauten",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "21",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "entkoppneu",
+      "name": "stadtklimatische Entkopplung von Neubau- und Nachverdichtungsgebieten",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "22",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "soznetz",
+      "name": "Förderung stadtgesellschaftlicher sozialer Netzwerke und Projekte",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "23",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "mikrokl",
+      "name": "Erhöhung der mikroklimatischen Vielfalt in öffentlichen Grünflächen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "24",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "kaltluha",
+      "name": "Schutz von für den Kaltlufthaushalt relevanter Flächen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "25",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "vernetzkaltluha",
+      "name": "Vernetzung von für den Kaltlufthaushalt relevanter Flächen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "26",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "vermeidaus",
+      "name": "Vermeidung von Austauschbarrieren",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "27",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "verbesluf",
+      "name": "Verbesserung der Luftqualität in Kaltluftleitbahnen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "28",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "schutzpagr",
+      "name": "Schutz bestehender großflächiger Parks / Grünflächen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "29",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "anlapagr",
+      "name": "Anlage neuer großflächiger Parks / Grünflächen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "30",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "schutzwald",
+      "name": "Schutz von Waldflächen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "31",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "schutzwass",
+      "name": "Schutz von offenen Wasserflächen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_0411023_planungshin_massn",
+      "typ": "WMS",
+      "layers": "32",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_04_11_3PHK_Massn_2015.png",
+      "datasets": [
+         {
+            "md_id": "379dd28a-164d-3f42-b4f0-c727df3e743a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/13b4b8a7-38e5-3f3e-9ef7-d56d57307d43",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "wegweisung",
+      "name": "Wegweisung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wegweisung_haller",
+      "typ": "WMS",
+      "layers": "1,2",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_wegweisung.png",
+      "datasets": [
+         {
+            "md_id": "25fdd496-a48f-3108-bd10-c9f199d74e49",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/c41213da-16db-306e-adda-2d9ad747854d",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "gw_gleichen",
+      "name": "Grundwassergleichen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk_02_12gwgleichen",
+      "typ": "WMS",
+      "layers": "wmsk_02_12gwgleichen",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_gwgleichen2013.png",
+      "datasets": [
+         {
+            "md_id": "733572a1-ace4-42d6-88ca-ac9e41e3aee7",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/80bdfe11-1c80-31ed-b36d-71dfc646c812",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "gruen_frei",
+      "name": "Grün- und Freiflächenbestand",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k06_02_freifl2020",
+      "typ": "WMS",
+      "layers": "k06_02_freifl2020",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_06_02freifl2020.png",
+      "datasets": [
+         {
+            "md_id": "ec5c30ab-e194-3817-9d67-bc6157a0371a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/fe583c02-056c-3e10-969d-31ce7e39151d",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "lichtsignal",
+      "name": "Lichtsignalanlagen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/lsa",
+      "typ": "WMS",
+      "layers": "lsa",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_lsa.png",
+      "datasets": [
+         {
+            "md_id": "fe23b359-3e5d-3da6-8c80-ff279b9ca0f9",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/808fc4d9-aeb8-396b-87fc-d9dd37c91d3d",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "beleuchtung",
+      "name": "Öffentliche Beleuchtung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_oeffbeleucht",
+      "typ": "WMS",
+      "layers": "k_oeffbeleucht",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_beleuchtung.png",
+      "datasets": [
+         {
+            "md_id": "495d3fc0-13b4-362a-b79a-f1b32683e282",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/bccb5f0a-4c96-3ad5-85f0-236b8e6404bf",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "bdom",
+      "name": "bildbasiertes Digitales Oberflächenmodell",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_dom",
+      "typ": "WMS",
+      "layers": "k_dom",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_bdom1.png",
+      "datasets": [
+         {
+            "md_id": "c1eac52b-cc96-404e-9584-82e8c064d7d8",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/1bc23b5c-acc8-3132-ba2e-e22f1be03206",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "laproerhol",
+      "name": "Erholung und Freiraumnutzung",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/laproerhol",
+      "typ": "WMS",
+      "layers": "laproerhol",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_lapro_ef.png",
+      "datasets": [
+         {
+            "md_id": "36a6168f-7f25-3446-980c-aa3f75034870",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/333cbe96-bb92-3eb6-8c2e-0500ef964f09",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "lapronatur",
+      "name": "Naturhaushalt/Umweltschutz",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/lapronatur",
+      "typ": "WMS",
+      "layers": "lapronatur",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_lapro_nu.png",
+      "datasets": [
+         {
+            "md_id": "b4dceced-fef8-3924-b75b-e032d5cefb95",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/333cbe96-bb92-3eb6-8c2e-0500ef964f09",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "versieg",
+      "name": "Versiegelung 2016",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk01_02versieg2016",
+      "typ": "WMS",
+      "layers": "wmsk01_02versieg2016",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_01_02versieg2005.png",
+      "datasets": [
+         {
+            "md_id": "30ddd326-b32d-376a-a698-ca9a62fe5eca",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/9e5f4bf6-5bdb-38ab-a21d-96fc2e37bb40",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "verkmeng2019",
+      "name": "Verkehrsmengen 2019",
+      "crs": "EPSG:25833",
+      "url": " https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_07_01verkmeng2019",
+      "typ": "WMS",
+      "layers": "k_07_01verkmeng2019",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_07_01verkmeng2014.png",
+      "datasets": [
+         {
+            "md_id": "bba0bb9f-fbe5-4133-8f26-c78dce111425",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/603ce98d-0408-32c7-8751-d8d1ca98f9c5",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "boges",
+      "name": "Bodengesellschaften 2015",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk01_01boges2015",
+      "typ": "WMS",
+      "layers": "wmsk01_01boges2015",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_01_01boges2015.png",
+      "datasets": [
+         {
+            "md_id": "60a4761e-277a-4cd3-8263-9f2bc8376c17",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/9be97dd1-3dea-3897-bf6c-e36f5d898247",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "bodart",
+      "name": "Bodengesellschaften 2015",
+      "crs": "EPSG:25833",
+      "url": " https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk01_06_01bodart2015",
+      "typ": "WMS",
+      "layers": "wmsk01_06_01bodart2015",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_01_06_01bodart2015_neu.png",
+      "datasets": [
+         {
+            "md_id": "60a4761e-277a-4cd3-8263-9f2bc8376c17",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/9be97dd1-3dea-3897-bf6c-e36f5d898247",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "luftno2",
+      "name": "Luftqualität - Stickstoffdioxid (NO2)",
+      "url": "https://senuvk.dev.vmz.services/immis-wms/v2/tile",
+      "typ": "WMS",
+      "layers": "no2",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "1500",
+      "maxScale": "3000000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "featureCount": "1",
+      "epsg": "EPSG:25833",
+      "legend": "https://api.viz.berlin.de/geoserver/www/legende_no2.png",
+      "datasets": [
+         {
+            "md_id": "luftqualitaet",
+            "md_name": "Luftqualität",
+            "csw_url": "https://api.viz.berlin.de/csw",
+            "show_doc_url": "https://api.viz.berlin.de/csw?service=CSW&version=2.0.2&request=GetRecordById&typeNames=csw:Record&elementsetname=full&id="
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "luftfein",
+      "name": "Luftqualität - Feinstaub (Partikel)",
+      "url": "https://senuvk.dev.vmz.services/immis-wms/v2/tile",
+      "typ": "WMS",
+      "layers": "pm10",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "1500",
+      "maxScale": "3000000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "featureCount": "1",
+      "epsg": "EPSG:25833",
+      "legend": "https://api.viz.berlin.de/geoserver/www/legende_pm10.png",
+      "datasets": [
+         {
+            "md_id": "luftqualitaet",
+            "md_name": "Luftqualität",
+            "csw_url": "https://api.viz.berlin.de/csw",
+            "show_doc_url": "https://api.viz.berlin.de/csw?service=CSW&version=2.0.2&request=GetRecordById&typeNames=csw:Record&elementsetname=full&id="
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "Baustellen_OCIT",
+      "name": "Baustellen, Sperrungen und sonstige Störungen",
+      "url": "https://api.viz.berlin.de/daten/baustellen_sperrungen.json",
+      "typ": "GeoJSON",
+      "minScale": "0",
+      "maxScale": "210000",
+      "searchField": [
+         "street",
+         "section",
+         "content"
+      ],
+      "gfiAttributes": {
+         "subtype": "Typ",
+         "severity": "Auswirkung",
+         "@validity.from": "Gültig ab",
+         "@validity.to": "Gültig bis",
+         "street": "Straße",
+         "section": "Abschnitt",
+         "content": "Beschreibung"
+      },
+      "layerAttribution": "nicht vorhanden",
+      "legend": "GEOPORTAL_URL/resources/img/baustellen_legend.png",
+      "gfiTheme": "default",
+      "datasets": [
+         {
+            "md_id": "roadworks",
+            "md_name": "Baustellen, Sperrungen und sonstige Störungen",
+            "csw_url": "https://api.viz.berlin.de/csw",
+            "show_doc_url": "https://api.viz.berlin.de/csw?service=CSW&version=2.0.2&request=GetRecordById&typeNames=csw:Record&elementsetname=full&id="
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2002",
+      "name": "k_luftbild2002",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2002",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "f5d691e8-fc80-3416-a234-679f9937169f",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/5185f87c-b230-3efa-a33d-6416a8025c25",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "luftbild2004",
+      "name": "luftbild2004",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/luftbild2004",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "7980cb5c-2c9a-3649-9e47-6b6413d2d88e",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/5fcb71f3-c68e-3b6c-b5fe-33436db16ec4",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "luftbild2006",
+      "name": "luftbild2006",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/luftbild2006",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "b97ca27d-61cc-355b-8905-79ed0c4aa9b7",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/8eff8bd8-9fc8-3a37-869e-7b2f01acac0a",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2007",
+      "name": "k_luftbild2007",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2007",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "de32d147-d803-3340-a4be-ed0119b0bc48",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/06d554c7-09bb-35c3-9493-53ade0369c47",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2009",
+      "name": "k_luftbild2009",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2009_20",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "8f70d448-6df2-3181-8944-eb27cf582743",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/536be580-576d-3245-a010-b39916822f72",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2010",
+      "name": "k_luftbild2010",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2010_rgb",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "6213d0b9-00ff-36e7-89e4-0b72d846c66a",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/f06f69ae-46a1-3b61-9892-2e8f42f52564",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2011",
+      "name": "k_luftbild2011",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2011_20",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "72928789-80fe-3e71-93c4-ba16f46f1b75",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/f1a47301-edec-31c1-9c39-d572e28ad4fb",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2013",
+      "name": "k_luftbild2013",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2013",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "1b214cf5-ef58-3ca9-975a-ebbf9ffa568f",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/5e435015-ad8a-37dd-82c1-066f54d1f7b5",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2014",
+      "name": "k_luftbild2014",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2014",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "e7b59db7-553a-3a47-93a5-70889f6dc77b",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/d1683f87-d577-3934-8d76-171c6cf9ed34",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2015",
+      "name": "k_luftbild2015",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2015_rgb",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "f81f42b6-0d14-353c-84dc-fafd55962710",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/48d464e2-56bb-3fe0-b7bc-f0100e70c1ac",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2016",
+      "name": "k_luftbild2016",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2016_rgb",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "eed6a16b-f86d-3ebe-8c92-0c7d32a6b465",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/768430c2-8b3e-3b01-b4ee-8b33ed658282",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2017",
+      "name": "k_luftbild2017",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2017_rgb",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "947b53e4-f014-3f12-b7a9-f6438f29223e",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/bbfa1d84-605e-3d5e-8acb-303cd58cc34a",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_luftbild2018",
+      "name": "k_luftbild2018",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_luftbild2018_rgb",
+      "typ": "WMS",
+      "layers": "0",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+            "md_id": "6cc4151c-7031-4c73-b3a6-43b27b2e3b62",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/9efcc42e-09f6-3d7c-8b23-5d98487ff00d",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "3d_bestand",
+      "name": "Gebäude Bestand",
+      "url": "3D_PROXY_URL/3d_content/geb_bestand",
+      "typ": "TileSet3D",
+      "gfiAttributes": "showAll",
+      "layerAttribution": "nicht vorhanden",
+      "legendURL": "ignore",
+      "cesium3DTilesetOptions": {
+         "maximumScreenSpaceError": 0
+      },
+      "urlIsVisible": true,
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "3d_entwurf",
+      "name": "Gebäude Entwurf",
+      "url": "3D_PROXY_URL/3d_content/std_entwurf",
+      "typ": "TileSet3D",
+      "gfiAttributes": "showAll",
+      "layerAttribution": "nicht vorhanden",
+      "legendURL": "ignore",
+      "cesium3DTilesetOptions": {
+         "maximumScreenSpaceError": 0
+      },
+      "urlIsVisible": true,
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "3d_umg_geb",
+      "name": "Gebäude umg_geb",
+      "url": "3D_PROXY_URL/3d_content/geb_umgebung",
+      "typ": "TileSet3D",
+      "gfiAttributes": "showAll",
+      "layerAttribution": "nicht vorhanden",
+      "legendURL": "ignore",
+      "cesium3DTilesetOptions": {
+         "maximumScreenSpaceError": 0
+      },
+      "urlIsVisible": true,
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "3d_bestand_fisbroker",
+      "name": "Gebäude FIS Broker",
+      "url": "3D_PROXY_URL/3d_content/3d_daten_fisbroker",
+      "typ": "TileSet3D",
+      "gfiAttributes": "showAll",
+      "layerAttribution": "nicht vorhanden",
+      "legendURL": "ignore",
+      "cesium3DTilesetOptions": {
+         "maximumScreenSpaceError": 0
+      },
+      "urlIsVisible": true,
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "BzStr",
+      "name": "Baustraßen",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "bes_baustrassen_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "saatKr",
+      "name": "Saatkrähen Schutzradius",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "umw_saatkraehen_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "baufUQ",
+      "name": "Berlin Tegel Baufelder Uranusquartier",
+      "url": "GEOSERVER_URL/ds_intern/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder_fla_UQ",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "baufeld_id_": "Baufeld Nr.",
+         "baufeld_nutzung": "Baufeld Nutzung",
+         "baufeld_qm_": "Größe in m²",
+         "teilraum": "Teilraum",
+         "eigentümer_": "Eigentümer",
+         "straßennamen": "Straße",
+         "bauphase": "Bauphase",
+         "b_plan_": "B-Plan Nr.",
+         "nutzungsart_gemäß_bplan": "Nutzungsart gemäß B-Plan",
+         "nutzungsart_vermarktung": "Nutzungsart Vermarktung"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "parzUQ",
+      "name": "Musterparzellierung Uranusquartier",
+      "url": "GEOSERVER_URL/ds_intern/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_musterparzellierung_fla_UQ",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "parzellierung_id": "Parzelle Nr.",
+         "parzellierung_qm": "Größe in m²",
+         "baufeld": "Baufeld Nr.",
+         "b_plan": "B-Plan Nr.",
+         "teilraum": "Teilraum"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "GebUQ",
+      "name": "Berlin Tegel Gebaeude_Planung Uranusquartier",
+      "url": "GEOSERVER_URL/ds_intern/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_gebaeude_fla_UQ",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "ZeHGW",
+      "name": "Zu erwartender höchster Grundwasserstand",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/wmsk02_19zeHGW2015",
+      "typ": "WMS",
+      "layers": "wmsk02_19zeHGW",
+      "format": "image/png",
+      "version": "1.3.0",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/umweltatlas/leg_02_19zeHGW_2021.png",
+      "datasets": [
+         {
+            "md_id": "b57bf31e-fb58-3397-83be-52775e56eac4",
+            "csw_url": "https://fbinter.stadt-berlin.de/fb/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/3f8c0407-ceb6-359f-801c-21a88eaca417",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "kmrstatus",
+      "name": "Kampfmittelraeumststus",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "kmr_raeumstand_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiTheme": "default",
+      "gfiAttributes": {
+         "status_name": "Status"
+      },
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "2",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bfeld21",
+      "name": "Baufelder 2021",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder20210604_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "Baufeld_ID_": "Baufeld Nr."
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bfeld20",
+      "name": "Baufelder 2020",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder20201009_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "Baufeld_ID_": "Baufeld Nr."
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bfeld19",
+      "name": "Baufelder 2019",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder20192110_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "Baufeld_ID_": "Baufeld Nr."
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bfeld18",
+      "name": "Baufelder 2018",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder20180810_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "Baufeld_ID_": "Baufeld Nr."
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bfeld17",
+      "name": "Baufelder 2017",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder20171111_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "Baufeld_ID_": "Baufeld Nr."
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bfeld16",
+      "name": "Baufelder 2016",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder20160909_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "Baufeld_ID_": "Baufeld Nr."
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bfeld15",
+      "name": "Baufelder 2015",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder20151508_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "Baufeld_ID_": "Baufeld Nr."
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bfeld14",
+      "name": "Baufelder 2014",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder20141111_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "ID_Baufeld": "Baufeld Nr."
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "bfeld13",
+      "name": "Baufelder 2013",
+      "url": "GEOSERVER_URL/ds_nda/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "pln_baufelder20133008_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "ID": "Baufeld Nr."
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "20220210_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220210_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220210_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220331_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220331_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220331_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220413_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220413_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220413_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220105_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220105_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220105_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220929_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220929_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220929_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20221013_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20221013_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20221013_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20221117_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20221117_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20221117_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220413_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220413_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220413_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220421_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220421_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220421_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220428_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220428_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220428_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220505_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220505_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220505_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   }, 
+   {
+      "id": "20220706_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220706_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220706_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220714_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220714_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220714_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220728_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220728_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220728_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220818_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220818_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220818_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220825_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220825_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220825_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220901_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220901_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220901_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220915_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220915_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220915_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220922_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220922_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220922_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20221006_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20221006_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20221006_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20221027_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20221027_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20221027_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20221103_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20221103_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20221103_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20221201_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20221201_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20221201_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20221215_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20221215_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20221215_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20221222_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20221222_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20221222_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230119_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230119_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230119_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230216_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230216_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230216_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230126_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230126_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230126_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230202_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230202_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230202_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230209_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230209_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230209_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "fiktivegrundstuecke",
+      "name": "Fiktive Grundstücke",
+      "url": "GEOSERVER_URL/ds_intern/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "bew_fiktivegrundstuecke_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": {
+         "Flächen_id": "Bezeichnung",
+         "Flaeche": "Flächengröße in m²"
+      },
+      "gfiTheme": "default",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "20230223_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230223_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230223_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230406_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230406_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230406_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20220311_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20220311_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20220311_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230323_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230323_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230323_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230413_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230413_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230413_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "bimakaufgegenstand",
+      "name": "Kaufgegenstand BImA (Teilobjekt 1c)",
+      "url": "GEOSERVER_URL/ds_intern/ows?service=WMS",
+      "typ": "WMS",
+      "layers": "egt_bimakauf_fla",
+      "format": "image/png",
+      "version": "1.3.0",
+      "singleTile": true,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "256",
+      "gutter": "100",
+      "minScale": "0",
+      "maxScale": "500000",
+      "gfiAttributes": "ignore",
+      "infoFormat": "application/vnd.ogc.gml",
+      "layerAttribution": "nicht vorhanden",
+      "legend": true,
+      "cache": false,
+      "featureCount": "1",
+      "epsg": "EPSG:25833",
+      "roles": [
+         "ds_bima"
+      ]
+   },
+   {
+      "id": "20230420_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230420_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230420_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230427_gesamtareal-10-23",
+      "name": "20230427_Gesamtareal-10-23_wmts",
+      "capabilitiesUrl": "FUTR-HUB-MAPSERVER-URL/ogc/luft?SERVICE=WMTS&REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "layers": "20230427_Gesamtareal-10-23",
+      "optionsFromCapabilities": true
+   },
+   {
+      "id": "20230427_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230427_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230427_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230504_Gesamtareal_dop_cog",
+      "name": "ds_aerial:20230504_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_aerial:20230504_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_aerial"
+      ]
+   },
+   {
+      "id": "20230511_Gesamtareal_dop_cog",
+      "name": "ds_nda:20230511_Gesamtareal_dop_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_nda:20230511_Gesamtareal_dop_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_nda"
+      ]
+   },
+   {
+      "id": "LP-VPU_Landschaftspark",
+      "name": "LP-VPU_Landschaftspark_01092022_18112022_cog",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_nda:LP-VPU_Landschaftspark_01092022_18112022_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "SQ-VPU_Äußere_Erschließung",
+      "name": "SQ-VPU_Äußere_Erschließung",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_nda:SQ-VPU_Äußere_Erschließung_01092022_18112022_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "SQ-BPU_Innere_Erschließung",
+      "name": "SQ-BPU_Innere_Erschließung",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_nda:SQ-BPU_Innere_Erschließung_01092022_18112022_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "SQ-BPU_Innere_Erschließung_Beleuchtung",
+      "name": "SQ-BPU_Innere_Erschließung_Beleuchtung",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_nda:SQ-BPU_Innere_Erschließung_Beleuchtung_01092022_18112022_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "SQ-BPU_Innere_Erschließung_Entwässerung",
+      "name": "SQ-BPU_Innere_Erschließung_Entwässerung",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_nda:SQ-BPU_Innere_Erschließung_Entwässerung_01092022_18112022_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "SQ-BPU_Quartierspark",
+      "name": "SQ-BPU_Quartierspark",
+      "capabilitiesUrl": "GEOSERVER_URL/gwc/service/wmts?REQUEST=GetCapabilities",
+      "typ": "WMTS",
+      "legend": false,
+      "layers": "ds_nda:SQ-BPU_Quartierspark_01092022_18112022_cog",
+      "optionsFromCapabilities": true,
+      "roles": [
+         "ds_intern"
+      ]
+   },
+   {
+      "id": "basemap",
+      "name": "basemap Farbe",
+      "url": "https://sgx.geodatenzentrum.de/wms_basemapde",
+      "typ": "WMS",
+      "format": "image/png",
+      "layers": "de_basemapde_web_raster_farbe",
+      "version": "1.3.0",
+      "epsg": "EPSG:25833",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "cache": true,
+      "featureCount": "1",
+      "legend": "https://sgx.geodatenzentrum.de/wms_basemapde?format=image%2Fpng&layer=de_basemapde_web_raster_farbe&sld_version=1.1.0&request=GetLegendGraphic&service=WMS&version=1.1.1&styles=",
+      "datasets": [
+         {
+            "md_id": "69264016-D304-4DD6-BCEF-509C1ED19F14",
+            "csw_url": "https://gdk.gdi-de.org/gdi-de/srv/ger/csw",
+            "rs_id": "https://registry.gdi-de.org/id/de.bund.bkg.csw/1371b05a-055b-4749-8390-95cda942f40c",
+            "show_doc_url": "https://gdz.bkg.bund.de/index.php/default/wms-basemapde-webraster-wms-basemapde-webraster.html#"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "gebhoehen_wfs",
+      "name": "Gebäudehöhen WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_06_10_1gebhoehen",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_06_10_1gebhoehen",      
+      "gfiAttributes": {
+         "Role txt": "Gebäude oder Bauteil",
+         "Name": "Bezeichnung des Gebäudes",
+         "Hoehe": "Gebäudehöhe (Firsthöhe) in m",
+         "Funktion_txt": "Gebäudefunktion",
+         "Dachart_txt": "Dachart",
+         "Geschosse": "Anzahl der Geschosse",
+         "Quellebodenhoehe_txt": "Verfahren zur Ermittlung der Bodenhöhe",
+         "Quelledachhoehe_txt": "Verfahren zur Ermittlung der Dachhöhe",
+         "Grundrissaktualitaet": "Aktualität des Grundrisses"
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "d918088d-4b66-3226-b73c-ee9ce94bf2de",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/526dadb1-dfa1-3de9-92a2-a0d319bbf11f",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "baum_wfs",
+      "name": "Baumbestand Straßenbäume WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_baumbestand",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_wfs_baumbestand",      
+      "gfiAttributes": {
+         "Standortnr": "Baum Nr.",
+         "Art_dtsch": "Baumart (Deutsch)",
+         "Art_bot": "Baumart (Botanisch)",
+         "Pflanzjahr": "Pflanzjahr",
+         "Standalter": "Standalter",
+         "Stammumfg": "Stamm Umfang in cm",
+         "Bezirk": "Bezirk",
+         "Eigentuemer": "Eigentümer"
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "0f682ebc-2b6c-3502-a233-97cac76d1762",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/101a1c6e-4991-3df3-afbd-078495cb2f37",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "baum_wfs_anl",
+      "name": "Baumbestand Anlagenbäume WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_baumbestand_an",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_wfs_baumbestand_an",      
+      "gfiAttributes": {
+         "Standortnr": "Baum Nr.",
+         "Art_dtsch": "Baumart (Deutsch)",
+         "Art_bot": "Baumart (Botanisch)",
+         "Pflanzjahr": "Pflanzjahr",
+         "Standalter": "Standalter",
+         "Stammumfg": "Stamm Umfang in cm",
+         "Bezirk": "Bezirk",
+         "Eigentuemer": "Eigentümer"
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "98ff39da-d9e7-3764-bbf8-e10ca6eefddf",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/101a1c6e-4991-3df3-afbd-078495cb2f37",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "gruen_frei_wfs",
+      "name": "Grün- und Freiflächenbestand WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/sach_nutz",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:sach_nutz",      
+      "gfiAttributes": {
+         "Bezirk": "Bezirk",
+         "Woz_name": "Nutzung der bebauten Flächen",
+         "Ststrname": "Stadtstrukturtyp",
+         "Typklar": "Flächentyp",
+         "Nutzung_bauvor": "Flächennutzung Bauvorrang",
+         "Nutzung": "Flächennutzung Grünvorrang",
+         "Flalle": "Flächengröße [m²]"
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "6cfc617d-2774-3c51-bd45-5fad0640c520",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/3a128a4e-5d77-3126-a6c1-37f5edbf42bd",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "bplaene_wfs",
+      "name": "Bebauungspläne WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/sach_bplan",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:sach_bplan",      
+      "gfiAttributes": {
+         "PLANNAME": "Nummer des Bebauungsplans",
+         "PLANARTNAME": "Art des Bplans",
+         "BEREICH": "Geltungsbereich",
+         "BEZIRK": "Bezirk",
+         "AFS_BEHOER": "Aufstellung Behörde",
+         "FESTSG": "B-Plan ist festgesetzt",
+         "SCAN_WWW": "Link zum Bebauungsplan",
+         "GRUND_WWW": "Link zum Begründungstext"
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "bfd3b920-03ad-36dc-9372-dc6e9084ee29",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/4bfc4a9b-d4f9-3963-84a5-dd6779e0ded4",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "fnp_arbeitskarte_wfs",
+      "name": "FNP WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_fnp_ak",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_fnp_ak",      
+      "gfiAttributes": {
+         "Nutzungsart": "Nutzungsart",
+         "Zweckbestimmung": "Zweckbestimmung",
+         "Os_nr": "Objektschlüssel"
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "21d4b29c-830d-3751-af74-1f2601a9b2e8",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/26adea7b-7659-3ea0-9768-21cbc94d43bd",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "k_ereignisse_wfs",
+      "name": "Ereignisse im Straßenland WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_ereignisse",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_ereignisse",      
+      "gfiAttributes": {
+         "Ereignis": "Ereigniskategorie",
+         "Einschr": "Einschränkung",
+         "Dat_beginn": "Datum Beginn",
+         "Dat_ende": "Datum Ende",
+         "Strasse": "Strasse",
+         "Bezirk": "Bezirk",
+         "Ortsteil": "Ortsteil",
+         "Von_str": "Querstraße Anfangspunkt",
+         "Bis_str": "Querstraße Endpunkt"
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "2116679f-52e4-33f1-9885-0c64d9f733e6",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/34453f3f-b54d-385f-a10d-5bb24fd5d5e0",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "bohrpunkte_WFS",
+      "name": "Bohrpunkte WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_bohrpunktegeo",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_bohrpunktegeo",      
+      "gfiAttributes": {
+         "Langname": "Bohrungsnummer",
+         "Xcoord": "Rechtswert",
+         "Ycoord": "Hochwert",
+         "Ansatzhoehe": "Geländeoberkante (m NHN)",
+         "Endteufe": "Endteufe (m)",
+         "Bohrverfahren": "Bohrverfahren"         
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "e246e572-301e-33e0-89ad-af8c4c0497cb",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/34453f3f-b54d-385f-a10d-5bb24fd5d5e0",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "denkmal_WFS",
+      "name": "Denkmalkarte Berlin WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/sach_denkmal",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:sach_denkmal",      
+      "gfiAttributes": {
+         "Typ": "Denkmalart"  ,
+         "Link": "Weitere Informationen"                      
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "12f0f9ed-5430-345a-a313-7421a99335c0",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/bda48992-adb7-36c1-80e3-3b7234092079",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "Bezirke",
+      "name": "Bezirke",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_alkis_bezirke",
+      "typ": "WMS",
+      "layers": "1",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_alkis_bezirke.png",
+      "cache": true,
+      "featureCount": "1",
+      "datasets": [
+         {
+            "md_id": "ecb4fc8b-8bf0-326c-ba70-ab805e0c659f",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/cb2897d1-4258-3312-a3db-7ceb2ad86be7",
+            "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "Ortsteile",
+      "name": "Ortsteile",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_alkis_ortsteile",
+      "typ": "WMS",
+      "layers": "1",
+      "format": "image/png",
+      "version": "1.1.1",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/leg_alkis_ortsteile.png",
+      "cache": true,
+      "featureCount": "1",
+      "datasets": [
+         {
+            "md_id": "a9a5c3b1-6a6b-31f4-98b0-93f9149f889d",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/cb2897d1-4258-3312-a3db-7ceb2ad86be7",
+            "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "lor",
+      "name": "Lebensweltlich orientierte Räume",
+      "url": "https://fbinter.stadt-berlin.de/fb/wms/senstadt/k_lor_2021",
+      "typ": "WMS",
+      "layers": "k_lor_2021",
+      "format": "image/png",
+      "epsg": "EPSG:25833",
+      "version": "1.3.0",
+      "singleTile": false,
+      "transparent": true,
+      "transparency": 0,
+      "tilesize": "512",
+      "gutter": "0",
+      "minScale": "0",
+      "maxScale": "2500000",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "layerAttribution": "nicht vorhanden",
+      "legend": "https://fbinter.stadt-berlin.de/fb_daten/legenden/stapl/planungsgrundlagen/l_lor_2021_full.png",
+      "cache": true,
+      "featureCount": "1",
+      "datasets": [
+         {
+            "md_id": "5e05b70b-50d6-4164-b0fd-9cdef4e43559",
+            "rs_id": "https://registry.gdi-de.org/id/de.be.csw/1a9ee510-4aec-3a5b-94e5-bc6b25d80c2d",
+            "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+            "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "niederradar",
+      "name": "Niederschlagsradar",
+      "crs": "EPSG:25833",
+      "url": "https://maps.dwd.de/geoserver/wms",
+      "typ": "WMS",
+      "layers": "dwd:Niederschlagsradar",
+      "format": "image/png",
+      "time": "true",
+      "dimensionName": "time",
+      "version": "1.1.1",
+      "featureCount": "1",
+      "gfiAttributes": "ignore",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": "https://maps.dwd.de/geoserver/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=dwd%3ANiederschlagsradar",
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "Ortsteile_WFS",
+      "name": "Ortsteile WFS",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_alkis_ortsteile",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_wfs_alkis_ortsteile",      
+      "gfiAttributes": {
+         "nam": "Name"  ,
+         "gdf": "Fläche in m²"                      
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "531fb385-bd15-3f51-86f3-dec87916613c",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/bda48992-adb7-36c1-80e3-3b7234092079",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "lor_prognose",
+      "name": "Prognoseraeume",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_lor_pgr_2021",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_lor_pgr_2021",      
+      "gfiAttributes": {
+         "PGR_NAME": "Prognoseraum"  ,
+         "FINHALT": "Fläche in m²",
+         "STAND": "Stand der Daten"                      
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "1329568d-9511-3b24-ae96-dc16f1629e95",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/1a9ee510-4aec-3a5b-94e5-bc6b25d80c2d",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "lor_bezirk",
+      "name": "Bezirksregionen",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_lor_bzr_2021",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_lor_bzr_2021",      
+      "gfiAttributes": {
+         "BZR_NAME": "Bezirksregion",         
+         "FINHALT": "Fläche in m²",
+         "STAND": "Stand der Daten"                      
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "c8e30764-6d6b-3451-a9c4-2accecf7c032",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/1a9ee510-4aec-3a5b-94e5-bc6b25d80c2d",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   },
+   {
+      "id": "lor_planung",
+      "name": "Planungsraeume",
+      "crs": "EPSG:25833",
+      "url": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_lor_plr_2021",
+      "typ": "WFS",
+      "version":"2.0.0",
+      "outputFormat": "XML",
+      "featureType": "fis:s_lor_plr_2021",      
+      "gfiAttributes": {
+         "PLR_NAME": "Planungsraum",
+         "FINHALT": "Fläche in m²",
+         "STAND": "Stand der Daten"                      
+      },
+      "featureNS": "http://www.berlin.de/broker",
+      "gfiTheme": "default",
+      "transparent": true,
+      "tilesize": "512",
+      "maxScale": "210000",
+      "legend": false,
+      "datasets": [
+         {
+             "md_id": "a94453c1-28fd-39e1-b859-d01f348e03d0",
+             "rs_id": "https://registry.gdi-de.org/id/de.be.csw/1a9ee510-4aec-3a5b-94e5-bc6b25d80c2d",
+             "csw_url": "https://gdi.berlin.de/geonetwork/srv/ger/csw",
+             "show_doc_url": "https://gdi.berlin.de/geonetwork/srv/ger/catalog.search#/metadata/"
+         }
+      ],   
+      "roles": [
+         "ds_open_data"
+      ]
+   }
+]

@@ -1,0 +1,10 @@
+{
+    "modules": {
+        "tools": {
+            "login": {
+                "title": "Login",
+                "progress": "Please login in the opened popup."
+            }
+        }
+    }
+}

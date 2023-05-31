@@ -1,0 +1,60 @@
+stages:
+  - build
+  - deploy_staging
+  - trigger_production
+  - deploy_production
+
+build_geoportal_backend:
+  tags:
+    - shared
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  stage: build
+  script:
+    - mkdir -p /kaniko/.docker
+    # - export VERSION=$(date -d "${CI_COMMIT_TIMESTAMP}" "+%Y%m%d-%H%M%S")
+    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    - >-
+      /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/geoportal_backend:${CI_COMMIT_SHORT_SHA}"
+
+deploy_staging_geoportal_backend:
+  image:
+    name: gcr.io/go-containerregistry/crane:debug
+    entrypoint: [""]
+  tags:
+    - shared
+  stage: deploy_staging
+  needs: ["build_geoportal_backend"]
+  script:
+    #- export VERSION=$(date -d "${CI_COMMIT_TIMESTAMP}" "+%Y%m%d-%H%M%S")
+    - crane auth login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - crane cp ${CI_REGISTRY_IMAGE}/geoportal_backend:${CI_COMMIT_SHORT_SHA} ${CI_REGISTRY_IMAGE}/geoportal_backend:staging
+
+trigger_production:
+  image:
+    name: busybox
+    entrypoint: [""]
+  tags:
+    - shared
+  stage: trigger_production
+  when: manual
+  script:
+    #- export VERSION=$(date -d "${CI_COMMIT_TIMESTAMP}" "+%Y%m%d-%H%M%S")
+    - echo "Deploy version ${CI_COMMIT_SHORT_SHA}"
+
+deploy_production_geoportal:
+  image:
+    name: gcr.io/go-containerregistry/crane:debug
+    entrypoint: [""]
+  tags:
+    - shared
+  stage: deploy_production
+  needs: ["deploy_staging_geoportal_backend", "trigger_production"]
+  script:
+    #- export VERSION=$(date -d "${CI_COMMIT_TIMESTAMP}" "+%Y%m%d-%H%M%S")
+    - crane auth login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - crane cp ${CI_REGISTRY_IMAGE}/geoportal_backend:${CI_COMMIT_SHORT_SHA} ${CI_REGISTRY_IMAGE}/geoportal_backend:production

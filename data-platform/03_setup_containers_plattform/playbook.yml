@@ -1,0 +1,95 @@
+######################################################
+# Playbook for starting the SC Platform Components
+######################################################
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+
+  vars_files:
+    - vars/default.yml
+
+  handlers:
+    - import_tasks: handlers/main.yml
+
+  tasks:
+    - import_tasks: tasks/common.yml
+      tags:
+        - platform
+        - install
+        - idm
+        - data
+        - fiware
+        - common
+    - import_tasks: tasks/logging.yml
+      tags:
+        - monitoring
+        - logging
+        - install
+    - import_tasks: tasks/traefik.yml
+      tags:
+        - platform
+        - proxy
+        - install
+    - import_tasks: tasks/portainer.yml
+      tags:
+        - platform
+        - portainer
+        - install
+    - import_tasks: tasks/keycloak.yml
+      tags:
+        - idm
+        - keycloak
+        - install
+    - import_tasks: tasks/keycloak_config.yml
+      tags:
+        - idm
+        - keycloak_config
+        - install
+    - import_tasks: tasks/apim.yml
+      tags:
+        - apim
+        - install
+    - import_tasks: tasks/fiware_ngsi_v2.yml
+      tags:
+        - fiware
+        - install
+    - import_tasks: tasks/monitoring.yml
+      tags:
+        - monitoring
+        - install
+    - import_tasks: tasks/historian.yml
+      tags:
+        - historian
+        - data
+        - install
+    - import_tasks: tasks/frost_server.yml
+      tags:
+        - frost
+        - install
+    - import_tasks: tasks/quantum_leap.yml
+      tags:
+        - quantum_leap
+        - install
+    - import_tasks: tasks/object_database.yml
+      tags:
+        - object_database
+        - install
+    - import_tasks: tasks/nodered.yml
+      tags:
+        - data
+        - flows
+        - install
+    - import_tasks: tasks/connector.yml
+      tags:
+        - connector
+        - install
+    - import_tasks: tasks/authproxies.yml
+      tags:
+        - idm
+        - authproxies
+        - install
+    - import_tasks: tasks/utils/copy_acme_json_to_localhost.yml
+      tags:
+        - never
+        - acme_copy

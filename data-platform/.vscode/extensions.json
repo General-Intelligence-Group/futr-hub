@@ -1,0 +1,17 @@
+{
+    // @see https://code.visualstudio.com/docs/editor/extension-gallery#_workspace-recommended-extensions
+    "recommendations": [
+
+      // Editing:
+      "vscoss.vscode-ansible",
+      "hookyqr.beautify",
+
+      // Linting:
+      "davidanson.vscode-markdownlint",
+      "shardulm94.trailing-spaces",
+
+      // documentation
+      "yzhang.markdown-all-in-one",
+
+    ]
+  }

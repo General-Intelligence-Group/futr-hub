@@ -1,0 +1,765 @@
+[
+  {
+    "styleId": "1001",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            255,
+            0,
+            0,
+            1
+          ],
+          "polygonStrokeWidth": 3,
+          "polygonStrokeDash": [
+            10,
+            10
+          ],
+          "polygonFillColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "legendValue": "Projektgrenze"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1002",
+    "rules": [
+      {
+        "conditions": {
+          "properties": {
+            "Teilraum": "Landschaftspark"
+          },
+          "sequence": [
+            0,
+            1
+          ]
+        },
+        "style": {
+          "polygonStrokeColor": [
+            52,
+            98,
+            108,
+            0.6
+          ],
+          "polygonStrokeWidth": 0.1,
+          "polygonFillColor": [
+            52,
+            98,
+            108,
+            0.6
+          ],
+          "labelField": "Teilraum",
+          "overflow": "true",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Landschaftspark"
+        }
+      },
+      {
+        "conditions": {
+          "properties": {
+            "Teilraum": "Landschaftsraum"
+          },
+          "sequence": [
+            0,
+            1
+          ]
+        },
+        "style": {
+          "polygonStrokeColor": [
+            131,
+            155,
+            151,
+            0.6
+          ],
+          "polygonStrokeWidth": 0.1,
+          "polygonFillColor": [
+            131,
+            155,
+            151,
+            0.6
+          ],
+          "labelField": "Teilraum",
+          "overflow": "true",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Landschaftsraum"
+        }
+      },
+      {
+        "conditions": {
+          "properties": {
+            "Teilraum": "Cité Pasteur"
+          },
+          "sequence": [
+            0,
+            1
+          ]
+        },
+        "style": {
+          "polygonStrokeColor": [
+            207,
+            211,
+            206,
+            0.6
+          ],
+          "polygonStrokeWidth": 0.1,
+          "polygonFillColor": [
+            207,
+            211,
+            206,
+            0.6
+          ],
+          "labelField": "Teilraum",
+          "overflow": "true",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Cité Pasteur"
+        }
+      },
+      {
+        "conditions": {
+          "properties": {
+            "Teilraum": "TXL Nord"
+          },
+          "sequence": [
+            0,
+            1
+          ]
+        },
+        "style": {
+          "polygonStrokeColor": [
+            198,
+            180,
+            151,
+            0.6
+          ],
+          "polygonStrokeWidth": 0.1,
+          "polygonFillColor": [
+            198,
+            180,
+            151,
+            0.6
+          ],
+          "labelField": "Teilraum",
+          "overflow": "true",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "TXL Nord"
+        }
+      },
+      {
+        "conditions": {
+          "properties": {
+            "Teilraum": "Urban Tech Republic"
+          },
+          "sequence": [
+            0,
+            1
+          ]
+        },
+        "style": {
+          "polygonStrokeColor": [
+            214,
+            128,
+            96,
+            0.6
+          ],
+          "polygonStrokeWidth": 0.1,
+          "polygonFillColor": [
+            214,
+            128,
+            96,
+            0.6
+          ],
+          "labelField": "Teilraum",
+          "overflow": "true",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Urban Tech Republic"
+        }
+      },
+      {
+        "conditions": {
+          "properties": {
+            "Teilraum": "Schumacher Quartier"
+          },
+          "sequence": [
+            0,
+            1
+          ]
+        },
+        "style": {
+          "polygonStrokeColor": [
+            241,
+            174,
+            137,
+            0.6
+          ],
+          "polygonStrokeWidth": 0.1,
+          "polygonFillColor": [
+            241,
+            174,
+            137,
+            0.6
+          ],
+          "labelField": "Teilraum",
+          "overflow": "true",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Schumacher Quartier"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1003",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            38,
+            12,
+            12,
+            0.4
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            255,
+            255,
+            255,
+            0.2
+          ],
+          "labelField": "Baufeld_ID_",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Baufelder"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1004",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            51,
+            98,
+            153,
+            0.8
+          ],
+          "polygonStrokeWidth": 3,
+          "polygonFillColor": [
+            255,
+            255,
+            255,
+            0.2
+          ],
+          "labelField": "parzellierung_id",
+          "textAlign": "center",
+          "textScale": 2,
+          "textStrokeColor": [
+            51,
+            98,
+            153,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Parzellen"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1005",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            149,
+            1,
+            1,
+            1
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            149,
+            1,
+            1,
+            0.2
+          ],
+          "labelField": "BPlan_ID",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            51,
+            98,
+            153,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Bebauungspläne"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1006",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            255,
+            23,
+            220,
+            0.8
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            252,
+            23,
+            220,
+            0.2
+          ],
+          "labelField": "Flurstück",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            51,
+            98,
+            153,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Flurstücke"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1007",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            152,
+            167,
+            171,
+            1
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            152,
+            167,
+            171,
+            1
+          ],
+          "legendValue": "Gebäude Planung"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1008",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            95,
+            103,
+            105,
+            0.8
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            95,
+            103,
+            105,
+            0.8
+          ],
+          "legendValue": "Gebäude Bestand"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1009",
+    "rules": [
+      {
+        "style": {
+          "lineStrokeColor": [
+            95,
+            103,
+            105,
+            0.8
+          ],
+          "lineStrokeWidth": 1.5,
+          "legendValue": "Gebäudeanbau Bestand"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1010",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            255,
+            0,
+            0,
+            1
+          ],
+          "polygonStrokeWidth": 3,
+          "polygonStrokeDash": [
+            10,
+            10
+          ],
+          "polygonFillColor": [
+            255,
+            255,
+            255,
+            0
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1011",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            252,
+            186,
+            3,
+            0.8
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            252,
+            186,
+            3,
+            0.2
+          ],
+          "labelField": "parzellierung_id",
+          "overflow": "true",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            252,
+            186,
+            3,
+            0.8
+          ],
+          "textFillColor": [
+            38,
+            12,
+            12,
+            0.8
+          ],
+          "textStrokeWidth": 0.5,
+          "legendValue": "Parzellen-Nr."
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1012",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            97,
+            0,
+            148,
+            0.8
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            97,
+            0,
+            148,
+            0.8
+          ],
+          "labelField": "event_name",
+          "overflow": "true",
+          "textAlign": "center",
+          "textScale": 1.5,
+          "textStrokeColor": [
+            97,
+            0,
+            148,
+            0.8
+          ],
+          "textFillColor": [
+            255,
+            255,
+            255,
+            0.8
+          ],
+          "textStrokeWidth": 0.8,
+          "legendValue": "Events Testdaten"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1013",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            92,
+            61,
+            46,
+            0.8
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            92,
+            61,
+            46,
+            0.8
+          ],
+          "legendValue": "Kampfmittelräumung"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "1014",
+    "rules": [
+      {
+        "conditions": {
+          "properties": {
+            "nutzung": "Event"
+          },
+          "sequence": [
+            0,
+            1
+          ]
+        },
+        "style": {
+          "polygonStrokeColor": [
+            97,
+            0,
+            148,
+            0.8
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            97,
+            0,
+            148,
+            0.8
+          ],
+          "legendValue": "Events Testdaten"
+        }
+      },
+      {
+        "conditions": {
+          "properties": {
+            "nutzung": "Kampfmittelräumung"
+          },
+          "sequence": [
+            0,
+            1
+          ]
+        },
+        "style": {
+          "polygonStrokeColor": [
+            92,
+            61,
+            46,
+            0.8
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            92,
+            61,
+            46,
+            0.8
+          ],
+          "legendValue": "Kampfmittelräumung"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "baum",
+    "rules": [
+      {
+        "style": {
+          "type": "icon",
+          "imageName": "baum.svg",
+          "imageScale": "0.6",
+          "imageWidth": 30,
+          "imageHeight": 30
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "alkis_flurstueck",
+    "rules": [
+      {
+        "style": {
+          "polygonStrokeColor": [
+            25,
+            25,
+            25,
+            0.5
+          ],
+          "polygonStrokeWidth": 1.5,
+          "polygonFillColor": [
+            25,
+            25,
+            25,
+            0.01
+          ],
+          "legendValue": "Flurstücke"
+        }
+      }
+    ]
+  },
+  {
+    "styleId": "lades",
+    "rules": [
+      {
+        "style": {
+          "circleFillColor": [
+            17,
+            60,
+            252,
+            0.6
+          ],
+          "circleRadius": 5.5,
+          "circleStrokeColor": [
+            17,
+            60,
+            252,
+            1
+          ],
+          "legendValue": "E-Ladesäulen"
+        }
+      }
+    ]
+  }
+]

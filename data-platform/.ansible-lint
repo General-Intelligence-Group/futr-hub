@@ -1,0 +1,6 @@
+parseable: true
+quiet: true
+skip_list:
+  - '106' # Role name {} does not match ^[a-z][a-z0-9_]+$ pattern
+use_default_rules: true
+verbosity: 0

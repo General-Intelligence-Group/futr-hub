@@ -1,0 +1,93 @@
+---
+- name: Login into APIM management API using local admin user
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user/login"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: "{{ GRAVITEE_DEFAULT_BASIC_AUTH }}"
+    status_code: 200
+  register: local_user
+
+
+- name: Get user id
+  uri:
+    method: GET
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: local_user_id
+
+
+
+
+#############################
+#### DISABLE LOCAL ADMIN ####
+#############################
+
+
+- name: Disable local login
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/portal/"
+    return_content: yes
+    body_format: json
+    body: |
+      {
+        "authentication": {
+          "localLogin": {
+            "enabled": false
+          }
+        }
+      }
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: portal_config
+  when: local_admin_exists.status != 403
+
+
+- name: Disable local admin account (1/2)
+  uri:
+    method: PUT
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/users/{{ local_user_id.json.id }}/roles"
+    return_content: yes
+    body_format: json
+    body: |
+      {
+        "user":"{{ local_user_id.json.id }}",
+        "referenceId":"DEFAULT",
+        "referenceType":"ENVIRONMENT",
+        "roles":[]
+      }
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: portal_config
+  when: local_admin_exists.status != 403
+
+- name: Disable local admin account (2/2)
+  uri:
+    method: PUT
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/users/{{ local_user_id.json.id }}/roles"
+    return_content: yes
+    body_format: json
+    body: |
+      {
+        "user":"{{ local_user_id.json.id }}",
+        "referenceId":"DEFAULT",
+        "referenceType":"ORGANIZATION",
+        "roles":[]
+      }
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: portal_config
+  when: local_admin_exists.status != 403

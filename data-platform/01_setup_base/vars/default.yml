@@ -1,0 +1,4 @@
+---
+copy_local_key: "{{ lookup('env','HOME') + '/.ssh/' + SSH_KEY_NAME }}"
+copy_local_pub_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/' + SSH_KEY_NAME + '.pub') }}"
+sys_packages: [ 'curl', 'vim', 'git']

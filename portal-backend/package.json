@@ -1,0 +1,45 @@
+{
+  "name": "portal-backend",
+  "version": "1.0.0",
+  "description": "Masterportal Configuration Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start:node": "node build/portal_backend.js",
+    "start:nodemon": "nodemon build/portal_backend.js",
+    "start:dev": "concurrently npm:watch npm:start:nodemon",
+    "start": "run-s start:node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/urban-dataspace-platform/use_cases/geodata/portal-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/urban-dataspace-platform/use_cases/geodata/portal-backend/issues"
+  },
+  "homepage": "https://gitlab.com/urban-dataspace-platform/use_cases/geodata/portal-backend#readme",
+  "dependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cookie-session": "^2.0.44",
+    "@types/express": "^4.17.13",
+    "@types/uuid": "^8.3.4",
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "concurrently": "^7.3.0",
+    "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.0.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jwt-decode": "^3.1.2",
+    "node-cache": "^5.1.2",
+    "nodemon": "^2.0.19",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.7.4",
+    "uuid": "^8.3.2"
+  }
+}

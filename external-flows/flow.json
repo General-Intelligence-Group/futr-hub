@@ -1,0 +1,929 @@
+[
+    {
+        "id": "f60386f8.fcca",
+        "type": "tab",
+        "label": "IN: Weather Observed",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6381ba4d.6646dc",
+        "type": "tab",
+        "label": "IN: OpenSenseMap",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b0e206da.e4f718",
+        "type": "http request",
+        "z": "f60386f8.fcca",
+        "name": "OWM Get",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "cb42f856.acc718",
+                "9de941.6d3536c"
+            ]
+        ]
+    },
+    {
+        "id": "8084ae75.b9a0c",
+        "type": "inject",
+        "z": "f60386f8.fcca",
+        "name": "Trigger APIs",
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "6cbcc477.950634"
+            ]
+        ]
+    },
+    {
+        "id": "6cbcc477.950634",
+        "type": "function",
+        "z": "f60386f8.fcca",
+        "name": "Setup OWM Request",
+        "func": "msg.url = \"https://api.openweathermap.org/data/2.5/weather?id=\"+env.get(\"SC_OWM_STATION\")+\"&units=metric&appid=\"+env.get(\"SC_OWM_API_KEY\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "b0e206da.e4f718"
+            ]
+        ]
+    },
+    {
+        "id": "2a878a66.f05cf6",
+        "type": "function",
+        "z": "f60386f8.fcca",
+        "name": "Prepare NGSI Create Message",
+        "func": "var observed_at = new Date();\nmsg.payload={\n        \"id\": \"urn:ngsi-ld:WeatherObserved:Germany-WeatherObserved-\" + msg.owm.id,\n    \"type\": \"WeatherObserved\",\n    \"address\": {\n        \"type\": \"PostalAddress\",\n        \"value\": {\n            \"addressCountry\": \"DE\",\n            \"addressLocality\": \"None\"\n        }\n    },\n    \"atmosphericPressure\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.main.pressure\n    },\n    \"dataProvider\": {\n        \"type\": \"Text\",\n        \"value\": \"OWM\"\n    },\n    \"dateObserved\": {\n        \"type\": \"DateTime\",\n        \"value\": observed_at.toISOString()\n    },\n    \"location\": {\n        \"type\": \"geo:json\",\n        \"value\": {\n            \"type\": \"Point\",\n            \"coordinates\": msg.owm.coord\n        }\n    },\n    \"precipitation\": {\n        \"type\": \"Number\",\n        \"value\": \"None\"\n    },\n    \"pressureTendency\": {\n        \"type\": \"Number\",\n        \"value\": \"None\"\n    },\n    \"relativeHumidity\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.main.humidity\n    },\n    \"source\": {\n        \"type\": \"URL\",\n        \"value\": \"https://openweathermap.com\"\n    },\n    \"stationCode\": {\n        \"type\": \"Text\",\n        \"value\": msg.owm.id\n    },\n    \"stationName\": {\n        \"type\": \"Text\",\n        \"value\": msg.owm.name\n    },\n    \"temperature\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.main.temp\n    },\n    \"windDirection\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.wind.deg\n    },\n    \"windSpeed\": {\n        \"type\": \"Number\",\n        \"value\": msg.owm.wind.speed\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 250,
+        "y": 780,
+        "wires": [
+            [
+                "d46de467.aafb08"
+            ]
+        ]
+    },
+    {
+        "id": "cb42f856.acc718",
+        "type": "debug",
+        "z": "f60386f8.fcca",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "d46de467.aafb08",
+        "type": "http request",
+        "z": "f60386f8.fcca",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 840,
+        "wires": [
+            [
+                "79a0464e.da0528",
+                "533d8311.883374"
+            ]
+        ]
+    },
+    {
+        "id": "3aa3eb1f.29da4c",
+        "type": "function",
+        "z": "f60386f8.fcca",
+        "name": "Setup NGSI Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/entities\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'mainservice';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 180,
+        "y": 720,
+        "wires": [
+            [
+                "2a878a66.f05cf6"
+            ]
+        ]
+    },
+    {
+        "id": "79a0464e.da0528",
+        "type": "debug",
+        "z": "f60386f8.fcca",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "2c4280b2.4ae098",
+        "type": "function",
+        "z": "f60386f8.fcca",
+        "name": "Setup NGSI PUT Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/entities/urn:ngsi-ld:WeatherObserved:Germany-WeatherObserved-\"+msg.owm.id+\"/attrs\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'mainservice';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 190,
+        "y": 420,
+        "wires": [
+            [
+                "737eae43.ef4c7"
+            ]
+        ]
+    },
+    {
+        "id": "1e6da670.107b32",
+        "type": "comment",
+        "z": "f60386f8.fcca",
+        "name": "Get current weather data from OWM for one Station",
+        "info": "",
+        "x": 250,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "38bbd4ff.e55bbc",
+        "type": "comment",
+        "z": "f60386f8.fcca",
+        "name": "Update Station (Assume Station already exists, if not, create it once)",
+        "info": "",
+        "x": 300,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "737eae43.ef4c7",
+        "type": "function",
+        "z": "f60386f8.fcca",
+        "name": "Prepare NGSI Update Message",
+        "func": "var observed_at = new Date();\nmsg.payload={\n    \"atmosphericPressure\": {\n        \"value\": msg.owm.main.pressure\n    },\n    \"relativeHumidity\": {\n        \"value\": msg.owm.main.humidity\n    },\n    \"temperature\": {\n        \"value\": msg.owm.main.temp\n    },\n    \"windDirection\": {\n        \"value\": msg.owm.wind.deg\n    },\n    \"windSpeed\": {\n        \"value\": msg.owm.wind.speed\n    },\n    \"dateObserved\": {\n        \"value\": msg.owm.dt\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 250,
+        "y": 480,
+        "wires": [
+            [
+                "ba5203e2.04f54"
+            ]
+        ]
+    },
+    {
+        "id": "ba5203e2.04f54",
+        "type": "http request",
+        "z": "f60386f8.fcca",
+        "name": "http PUT Request",
+        "method": "PUT",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 540,
+        "wires": [
+            [
+                "2bfa3719.457f48",
+                "38182ce5.ff342c"
+            ]
+        ]
+    },
+    {
+        "id": "d4204e4c.d4c3e8",
+        "type": "comment",
+        "z": "f60386f8.fcca",
+        "name": "Create Station",
+        "info": "",
+        "x": 130,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "2bfa3719.457f48",
+        "type": "switch",
+        "z": "f60386f8.fcca",
+        "name": "Switch on StatusCode other than 204 to Create",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "204",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "204",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 380,
+        "y": 600,
+        "wires": [
+            [],
+            [
+                "3aa3eb1f.29da4c"
+            ]
+        ]
+    },
+    {
+        "id": "38182ce5.ff342c",
+        "type": "debug",
+        "z": "f60386f8.fcca",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "9de941.6d3536c",
+        "type": "function",
+        "z": "f60386f8.fcca",
+        "name": "Save OWM Response",
+        "func": "msg.owm = msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 260,
+        "y": 300,
+        "wires": [
+            [
+                "2c4280b2.4ae098"
+            ]
+        ]
+    },
+    {
+        "id": "533d8311.883374",
+        "type": "function",
+        "z": "f60386f8.fcca",
+        "name": "Setup NGSI Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/subscriptions\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'mainservice';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 180,
+        "y": 980,
+        "wires": [
+            [
+                "72c646f.6cd4f38",
+                "27ccb354.e0b64c"
+            ]
+        ]
+    },
+    {
+        "id": "76a4941d.9dc284",
+        "type": "comment",
+        "z": "f60386f8.fcca",
+        "name": "Create Subscriptions",
+        "info": "",
+        "x": 150,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "72c646f.6cd4f38",
+        "type": "function",
+        "z": "f60386f8.fcca",
+        "name": "Prepare NGSI Subscription Create Message NR",
+        "func": "var observed_at = new Date();\nmsg.payload={\n  \"description\": \"Store Bielefeld Weather Data\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"idPattern\":\".*\",\n        \"type\": \"WeatherObserved\"\n      }\n    ],\n    \"condition\": {\n      \"attrs\": [\n        \"dateObserved\"\n      ]\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": env.get(\"SC_NOTIFY_SERVER\")+\"/notify\"\n    },\n    \"attrs\": [\n      \"temperature\",\n      \"relativeHumidity\",\n      \"atmosphericPressure\",\n      \"windDirection\",\n      \"windSpeed\",\n      \"dateObserved\"\n    ]\n  },\n  \"throttling\": 40\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 300,
+        "y": 1040,
+        "wires": [
+            [
+                "a9201777.4d76d"
+            ]
+        ]
+    },
+    {
+        "id": "a9201777.4d76d",
+        "type": "http request",
+        "z": "f60386f8.fcca",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 1100,
+        "wires": [
+            [
+                "a9e7a4ca.daf318"
+            ]
+        ]
+    },
+    {
+        "id": "a9e7a4ca.daf318",
+        "type": "debug",
+        "z": "f60386f8.fcca",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "7b54dda3.53f424",
+        "type": "function",
+        "z": "6381ba4d.6646dc",
+        "name": "Save openSenseMap Response",
+        "func": "msg.osm = msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "4e35cf40.d18bb8"
+            ]
+        ]
+    },
+    {
+        "id": "1494bacd.4760ad",
+        "type": "http request",
+        "z": "6381ba4d.6646dc",
+        "name": "openSenseMap GET",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 220,
+        "y": 220,
+        "wires": [
+            [
+                "4dd64a47.542014"
+            ]
+        ]
+    },
+    {
+        "id": "4aa8f503.c9253c",
+        "type": "function",
+        "z": "6381ba4d.6646dc",
+        "name": "Setup openSenseMap Request",
+        "func": "sensorId=env.get(\"SC_OSM_SENSOR_ID\");\nmsg.url = \"https://api.opensensemap.org/boxes/\"+sensorId+\"?format=json\";\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "1494bacd.4760ad"
+            ]
+        ]
+    },
+    {
+        "id": "d7eefca2.7ecbd8",
+        "type": "comment",
+        "z": "6381ba4d.6646dc",
+        "name": "Get current sensor data from luftdaten.info",
+        "info": "",
+        "x": 220,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "10c60d84.881632",
+        "type": "inject",
+        "z": "6381ba4d.6646dc",
+        "name": "Trigger APIs",
+        "repeat": "120",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 40,
+        "wires": [
+            [
+                "4aa8f503.c9253c"
+            ]
+        ]
+    },
+    {
+        "id": "4c1f8398.edfd64",
+        "type": "function",
+        "z": "6381ba4d.6646dc",
+        "name": "Prepare NGSI Create Message",
+        "func": "msg.payload=msg.payload={\n    \"id\": \"urn:ngsi-ld:Germany-AirQualityObserved\"+msg.osm._id,\n    \"type\": \"AirQualityObserved\",\n    \"dateObserved\": msg.osm.updatedAt,\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [msg.osm.currentLocation.coordinates[0], msg.osm.currentLocation.coordinates[1]]\n    },\n    \"source\": \"https://opensensemap.org\",\n    \"precipitation\": 0,\n    \"relativeHumidity\": parseFloat(msg.osm.sensors[3].lastMeasurement.value),\n    \"temperature\": parseFloat(msg.osm.sensors[2].lastMeasurement.value),\n    \"atmosphericPressure\": parseFloat(msg.osm.sensors[4].lastMeasurement.value),\n    \"PM2.5\": parseFloat(msg.osm.sensors[1].lastMeasurement.value),\n    \"PM10\": parseFloat(msg.osm.sensors[0].lastMeasurement.value)\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 250,
+        "y": 820,
+        "wires": [
+            [
+                "37f4d3c0.4291c4"
+            ]
+        ]
+    },
+    {
+        "id": "f917d532.3eb478",
+        "type": "debug",
+        "z": "6381ba4d.6646dc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "37f4d3c0.4291c4",
+        "type": "http request",
+        "z": "6381ba4d.6646dc",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 880,
+        "wires": [
+            [
+                "922425ea.9d08f8",
+                "e361410.34aa7c"
+            ]
+        ]
+    },
+    {
+        "id": "d8625e95.35b1c8",
+        "type": "function",
+        "z": "6381ba4d.6646dc",
+        "name": "Setup NGSI Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/entities/?options=keyValues\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'mainservice';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 180,
+        "y": 760,
+        "wires": [
+            [
+                "4c1f8398.edfd64"
+            ]
+        ]
+    },
+    {
+        "id": "922425ea.9d08f8",
+        "type": "debug",
+        "z": "6381ba4d.6646dc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "4e35cf40.d18bb8",
+        "type": "function",
+        "z": "6381ba4d.6646dc",
+        "name": "Setup NGSI PUT Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/entities/urn:ngsi-ld:Germany-AirQualityObserved\"+msg.osm._id+\"/attrs?options=keyValues\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'mainservice';\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 190,
+        "y": 460,
+        "wires": [
+            [
+                "de9948fd.bf245"
+            ]
+        ]
+    },
+    {
+        "id": "ce17c543.6df3a8",
+        "type": "comment",
+        "z": "6381ba4d.6646dc",
+        "name": "Update Sensor (Assume Sensor already exists, if not, create it once)",
+        "info": "",
+        "x": 300,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "de9948fd.bf245",
+        "type": "function",
+        "z": "6381ba4d.6646dc",
+        "name": "Prepare NGSI Update Message",
+        "func": "msg.payload={\n    \"dateObserved\": msg.osm.updatedAt,\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [msg.osm.currentLocation.coordinates[0], msg.osm.currentLocation.coordinates[1]]\n    },\n    \"source\": \"https://opensensemap.org\",\n    \"precipitation\": 0,\n    \"relativeHumidity\": parseFloat(msg.osm.sensors[3].lastMeasurement.value),\n    \"temperature\": parseFloat(msg.osm.sensors[2].lastMeasurement.value),\n    \"atmosphericPressure\": parseFloat(msg.osm.sensors[4].lastMeasurement.value),\n    \"PM2.5\": parseFloat(msg.osm.sensors[1].lastMeasurement.value),\n    \"PM10\": parseFloat(msg.osm.sensors[0].lastMeasurement.value)\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 250,
+        "y": 520,
+        "wires": [
+            [
+                "6de48f13.3341d8"
+            ]
+        ]
+    },
+    {
+        "id": "6de48f13.3341d8",
+        "type": "http request",
+        "z": "6381ba4d.6646dc",
+        "name": "http PUT Request",
+        "method": "PUT",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 580,
+        "wires": [
+            [
+                "e024f5de.ec0c",
+                "ddb5eac9.1511"
+            ]
+        ]
+    },
+    {
+        "id": "94106aa.3531118",
+        "type": "comment",
+        "z": "6381ba4d.6646dc",
+        "name": "Create Station",
+        "info": "",
+        "x": 130,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "e024f5de.ec0c",
+        "type": "switch",
+        "z": "6381ba4d.6646dc",
+        "name": "Switch on StatusCode other than 204 to Create",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "204",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "204",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 380,
+        "y": 640,
+        "wires": [
+            [],
+            [
+                "d8625e95.35b1c8"
+            ]
+        ]
+    },
+    {
+        "id": "ddb5eac9.1511",
+        "type": "debug",
+        "z": "6381ba4d.6646dc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "e361410.34aa7c",
+        "type": "function",
+        "z": "6381ba4d.6646dc",
+        "name": "Setup NGSI Request",
+        "func": "msg.url = env.get(\"SC_ORION_SERVER\")+\"/v2/subscriptions\";\nmsg.headers = {};\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Fiware-Service'] = 'mainservice';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 180,
+        "y": 1100,
+        "wires": [
+            [
+                "76957972.417f5",
+                "ac9009d2.a15598"
+            ]
+        ]
+    },
+    {
+        "id": "acc40dba.4f89a8",
+        "type": "comment",
+        "z": "6381ba4d.6646dc",
+        "name": "Create Subscription",
+        "info": "",
+        "x": 150,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "76957972.417f5",
+        "type": "function",
+        "z": "6381ba4d.6646dc",
+        "name": "Prepare NGSI Subscription Create Message NR",
+        "func": "var observed_at = new Date();\nmsg.payload={\n  \"description\": \"Store Open Sense Map Data\",\n  \"subject\": {\n    \"entities\": [\n      { \"idPattern\":\".*\",\n        \"type\": \"AirQualityObserved\"\n      }\n    ],\n    \"condition\": {\n      \"attrs\": [\n        \"dateObserved\"\n      ]\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": env.get(\"SC_NOTIFY_SERVER\")+\"/notify\"\n    }\n  },\n  \"throttling\": 40\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 300,
+        "y": 1160,
+        "wires": [
+            [
+                "ad7ab9a9.16bc7"
+            ]
+        ]
+    },
+    {
+        "id": "ad7ab9a9.16bc7",
+        "type": "http request",
+        "z": "6381ba4d.6646dc",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 1220,
+        "wires": [
+            [
+                "ce61614c.234548"
+            ]
+        ]
+    },
+    {
+        "id": "ce61614c.234548",
+        "type": "debug",
+        "z": "6381ba4d.6646dc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "4dd64a47.542014",
+        "type": "switch",
+        "z": "6381ba4d.6646dc",
+        "name": "Switch on StatusCode other than 200",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 280,
+        "wires": [
+            [
+                "7b54dda3.53f424",
+                "f917d532.3eb478"
+            ],
+            [
+                "f917d532.3eb478"
+            ]
+        ]
+    },
+    {
+        "id": "8f08d197.876d28",
+        "type": "inject",
+        "z": "6381ba4d.6646dc",
+        "name": "Trigger Subscription Manually",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1040,
+        "wires": [
+            [
+                "e361410.34aa7c"
+            ]
+        ]
+    },
+    {
+        "id": "27ccb354.e0b64c",
+        "type": "function",
+        "z": "f60386f8.fcca",
+        "name": "Prepare NGSI Subscription Create Message QL",
+        "func": "var observed_at = new Date();\nmsg.payload={\n  \"description\": \"Store Bielefeld Weather Data\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"idPattern\":\".*\",\n        \"type\": \"WeatherObserved\"\n      }\n    ],\n    \"condition\": {\n      \"attrs\": [\n        \"dateObserved\"\n      ]\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": env.get(\"DM_QL_SERVER\")+\"/v2/notify\"\n    },\n    \"attrs\": [\n      \"temperature\",\n      \"relativeHumidity\",\n      \"atmosphericPressure\",\n      \"windDirection\",\n      \"windSpeed\",\n      \"dateObserved\"\n    ]\n  },\n  \"throttling\": 40\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 300,
+        "y": 1180,
+        "wires": [
+            [
+                "fe1d831c.bc98"
+            ]
+        ]
+    },
+    {
+        "id": "fe1d831c.bc98",
+        "type": "http request",
+        "z": "f60386f8.fcca",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 1240,
+        "wires": [
+            [
+                "f45d105b.243c7"
+            ]
+        ]
+    },
+    {
+        "id": "f45d105b.243c7",
+        "type": "debug",
+        "z": "f60386f8.fcca",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "ac9009d2.a15598",
+        "type": "function",
+        "z": "6381ba4d.6646dc",
+        "name": "Prepare NGSI Subscription Create Message QL",
+        "func": "var observed_at = new Date();\nmsg.payload={\n  \"description\": \"Store Open Sense Map Data\",\n  \"subject\": {\n    \"entities\": [\n      { \"idPattern\":\".*\",\n        \"type\": \"AirQualityObserved\"\n      }\n    ],\n    \"condition\": {\n      \"attrs\": [\n        \"dateObserved\"\n      ]\n    }\n  },\n  \"notification\": {\n    \"http\": {\n      \"url\": env.get(\"DM_QL_SERVER\")+\"/v2/notify\"\n    }\n  },\n  \"throttling\": 40\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 300,
+        "y": 1300,
+        "wires": [
+            [
+                "f356af8.4a81d5"
+            ]
+        ]
+    },
+    {
+        "id": "f356af8.4a81d5",
+        "type": "http request",
+        "z": "6381ba4d.6646dc",
+        "name": "http POST Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 1360,
+        "wires": [
+            [
+                "4550cbce.a6a1a4"
+            ]
+        ]
+    },
+    {
+        "id": "4550cbce.a6a1a4",
+        "type": "debug",
+        "z": "6381ba4d.6646dc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 1360,
+        "wires": []
+    }
+]

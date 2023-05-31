@@ -1,0 +1,46 @@
+---
+
+# KEYCLOAK
+KEYCLOAK_POSTGRES_USER: postgres
+KEYCLOAK_POSTGRES_DB: keycloak
+KEYCLOAK_POSTGRES_HOST: keycloak-db
+
+SCOPE: openid
+
+# TIMESCALE
+TIMESCALE_POSTGRES_USER: postgres
+TIMESCALE_POSTGRES_DB: postgres
+TIMESCALE_POSTGRES_HOST: timescale
+
+# FROST SERVER
+FROST_POSTGRES_USER: sensorthings
+FROST_POSTGRES_DB: sensorthings
+FROST_POSTGRES_HOST: frost-postgis-db
+
+# MongoDB variables
+MONGO_DB_PORT: '27017'
+MONGO_DB_VERSION: '3.6'
+
+# Gravitee
+GRAVITEE_DEFAULT_BASIC_AUTH: "Basic YWRtaW46YWRtaW4="
+
+orion_api_endpoint: "http://orion-v2:1026"
+orion_api_healthcheckPath: "/version"
+orion_api_endpointName: "orion-v2"
+orion_api_publicPath: "/fiware/ngsi"
+orion_api_name: "FIWARE-NGSI v2 - Orion Context Broker"
+orion_api_description: "Context Broker API"
+
+frost_api_endpoint: "http://frost:8080/FROST-Server/v1.1"
+frost_api_healthcheckPath: "/"
+frost_api_endpointName: "frost"
+frost_api_publicPath: "/frost/v1.1"
+frost_api_name: "FROST Server v1.1"
+frost_api_description: "Server implementation of the OGC SensorThings API"
+
+s3_api_endpoint: "http://minio-server1:9000/"
+s3_api_healthcheckPath: "/"
+s3_api_endpointName: "s3"
+s3_api_publicPath: "/s3"
+s3_api_name: "Object Database"
+s3_api_description: "S3 API for Object Database"

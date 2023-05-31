@@ -1,0 +1,66 @@
+---
+
+####################################
+#### LOG IN IDENTITY PROVIDER   ####
+####################################
+
+
+- name: Login into APIM management API using IDM provider
+  uri:
+    method: POST
+    url: "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/token"
+    return_content: yes
+    body_format: form-urlencoded
+    body:
+    - [ grant_type, "password" ]
+    - [ username, "admin@{{ DOMAIN }}" ]
+    - [ password, "{{ SC_ADMIN_PASSWORD }}" ]
+    - [ client_id, "platform-central-main" ]
+    - [ client_secret, "{{ IDM_CLIENT_SECRET }}" ]
+    headers:
+      Accept: application/json
+    status_code: 200
+  register: user
+
+
+- name: Exchange token at APIM
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/auth/oauth2/keycloak/exchange?token={{ user.json.access_token }}"
+    return_content: yes
+    headers:
+      Accept: application/json
+    status_code: 200
+  register: new_token
+
+
+- name: Get IDM user id
+  uri:
+    method: GET
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ new_token.json.token }}
+    status_code: 200
+  register: idm_user_id
+
+###################################
+#### ADJUST GENERAL SETTINGS   ####
+###################################
+
+- name: Change general settings for API Management
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/settings/"
+    return_content: yes
+    body_format: json
+    body: |
+        { "portal":
+         { "entrypoint": "api.{{ DOMAIN }}"  }
+        }
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ new_token.json.token }}
+    status_code: 200
+  register: portal_settings

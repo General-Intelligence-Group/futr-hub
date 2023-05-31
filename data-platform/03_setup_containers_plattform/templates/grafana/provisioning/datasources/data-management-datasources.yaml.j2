@@ -1,0 +1,56 @@
+# # config file version
+apiVersion: 1
+
+# # list of datasources that should be deleted from the database
+#deleteDatasources:
+#   - name: Graphite
+#     orgId: 1
+
+# # list of datasources to insert/update depending
+# # on what's available in the database
+datasources:
+#   # <string, required> name of the datasource. Required
+# - name: Graphite
+#   # <string, required> datasource type. Required
+#   type: graphite
+#   # <string, required> access mode. direct or proxy. Required
+#   access: proxy
+  - name: TimescaleDB
+    type: postgres
+    orgId: 1
+    access: proxy
+    url: timescale:5432
+    user: postgres
+    database: postgres
+    editable: true
+    isDefault: false
+    jsonData:
+      timescaledb: true
+    jsonData:
+      sslmode: disable
+    secureJsonData:
+      password: {{ TIMESCALE_PASSWORD }}
+
+  - name: PostGIS
+    type: postgres
+    orgId: 1
+    access: proxy
+    url: frost-postgis-db:5432
+    user: sensorthings
+    database: sensorthings
+    editable: true
+    isDefault: false
+    jsonData:
+      sslmode: disable
+    secureJsonData:
+      password: {{FROST_DB_PASSWORD}}
+
+  - name: FROST SensorThings
+    type: linksmart-sensorthings-datasource
+    orgId: 1
+    access: proxy
+    url: http://frost.beispiel-stadt.de:8080/FROST-Server/v1.1
+    editable: true
+    isDefault: false
+    jsonData:
+      sslmode: disable

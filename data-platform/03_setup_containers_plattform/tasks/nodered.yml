@@ -1,0 +1,89 @@
+---
+- name: Create private data-flow network
+  docker_network:
+    name: data-flow
+    driver: bridge
+    state: present
+
+# Create data volumes for nodered containers
+
+- name: Create volume nr-ext-data
+  docker_volume:
+    name: "nr-ext-data"
+
+# Create settings file, used for all nodered containers
+
+- name: Ensure remote directory exists for Nodered Settings
+  file:
+    path: /opt/scp/ansible/nodered
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create Nodered Settings external
+  template:
+    src: nodered/settings.js.j2
+    dest: /opt/scp/ansible/nodered/ext-settings.js
+    owner: '{{ CREATE_USER }}'
+    mode: '0755'
+
+# Create external container
+
+- name: Deploy nr-ext without project set
+  docker_container:
+    name: nr-ext
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    volumes:
+      - nr-ext-data:/data
+      - /opt/scp/ansible/nodered/ext-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "data-flow"
+    state: started
+    labels:
+      com.docker.compose.project: "data-flow"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+
+- name: Clone Repo to nr-ext container
+  command: docker exec nr-ext bash -l -c "rm -rf /data/node_modules;rm -rf /data/projects/{{ NR_REPO_TARGET_FOLDER }};git clone https://{{ NR_GIT_LOGIN }}:{{ NR_GIT_TOKEN }}@{{ NR_EXT_GIT_REPO }} /data/projects/{{ NR_REPO_TARGET_FOLDER }}"  # noqa 204
+  changed_when: True
+
+- name: Install modules for nr-ext
+  command: docker exec nr-ext bash -l -c "cd /data/projects/{{ NR_REPO_TARGET_FOLDER }}; npm install"
+  changed_when: True
+
+- name: Link node_modules directory for nr-ext
+  command: docker exec nr-ext bash -l -c "ln -s -b /data/projects/{{ NR_REPO_TARGET_FOLDER }}/node_modules /data/"
+  changed_when: True
+
+- name: Deploy nr-ext with cloned project set
+  docker_container:
+    name: nr-ext
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    env:
+      FLOWS: "{{ NR_REPO_TARGET_FOLDER }}"
+      SC_ORION_SERVER: "http://orion-v2:1026"
+      SC_OWM_API_KEY: "{{ SC_OWM_API_KEY }}"
+      SC_OWM_STATION: "{{ SC_OWM_STATION }}"
+      SC_OSM_SENSOR_ID: "{{ SC_OSM_SENSOR_ID }}"
+      DM_QL_SERVER: "http://quantumleap:8668"
+#      EXT_MQTT_SERVER: ""
+      EXT_MQTT_PORT: "1884"
+    volumes:
+      - nr-ext-data:/data
+      - /opt/scp/ansible/nodered/ext-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "data-flow"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "data-flow"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+

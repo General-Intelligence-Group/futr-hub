@@ -1,0 +1,97 @@
+---
+
+######################################################
+# Temporarily deactivated, due to no need in current #
+# Use Cases. To reactivate simple uncomment the      #
+# complete area                                      #
+######################################################
+
+# - name: Create private connector network
+#   docker_network:
+#     name: connector-flow
+#     driver: bridge
+#     state: present
+
+# # Create data volumes for nodered containers
+
+# - name: Create volume nr-con-data
+#   docker_volume:
+#     name: "nr-con-data"
+
+# # Create settings file, used for all nodered containers
+
+# - name: Ensure remote directory exists for Nodered Settings
+#   file:
+#     path: /opt/scp/ansible/nodered
+#     recurse: yes
+#     state: directory
+#     mode: '0755'
+
+# - name: Create Nodered Settings connector
+#   template:
+#     src: nodered/settings.js.j2
+#     dest: /opt/scp/ansible/nodered/con-settings.js
+#     owner: '{{ CREATE_USER }}'
+#     mode: '0755'
+
+# # Create internal container
+
+# - name: Deploy nr-con without project set
+#   docker_container:
+#     name: nr-con
+#     image: nodered/node-red:1.2.9
+#     restart_policy: always
+#     volumes:
+#       - nr-con-data:/data
+#       - /opt/scp/ansible/nodered/con-settings.js:/data/settings.js
+#     networks:
+#       - name: "public"
+#       - name: "data-flow"
+#       - name: "data-management"
+#       - name: "connector-flow"
+      # networks_cli_compatible: yes
+      # purge_networks: yes
+      # network_mode: "public"
+#     state: started
+#     labels:
+#       com.docker.compose.project: "connector"
+
+# - name: Clone Repo to nr-con container
+#   command: docker exec nr-con bash -l -c "rm -rf /data/node_modules;rm -rf /data/projects/{{ NR_REPO_TARGET_FOLDER }};git clone https://{{ NR_GIT_LOGIN }}:{{ NR_GIT_TOKEN }}@{{ NR_CON_GIT_REPO }} /data/projects/{{ NR_REPO_TARGET_FOLDER }}"  # noqa 204
+#   changed_when: true
+
+# - name: Install modules for nr-con
+#   command: docker exec nr-con bash -l -c "cd /data/projects/{{ NR_REPO_TARGET_FOLDER }}; npm install"
+#   changed_when: true
+
+# # - name: Link node_modules directory for nr-con
+# #   command: docker exec nr-con bash -l -c "ln -s -b /data/projects/{{ NR_REPO_TARGET_FOLDER }}/node_modules /data/"
+
+# - name: Deploy nr-con with cloned project set
+#   docker_container:
+#     name: nr-con
+#     image: nodered/node-red:1.2.9
+#     restart_policy: always
+#     env:
+#       FLOWS: "{{ NR_REPO_TARGET_FOLDER }}"
+#       SC_ORION_SERVER: "http://orion-v2:1026"
+#       DM_QL_SERVER: "http://quantumleap:8668"
+#       EXT_MQTT_SERVER: ""
+#       EXT_MQTT_PORT: "1884"
+#       SC_OWM_API_KEY: "{{ SC_OWM_API_KEY }}"
+#       SC_OWM_STATION: "{{ SC_OWM_STATION }}"
+#       SC_OSM_SENSOR_ID: "{{ SC_OSM_SENSOR_ID }}"
+#     volumes:
+#       - nr-con-data:/data
+#       - /opt/scp/ansible/nodered/con-settings.js:/data/settings.js
+    # networks_cli_compatible: yes
+    # purge_networks: yes
+    # network_mode: "public"
+#     networks:
+#       - name: "public"
+#       - name: "data-flow"
+#       - name: "data-management"
+#       - name: "connector-flow"
+#     state: started
+#     labels:
+#       com.docker.compose.project: "connector"

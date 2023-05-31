@@ -1,0 +1,15 @@
+{
+    "enabled": true,
+    "type": "oidc",
+    "name": "KEYCLOAK",
+    "configuration": {
+        "clientId": "platform-central-main",
+        "clientSecret": "{{ IDM_CLIENT_SECRET }}",
+        "tokenEndpoint": "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/token",
+        "authorizeEndpoint": "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/auth",
+        "userInfoEndpoint": "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/userinfo"
+    },
+    "userProfileMapping": {
+        "id": "sub"
+    }
+}

@@ -1,0 +1,13 @@
+---
+- name: Install API Management
+  include_tasks:
+    file: "{{ item }}"
+  loop:
+    - apim/deploy_docker_services.yml
+    - apim/create_identity_provider.yml
+    - apim/provide_idm_admin_with_roles.yml # this is necessary due to a bug in gravity that does not update roles on (first) login
+    - apim/disable_local_admin.yml
+    - apim/adjust_general_settings.yml
+    - apim/create_fiware_api.yml
+    - apim/create_frost_api.yml
+    - apim/create_s3_api.yml

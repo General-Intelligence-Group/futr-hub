@@ -1,0 +1,114 @@
+---
+- name: "Wait for API Management to come up"
+  uri:
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user/login"
+    status_code: 401
+  register: result
+  until: result.status == 401
+  retries: 50
+  delay: 2
+
+
+- name: Login into APIM management API using local admin user
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user/login"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: "{{ GRAVITEE_DEFAULT_BASIC_AUTH }}"
+    status_code: 200
+  register: local_user
+
+
+- name: Get user id
+  uri:
+    method: GET
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/user"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: local_user_id
+
+
+
+####################################
+#### CREATE IDENTITY PROVIDER   ####
+####################################
+
+
+
+- name: Delete identity provider Keycloak
+  uri:
+    method: DELETE
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/configuration/identities/keycloak"
+    return_content: yes
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 204,-1,404,403
+  register: local_admin_exists # this register has status 403, if local admin is deactivated
+
+- name: Create identity provider Keycloak
+  uri:
+    method: POST
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/configuration/identities/"
+    return_content: yes
+    body_format: json
+    body: "{{ lookup('template', 'gravitee/create_identity_provider_keycloak.json.j2') }}"
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 201
+  register: identity_provider
+  when: local_admin_exists.status != 403
+
+- name: Activate Keycloak Console Use
+  uri:
+    method: PUT
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/identities"
+    return_content: yes
+    body_format: json
+    body: |
+      [
+        { "identityProvider":"keycloak" }
+      ]
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 204
+  register: portal_config
+  when: local_admin_exists.status != 403
+
+- name: Activate Keycloak Portal Use
+  uri:
+    method: PUT
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/environments/DEFAULT/identities"
+    return_content: yes
+    body_format: json
+    body: |
+      [
+        { "identityProvider":"keycloak" }
+      ]
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 204
+  register: portal_config
+  when: local_admin_exists.status != 403
+
+- name: Add role mapping to identity provider Keycloak
+  uri:
+    method: PUT
+    url: "https://api.{{ DOMAIN }}/management/organizations/DEFAULT/configuration/identities/keycloak"
+    return_content: yes
+    body_format: json
+    body: "{{ lookup('template', 'gravitee/add_identity_provider_keycloak_rolemappings.json.j2') }}"
+    headers:
+      Accept: application/json
+      Authorization: Bearer {{ local_user.json.token }}
+    status_code: 200
+  register: identity_provider
+  when: local_admin_exists.status != 403

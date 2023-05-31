@@ -1,0 +1,79 @@
+---
+
+- name: Create volume traefik2_logs
+  docker_volume:
+    name: traefik2_logs
+
+- name: Create volume traefik2_config
+  docker_volume:
+    name: traefik2_config
+
+- name: Create volume traefik2_certs
+  docker_volume:
+    name: traefik2_certs
+
+- name: Check if acme.json exists (this avoids recreation of certificates)
+  stat: path=files/traefik/{{ inventory_hostname }}/acme.json
+  delegate_to: localhost
+  register: result
+  become: no
+
+- name: Copy acme.json file into certs volume, if existing
+  command:
+    cmd: docker run --rm -iv traefik2_certs:/v busybox sh -c 'cat > /v/acme.json'
+    stdin: "{{ lookup('file', 'files/traefik/{{ inventory_hostname }}/acme.json') | regex_replace('\\r\\n', '\\n') | string }}"  # noqa 207
+  when: result.stat.exists
+
+- name: Ensure correct permissins for acme.json
+  command:
+    cmd: docker run --rm -iv traefik2_certs:/v busybox sh -c 'chmod 600 /v/acme.json'
+  when: result.stat.exists
+
+- name: Deploy Traefik
+  docker_container:
+    name: traefik
+    image: traefik:2.4.8
+    published_ports:
+      - "80:80"
+      - "443:443"
+    restart_policy: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - traefik2_logs:/logs
+      - traefik2_config:/conf
+      - traefik2_certs:/certs
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    sysctls:
+      net.core.somaxconn: 65535
+    privileged: true
+    state: started
+    command:
+      - --log.level=ERROR
+      - --api.dashboard=true
+      - --accesslog
+      - --accesslog.filePath=/logs/access.log
+      - --metrics
+      - --metrics.prometheus
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.forwardedheaders.insecure=false
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.le.acme.email={{ EMAIL }}
+      - --certificatesresolvers.le.acme.storage=/certs/acme.json
+      - --certificatesresolvers.le.acme.tlschallenge=true
+    labels:
+      com.docker.compose.project: "public"
+      traefik.enable: "true"
+      # Redirect all HTTP to HTTPS permanently
+      traefik.http.routers.http_catchall.rule: "HostRegexp(`{any:.+}`)"
+      traefik.http.routers.http_catchall.entrypoints: "web"
+      traefik.http.routers.http_catchall.middlewares: "https_redirect"
+      # Middleware Configuration
+      traefik.http.middlewares.https_redirect.redirectscheme.scheme: "https"
+      traefik.http.middlewares.https_redirect.redirectscheme.permanent: "true"
+      traefik.http.middlewares.mycompress.compress: "true"

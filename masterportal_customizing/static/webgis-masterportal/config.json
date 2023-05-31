@@ -1,0 +1,491 @@
+{
+	"Portalconfig": {
+		"treeType": "custom",
+		"searchBar": {
+			"osm": {
+				"minChars": 3,
+				"serviceId": "10",
+				"limit": 30,
+				"states": "Berlin",
+				"classes": "place,highway,building,shop,historic,leisure,city,county"
+			},
+			"komoot": {
+				"minChars": 3,
+				"serviceId": "11",
+				"limit": 20,
+				"lang": "de",
+				"lat": 52.5,
+				"lon": 13.4,
+				"bbox": "12.5,52.05,14.05,52.75"
+			},
+			"visibleVector": {},
+			"tree": {},
+			"startZoomLevel": 9,
+			"placeholder": "Suche"
+		},
+		"mapView": {
+			"backgroundImage": "./resources/img/backgroundCanvas.jpeg",
+			"startCenter": [
+				384092,
+				5824082
+			],
+			"extent": [
+				330000,
+				5770000,
+				440000,
+				5850000
+			],
+			"startZoomLevel": 4,
+			"epsg": "EPSG:25833"
+		},
+		"menu": {
+			"tree": {
+				"name": "Themen"
+			},
+			"tools": {
+				"name": "translate#common:menu.tools.name",
+				"children": {
+					"gfi": {
+						"name": "Informationen abfragen",
+						"active": true
+					},
+					"searchByCoord": {
+						"name": "Koordinatensuche"
+					},
+					"supplyCoord": {
+						"name": "Koordinaten abfragen"
+					},
+					"measure": {
+						"name": "translate#common:menu.tools.measure"
+					},
+					"draw": {
+						"name": "Zeichnen / Schreiben",
+						"renderToWindow": false,
+						"download": {
+							"preSelectedFormat": "KML"
+						}
+					},
+					"fileImport": {
+						"name": "Datei Import"
+					},
+					"saveSelection": {
+						"name": "Auswahl speichern"
+					},
+					"layerSlider": {
+						"name": "Zeitreihe",
+						"glyphicon": "glyphicon-film",
+						"title": "RBB Hashtag Aktion",
+						"sliderType": "player",
+						"timeInterval": 2000,
+						"layerIds": [
+							{
+								"title": "vom 17.09.2021",
+								"layerId": "rbb_20210917"
+							},
+							{
+								"title": "vom 20.09.2021",
+								"layerId": "rbb_20210920"
+							},
+							{
+								"title": "vom 04.10.2021",
+								"layerId": "rbb_20211004"
+							}
+						]
+					}
+				}
+			},
+			"legend": {
+				"name": "Legende"
+			},
+			"filter": {
+				"name": "Flächennutzung",
+				"glyphicon": "glyphicon-filter",
+				"deactivateGFI": false,
+				"isGeneric": false,
+				"isInitOpen": false,
+				"allowMultipleQueriesPerLayer": false,
+				"liveZoomToFeatures": false,
+				"predefinedQueries": [
+					{
+						"layerId": "014",
+						"isActive": false,
+						"isSelected": true,
+						"name": "Gesamt",
+						"predefinedRules": [],
+						"attributeWhiteList": [
+							{
+								"name": "flaeche_start",
+								"displayName": "Alle Nutzungen",
+								"attrNameUntil": "flaeche_ende",
+								"matchingMode": "OR",
+								"format": "YYYY-MM-DD",
+								"type": "date"
+							}
+						]
+					},
+					{
+						"layerId": "014",
+						"isActive": false,
+						"isSelected": false,
+						"name": "Events",
+						"predefinedRules": [
+							{
+								"attrName": "nutzung",
+								"values": "Event"
+							}
+						],
+						"attributeWhiteList": [
+							{
+								"name": "flaeche_start",
+								"displayName": "Events",
+								"attrNameUntil": "flaeche_ende",
+								"matchingMode": "OR",
+								"format": "YYYY-MM-DD",
+								"type": "date"
+							}
+						]
+					},
+					{
+						"layerId": "014",
+						"isActive": false,
+						"isSelected": false,
+						"name": "KMR",
+						"predefinedRules": [
+							{
+								"attrName": "nutzung",
+								"values": "Kampfmittelräumung"
+							}
+						],
+						"attributeWhiteList": [
+							{
+								"name": "flaeche_start",
+								"displayName": "Kampfmittelräumung",
+								"attrNameUntil": "flaeche_ende",
+								"matchingMode": "OR",
+								"format": "YYYY-MM-DD",
+								"type": "date"
+							}
+						]
+					}
+				]
+			}
+		},
+		"controls": {
+			"fullScreen": true,
+			"totalView": true,
+			"backForward": true,
+			"zoom": true,
+			"orientation": {
+				"zoomMode": "once"
+			},
+			"attributions": {
+				"isInitOpenDesktop": false,
+				"isInitOpenMobile": false
+			},
+			"mousePosition": true
+		}
+	},
+	"Themenconfig": {
+		"Hintergrundkarten": {
+			"Layer": [
+				{
+					"id": "myId1",
+					"name": "Hintergrundkarte (s/w)",
+					"layerAttribution": "<span>Geoportal Berlin / Karte von Berlin 1:5000 (K5 SW-Ausgabe) von Maßstab 1:500 bis 1:5000, WebAtlas Berlin ab 1:5000</span>",
+					"visibility": true,
+					"children": [
+						{
+							"id": "fis_k5_sw",
+							"minScale": "0",
+							"maxScale": "5009"
+						},
+						{
+							"id": "fis_webatlas_sw",
+							"minScale": "5010",
+							"maxScale": "250000"
+						}
+					]
+				},
+				{
+					"id": "501",
+					"name": "Digitale farbige Orthophotos von Berlin 2020",
+					"layerAttribution": "<span>Geoportal Berlin / Digitale farbige Orthophotos 2020 (DOP20RGB)</span>"
+				},
+				{
+					"id": "502",
+					"name": "OpenStreetMap",
+					"layerAttribution": "<span>(c) OpenStreetMap contributors</span>",
+					"visibility": false
+				}
+			]
+		},
+		"Fachdaten": {
+			"Ordner": [
+				{
+					"Titel": "BTXL Fachdaten",
+					"Ordner": [
+						{
+							"Titel": "Basisinformationen",
+							"Layer": [
+								{
+									"id": "001",
+									"name": "Projektgrenze",
+									"styleId": "1001",
+									"visibility": true
+								},
+								{
+									"id": "002",
+									"name": "Teilräume",
+									"styleId": "1002",
+									"visibility": false
+								},
+								{
+									"id": "003",
+									"name": "Baufelder"
+								},
+								{
+									"id": "004",
+									"name": "Musterparzellierung",
+									"styleId": "1004"
+								},
+								{
+									"id": "005",
+									"name": "Bebauungspläne",
+									"styleId": "1005"
+								},
+								{
+									"id": "006",
+									"name": "Flurstücke",
+									"styleId": "1006"
+								},
+								{
+									"id": "007",
+									"name": "Gebäude Planung",
+									"styleId": "1007",
+									"visibility": false
+								},
+								{
+									"id": "008",
+									"name": "Gebäude Bestand",
+									"styleId": "1008"
+								},
+								{
+									"id": "009",
+									"name": "Gebäudeanbau Bestand",
+									"styleId": "1009"
+								},
+								{
+									"id": "baeume",
+									"name": "Bäume",
+									"styleId": "baum",
+									"visibility": false
+								}
+							]
+						},
+						{
+							"Titel": "Energie",
+							"Layer": [
+								{
+									"id": "010",
+									"name": "Energieverbrauch pro Baufeld",
+									"visibility": false
+								},
+								{
+									"id": "011",
+									"name": "Wärme/Kälte-Versorgung pro Parzelle",
+									"styleId": "1011",
+									"visibility": false
+								}
+							]
+						},
+						{
+							"Titel": "Liegenschaften",
+							"Layer": [
+								{
+									"id": "014",
+									"name": "Flächenzwischennutzung - Filter aktiv",
+									"styleId": "1014",
+									"visibility": false
+								},
+								{
+									"id": "012",
+									"styleId": "1012",
+									"name": "Events Testdaten",
+									"visibility": false
+								},
+								{
+									"id": "013",
+									"styleId": "1013",
+									"name": "Kampfmittelräumung"
+								}
+							]
+						}
+					]
+				},
+				{
+					"Titel": "Externe Fachdaten",
+					"Ordner": [
+						{
+							"Titel": "Liegenschaften",
+							"Layer": [
+								{
+									"id": "AlkisSW",
+									"name": "ALKIS s/w",
+									"layerAttribution": "<span>Geoportal Berlin / ALKIS Berlin s/w (Amtliches Liegenschaftskatasterinformationssystem)</span>",
+									"visibility": false
+								},
+								{
+									"id": "s_wfs_alkis",
+									"name": "ALKIS Flurstücke",
+									"layerAttribution": "<span>Geoportal Berlin / ALKIS Berlin Flurstücke</span>",
+									"styleId": "alkis_flurstueck",
+									"visibility": false
+								}
+							]
+						},
+						{
+							"Titel": "Umweltinformationen",
+							"Layer": [
+								{
+									"id": "biotope",
+									"name": "Biotopkartierung 2014",
+									"layerAttribution": "<span>Datenquelle: Senatsverwaltung für Stadtentwicklung --- Legende: Rot = Geschützt, Grün = Nicht geschützt</span>",
+									"visibility": false
+								},
+								{
+									"id": "k_fb_berlinbtk:1",
+									"name": "Biotoptypen (SenUVK von 2013)"
+								},
+								{
+									"id": "k_fb_p26:1",
+									"name": "Biotoptypen - gesetzlich geschützt (SenUVK von 2013)"
+								},
+								{
+									"id": "505",
+									"name": "Biotop- und Artenschutz",
+									"layerAttribution": "<span>Geoportal Berlin / LaPro Beschlussfassung: Biotop- und Artenschutz (Programmplan)</span>",
+									"visibility": false
+								},
+								{
+									"id": "507",
+									"name": "Baumbestand",
+									"layerAttribution": "<span>Geoportal Berlin / Baumbestand Berlin</span>",
+									"visibility": false
+								},
+								{
+									"id": "506",
+									"name": "Bohrpunkte",
+									"layerAttribution": "<span>Geoportal Berlin / Geologische Bohrdaten</span>",
+									"visibility": false
+								},
+								{
+									"id": "wsg",
+									"name": "Wasserschutzgebiete"
+								}
+							]
+						},
+						{
+							"Titel": "Mobilität",
+							"Layer": [
+								{
+									"id": "Verkehrslage",
+									"name": "Verkehrslage",
+									"layerAttribution": "<span>Senatsverwaltung für Umwelt, Verkehr und Klimaschutz Berlin</span>",
+									"visibility": false
+								},
+								{
+									"id": "Strassennetz",
+									"name": "Übergeordnetes Straßennetz",
+									"layerAttribution": "<span>Geoportal Berlin / Übergeordnetes Straßennetz Bestand</span>",
+									"visibility": false
+								},
+								{
+									"id": "detailnetz",
+									"name": "Straßen Detailnetz",
+									"layerAttribution": "<span>Geoportal Berlin / Detailnetz Berlin</span>",
+									"visibility": false
+								},
+								{
+									"id": "s_lades_standort",
+									"name": "Elektro-Ladesäulen",
+									"layerAttribution": "<span>Geoportal Berlin / Elektro-Ladesäulen - Standorte</span>",
+									"styleId": "lades"
+								}
+							]
+						},
+						{
+							"Titel": "Stadtentwicklung",
+							"Layer": [
+								{
+									"id": "wmsk_aufgrabeverbote:1",
+									"name": "Aufgrabeverbote"
+								},
+								{
+									"id": "denkmal",
+      								"name": "Denkmalkarte Berlin"
+								}
+							]
+						},
+						{
+							"Titel": "Topographie",
+							"Layer": [
+								{
+									"id": "503",
+									"name": "ATKIS Digitales Geländemodell",
+									"layerAttribution": "<span>Geoportal Berlin / ATKIS DGM - Digitales Geländemodell</span>",
+									"visibility": false
+								}
+							]
+						}
+					]
+				},
+				{
+					"Titel": "Luftbilder",
+					"Ordner": [
+						{
+							"Titel": "BTXL Drohnenaufnahmen",
+							"Layer": [
+								{
+									"id": "wtd",
+									"name": "White Table Dinner 11.08.2021"
+								}
+							],
+							"Ordner": [
+								{
+									"Titel": "RBB Hashtag Aktion",
+									"Layer": [
+										{
+											"id": "rbb_20210917",
+											"name": "17.09.2021"
+										},
+										{
+											"id": "rbb_20210920",
+											"name": "20.09.2021"
+										},
+										{
+											"id": "rbb_20211004",
+											"name": "04.10.2021"
+										}
+									]
+								}
+							]
+						},
+						{
+							"Titel": "Historisch",
+							"Layer": [
+								{
+									"id": "k_luftbild1928:1",
+									"name": "Luftbilder 1928"
+								},
+								{
+									"id": "k_luftbild1953:1",
+									"name": "Luftbilder 1953"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+}

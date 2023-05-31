@@ -1,0 +1,29 @@
+{
+    "name": "KEYCLOAK",
+    "configuration": {
+        "clientId": "platform-central-main",
+        "clientSecret": "{{ IDM_CLIENT_SECRET }}",
+        "tokenEndpoint": "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/token",
+        "tokenIntrospectionEndpoint": "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/token/introspect",
+        "authorizeEndpoint": "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/auth",
+        "userInfoEndpoint": "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/userinfo",
+        "userLogoutEndpoint": "https://idm.{{ DOMAIN }}/auth/realms/platform-central/protocol/openid-connect/logout?redirect_uri=",
+        "color": "#0076b4",
+        "scopes": ["openid", "profile"]
+    },
+    "enabled": true,
+    "groupMappings": [],
+    "roleMappings": [{
+        "condition": {% raw %} "{#jsonPath(#profile, '$.roles[*]').contains('adminTech')}" {% endraw %},
+        "organizations": ["ADMIN"]
+    }],
+    "userProfileMapping": {
+        "id": "sub",
+        "firstname": "given_name",
+        "lastname": "family_name",
+        "email": "email",
+        "picture": "picture"
+    },
+    "emailRequired": false,
+    "syncMappings": true
+}

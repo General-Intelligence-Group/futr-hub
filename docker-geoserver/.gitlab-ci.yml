@@ -1,0 +1,34 @@
+variables: &global-variables
+  DEPLOY_IMAGE_TAG: "did not work"            # Set tag name that shows, that we had a problem
+
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != null #We a re running in a merge request
+      variables:
+        DEPLOY_IMAGE_TAG: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+        INVENTORY_FILE: ${INVENTORY_PREFIX}_${DEPLOY_IMAGE_TAG}
+    - if: $CI_COMMIT_BRANCH != null #We are running in a normal commit
+      variables:
+        DEPLOY_IMAGE_TAG: $CI_COMMIT_BRANCH
+        INVENTORY_FILE: ${INVENTORY_PREFIX}_${DEPLOY_IMAGE_TAG}
+
+stages:
+  - build
+
+build_geoserver:
+  tags:
+    - shared
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  stage: build
+  script:
+    - mkdir -p /kaniko/.docker
+    # - export VERSION=$(date -d "${CI_COMMIT_TIMESTAMP}" "+%Y%m%d-%H%M%S")
+    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    - >-
+      /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/geoserver:2.22-RC"
+  

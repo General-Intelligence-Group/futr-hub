@@ -1,0 +1,116 @@
+---
+- name: Create private indicate-energy network
+  docker_network:
+    name: indicate-energy
+    driver: bridge
+    state: present
+
+# Create data volumes for nodered containers
+- name: Create volume nr-indicate-energy-data
+  docker_volume:
+    name: "nr-indicate-energy-data"
+
+# Create settings file, used for all nodered containers
+- name: Ensure remote directory exists for Nodered Settings
+  file:
+    path: /opt/scp/ansible/nodered
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: Create Nodered Settings indicate-energy
+  template:
+    src: nodered/settings_ui.js.j2
+    dest: /opt/scp/ansible/nodered/indicate-energy-settings.js
+    owner: '{{ CREATE_USER }}'
+    mode: '0755'
+
+# Create indicate-energy container
+- name: Deploy without project set
+  docker_container:
+    name: nr-indicate-energy
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    volumes:
+      - nr-indicate-energy-data:/data
+      - /opt/scp/ansible/nodered/indicate-energy-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "indicate-energy"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "indicate-energy"
+
+- name: Clone Repo to nr-indicate-energy container
+  command: docker exec nr-indicate-energy bash -l -c "rm -rf /data/node_modules;rm -rf /data/projects/{{ NR_REPO_TARGET_FOLDER }};git clone https://{{ NR_GIT_LOGIN }}:{{ NR_GIT_TOKEN }}@{{ INDICATE_ENERGY_FLOW_PROJECT }} /data/projects/{{ NR_REPO_TARGET_FOLDER }}"  # noqa 204
+  changed_when: True
+
+- name: Install modules for nr-indicate-energy
+  command: docker exec nr-indicate-energy bash -l -c "cd /data/projects/{{ NR_REPO_TARGET_FOLDER }}; npm install"
+  changed_when: True
+
+- name: Link node_modules directory for nr-indicate-energy
+  command: docker exec nr-indicate-energy bash -l -c "ln -s -b /data/projects/{{ NR_REPO_TARGET_FOLDER }}/node_modules /data/"
+  changed_when: True
+
+- name: Deploy nr-indicate-energy with cloned project set
+  docker_container:
+    name: nr-indicate-energy
+    image: nodered/node-red:1.2.9
+    restart_policy: always
+    env:
+      FLOWS: "{{ NR_REPO_TARGET_FOLDER }}"
+      SC_ORION_SERVER: "http://orion-v2:1026"
+      SC_FROST_SERVER: "http://frost:8080"
+      DM_QL_SERVER: "http://quantumleap:8668"
+      #EXT_MQTT_SERVER: ""
+      EXT_MQTT_PORT: "1884"
+    volumes:
+      - nr-indicate-energy-data:/data
+      - /opt/scp/ansible/nodered/indicate-energy-settings.js:/data/settings.js
+    networks:
+      - name: "public"
+      - name: "indicate-energy"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    restart: yes
+    labels:
+      com.docker.compose.project: "indicate-energy"
+
+- name: Deploy Keycloak Gatekeeper for nr-indicate-energy
+  docker_container:
+    name: nr-indicate-energy-kc
+    image: keycloak/keycloak-gatekeeper:7.0.0
+    restart_policy: always
+    entrypoint:
+      - /opt/keycloak-gatekeeper
+      - --discovery-url=https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}
+      - --client-id={{ IDM_CLIENT }}
+      - --client-secret={{ IDM_CLIENT_SECRET }}
+      - --listen=0.0.0.0:3000
+      - --redirection-url=https://nr-admin-indicate-energy.{{ DOMAIN }}
+      - --enable-refresh-tokens=true
+      - --upstream-url=http://nr-indicate-energy:1880
+      - --encryption-key={{ AUTH_ENCRYPTION_KEY }}
+    networks:
+      - name: "public"
+    networks_cli_compatible: yes
+    purge_networks: yes
+    network_mode: "public"
+    state: started
+    labels:
+      com.docker.compose.project: "public"
+      traefik.enable: "true"
+      traefik.docker.network: "public"
+      # Nodered Admin
+      traefik.http.routers.nr-indicate-energy-kc.rule: "Host(`nr-admin-indicate-energy.{{ DOMAIN }}`)"
+      traefik.http.routers.nr-indicate-energy-kc.entrypoints: "websecure"
+      traefik.http.routers.nr-indicate-energy-kc.service: "nr-indicate-energy-kc"
+      traefik.http.routers.nr-indicate-energy-kc.tls: "true"
+      traefik.http.routers.nr-indicate-energy-kc.tls.certresolver: "le"
+      traefik.http.services.nr-indicate-energy-kc.loadbalancer.server.port: "3000"
