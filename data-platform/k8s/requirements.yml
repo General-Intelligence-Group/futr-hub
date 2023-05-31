@@ -1,0 +1,13 @@
+---
+collections:
+
+- kubernetes.core
+
+- community.general
+
+- community.grafana
+
+- community.postgresql
+
+- community.mongodb
+

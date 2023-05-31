@@ -1,0 +1,62 @@
+---
+# file: 03_setup_k8s_platform/vars/webgis_qgisserver.yml
+
+HELM_CHART_NAME: webgis-qgisserver
+HELM_RELEASE_NAME: geodata-qgisserver
+
+# Name of the GitLab project where we store all files to build QGIS Docker image.
+QGIS_CUSTOM_GITLAB_PROJECT: "berlintxl/futr-hub/platform/qgis-server-customizing"
+
+# Helm sepcific settings
+qgis_data_dir: "/data/qgis/wfsbasis"
+nginx_default_conf: "/etc/nginx/conf.d/"
+nginx_qgis_conf: "qgis-nginx.conf"
+nginx_server_name: "mapserver.{{ DOMAIN }}"
+nginx_cors_origin: "https://masterportal.{{ DOMAIN }}"
+
+# QGIS Server
+server_replicaCount: 1
+server_image_registry: "registry.gitlab.com"
+server_image_repository: "berlintxl/futr-hub/platform/qgis-server-customizing"
+server_image_tag: "{{ ENVIRONMENT }}"
+server_image_pullPolicy: Always
+server_image_pullSecrets: "gitlab-registry"
+server_service_port: 5555
+server_target_port: 5555
+
+# QGIS-HTTP-Server
+http_replicaCount: 1
+http_service_port: 80
+http_target_port: 80
+http_service_nodePort: 30080
+
+# QGIS environment variables
+env_QGIS_LANG: "en_EN.UTF-8"
+env_QGIS_PROJECT_FILE: "project.qgs"
+env_QGIS_SERVER_LOG_LEVEL: "0"
+env_DEBUG: "1"
+
+# QGIS: values for file 'pg_service.conf'
+postgis_service: "qwc_geodb"
+postgis_host: "{{ MAPSERVER_POSTGIS_HOST }}"
+postgis_port: 5432
+postgis_dbname: "{{ MAPSERVER_POSTGIS_DB }}"
+postgis_user: "{{ MAPSERVER_POSTGIS_USER }}"
+postgis_user_password: "{{ MAPSERVER_POSTGIS_USER_PASSWORD }}"
+postgis_sslmode: "disable"
+
+# PostGIS: MountPath and Name of 'pg_service.conf' for QGIS Server
+pgservicefile_dir: "/data/postgresql"
+pgservicefile: "qgis-pg-service.conf"
+
+# PostGIS: Credentials of PostgreSQL/PostGIS admin to create database artefacts for QGIS Server
+postgis_admin: "{{ WEBGIS_POSTGRES_ADMIN }}"
+postgis_admin_password: "{{ WEBGIS_POSTGRES_ADMIN_PASSWORD }}"
+
+# Ingress settings
+ingress_enabled: true
+ingress_class: public
+ingress_tls_acme: true
+ingress_host: "mapserver.{{ DOMAIN }}"
+ingress_host_path: "/"
+ingress_tls_secret: "mapserver.{{ DOMAIN }}-tls"

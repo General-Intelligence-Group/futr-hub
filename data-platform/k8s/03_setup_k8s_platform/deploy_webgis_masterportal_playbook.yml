@@ -1,0 +1,92 @@
+---
+# file: 03_setup_k8s_platform/deploy_webgis_masterportal_playbook.yml
+- name: Deploy MasterPortal for WebGIS
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Read default values
+      ansible.builtin.include_vars:
+        file: default.yml
+        name: default
+
+    - name: Read MasterPortal values
+      ansible.builtin.include_vars:
+        file: webgis_masterportal.yml
+        name: masterportal
+
+    - name: Set default facts for K8S
+      ansible.builtin.set_fact:
+        k8s_config: "{{ default.K8S_KUBECONFIG }}"
+        k8s_context: "{{ default.K8S_CONTEXT }}"
+        k8s_namespace: "{{ default.K8S_NAMESPACE_GEODATA }}"
+
+    - name: Set facts for ChartMuseum
+      ansible.builtin.set_fact:
+        cm_port: "{{ default.CM_PORT }}"
+        cm_storage: "{{ default.CM_STORAGE }}"
+        cm_storage_local_rootdir: "{{ default.CM_STORAGE_LOCAL_ROOTDIR }}"
+        cm_context_path: "{{ default.CM_CONTEXT_PATH }}"
+        helm_repo_url: "{{ default.HELM_REPO_URL }}"
+        helm_repo_name: "{{ default.HELM_REPO_NAME }}"
+
+    - name: Set facts for MasterPortal Helm chart
+      ansible.builtin.set_fact:
+        masterportal_helm_chart_name: "{{ masterportal.HELM_CHART_NAME }}"
+        masterportal_helm_release_name: "{{ masterportal.HELM_RELEASE_NAME }}"
+
+    - name: Check for Secret gitlab-registry in Namespace "{{ k8s_namespace }}"
+      community.kubernetes.k8s_info:
+        api_version: v1
+        kind: Secret
+        name: "gitlab-registry"
+        namespace: "{{ k8s_namespace }}"
+        kubeconfig: "{{ k8s_config }}"
+        context: "{{ k8s_context }}"
+      register: gitlab_registry_secret
+
+    - name: Set facts for dockerconfigjson
+      ansible.builtin.set_fact:
+        docker_registry: gitlab-registry
+        docker_server: registry.gitlab.com/
+        docker_email: "{{ GITLAB_REGISTRY_ACCESS_USER_EMAIL }}"
+        docker_username: "{{ GITLAB_REGISTRY_ACCESS_USER }}"
+        docker_password: "{{ GITLAB_REGISTRY_ACCESS_TOKEN }}"
+        docker_credentials: "{{ GITLAB_REGISTRY_ACCESS_USER }}:{{ GITLAB_REGISTRY_ACCESS_TOKEN }}"
+      when: gitlab_registry_secret['resources'][0] is undefined
+
+    - name: Create dockerconfigjson
+      ansible.builtin.set_fact:
+        dockerconfigjson: "{{ lookup('template', 'templates/webgis/gitlab_dockerjson.json.j2') | to_json }}"
+      when: docker_registry is defined
+
+    - name: Create docker-registry secret for GitLab registry
+      community.kubernetes.k8s:
+        state: present
+        namespace: "{{ k8s_namespace }}"
+        kubeconfig: "{{ k8s_config }}"
+        context: "{{ k8s_context }}"
+        definition:
+          apiVersion: v1
+          kind: secret
+          type: "kubernetes.io/dockerconfigjson"
+          metadata:
+            name: "gitlab-registry"
+            namespace: "{{ k8s_namespace | lower }}"
+          data:
+            .dockerconfigjson: "{{ dockerconfigjson | b64encode }}"
+      when:
+        - gitlab_registry_secret['resources'][0] is undefined
+        - dockerconfigjson is defined
+
+    - name: Install Helm package with values loaded from template
+      community.kubernetes.helm:
+        name: "{{ masterportal_helm_release_name }}"
+        # chart_ref: "{{ helm_repo_name }}/{{ masterportal_helm_chart_name }}"
+        chart_ref: "files/helmcharts/{{ masterportal_helm_chart_name }}"
+        kubeconfig: "{{ k8s_config }}"
+        context: "{{ k8s_context }}"
+        release_namespace: "{{ k8s_namespace }}"
+        update_repo_cache: true
+        create_namespace: true
+        values: "{{ lookup('template', 'templates/webgis/masterportal_values.yaml.j2') | from_yaml }}"

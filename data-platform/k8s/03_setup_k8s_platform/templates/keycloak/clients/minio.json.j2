@@ -1,0 +1,97 @@
+{
+    "clientId": "{{ IDM_CLIENT_MINIO }}",
+    "description": "This client was created by ansible.",
+    "rootUrl": "https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}/central",
+    "adminUrl": "https://idm.{{ DOMAIN }}/auth/realms/{{ IDM_REALM }}/central",
+    "surrogateAuthRequired": false,
+    "enabled": true,
+    "alwaysDisplayInConsole": false,
+    "clientAuthenticatorType": "client-secret",
+    "redirectUris": [
+        "https://minio-tenant-console.{{ DOMAIN }}/*",
+        "https://minio-tenant.{{ DOMAIN }}/*"
+    ],
+    "webOrigins": [
+        "https://idm.{{ DOMAIN }}"
+    ],
+    "notBefore": 0,
+    "bearerOnly": false,
+    "consentRequired": false,
+    "standardFlowEnabled": true,
+    "implicitFlowEnabled": true,
+    "directAccessGrantsEnabled": true,
+    "serviceAccountsEnabled": false,
+    "publicClient": false,
+    "frontchannelLogout": false,
+    "protocol": "openid-connect",
+    "attributes": {
+        "saml.assertion.signature": "false",
+        "saml.multivalued.roles": "false",
+        "saml.force.post.binding": "false",
+        "saml.encrypt": "false",
+        "backchannel.logout.revoke.offline.tokens": "false",
+        "saml.server.signature": "false",
+        "saml.server.signature.keyinfo.ext": "false",
+        "exclude.session.state.from.auth.response": "false",
+        "backchannel.logout.session.required": "true",
+        "client_credentials.use_refresh_token": "false",
+        "saml_force_name_id_format": "false",
+        "saml.client.signature": "false",
+        "tls.client.certificate.bound.access.tokens": "false",
+        "saml.authnstatement": "false",
+        "display.on.consent.screen": "false",
+        "saml.onetimeuse.condition": "false"
+    },
+    "authenticationFlowBindingOverrides": {},
+    "fullScopeAllowed": true,
+    "nodeReRegistrationTimeout": -1,
+    "protocolMappers": [
+        {
+            "name": "Role-Group mapping",
+            "protocol": "openid-connect",
+            "protocolMapper": "oidc-usermodel-client-role-mapper",
+            "consentRequired": false,
+            "config": {
+                "multivalued": "true",
+                "userinfo.token.claim": "true",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "groups",
+                "usermodel.clientRoleMapping.clientId": "{{ IDM_CLIENT_MINIO }}"
+            }
+        },
+        {
+            "name": "min.io Policy Mapper",
+            "protocol": "openid-connect",
+            "protocolMapper": "oidc-script-based-protocol-mapper",
+            "consentRequired": false,
+            "config": {
+                "multivalued": "false",
+                "userinfo.token.claim": "true",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "policy",
+                "script":"// Check for Client Roles\n// First initialize variables\nvar ArrayList = Java.type('java.util.ArrayList');\n//var roles = new ArrayList();\nvar policy = '';\nvar forEach = Array.prototype.forEach;\n\n// Get current client from context\nvar client = keycloakSession.getContext().getClient();\n\n// Loop over \nforEach.call(user.getClientRoleMappings(client).toArray(), function(roleModel) {\n  // return highest policy - stop after first working 'if'\n  if (roleModel.getName() == 'minioPolicyReadWrite') {\n      policy = 'readwrite';\n  } else if (roleModel.getName() == 'minioPolicyWrite' && policy != 'readwrite') {\n      policy = 'write'\n  } else if (roleModel.getName() == 'minioPolicyRead' && policy != 'readwrite' && policy != 'write') {\n      policy = 'read'\n  }\n});\n\nexports = policy;",
+                "jsonType.label":"String"
+            }
+        }
+    ],
+    "defaultClientScopes": [
+        "web-origins",
+        "role_list",
+        "profile",
+        "roles",
+        "email"
+    ],
+    "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "microprofile-jwt"
+    ],
+    "access": {
+        "view": true,
+        "configure": true,
+        "manage": true
+    }
+}

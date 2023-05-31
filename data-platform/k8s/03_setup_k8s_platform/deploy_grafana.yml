@@ -1,0 +1,125 @@
+---
+- name: Deploy Grafana
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - name: Read default values
+      ansible.builtin.include_vars:
+        file: default.yml
+        name: default
+
+    - name: Read GRAFANA values
+      ansible.builtin.include_vars:
+        file: data_management_grafana.yml
+        name: grafana
+
+    - name: Read QuantumLeap values
+      ansible.builtin.include_vars:
+        file: context_management-stack/quantumleap.yml
+        name: quantumleap
+
+    - name: Set default facts for K8S
+      ansible.builtin.set_fact:
+        k8s_config: "{{ default.K8S_KUBECONFIG }}"
+        k8s_context: "{{ default.K8S_CONTEXT }}"
+        k8s_namespace: "{{ default.K8S_NAMESPACE_DATA_MANAGEMENT }}"
+
+    - name: Set facts for Grafana Helm chart
+      ansible.builtin.set_fact:
+        grafana_helm_repo_name: "{{ grafana.HELM_REPO_NAME }}"
+        grafana_helm_repo_url: "{{ grafana.HELM_REPO_URL }}"
+        grafana_helm_chart_name: "{{ grafana.HELM_CHART_NAME }}"
+        grafana_helm_release_name: "{{ grafana.HELM_RELEASE_NAME }}"
+
+    - name: Add grafana Helm repo
+      community.kubernetes.helm_repository:
+        name: "{{ grafana_helm_repo_name }}"
+        url: "{{ grafana_helm_repo_url }}"
+
+    - name: Get timescale credentials
+      community.kubernetes.k8s_info:
+        namespace: '{{ default.K8S_NAMESPACE_DATA_MANAGEMENT }}'
+        kubeconfig: '{{ default.K8S_KUBECONFIG }}'
+        context: '{{ default.K8S_CONTEXT }}'
+        kind: Secret
+        name: 'postgres.{{ quantumleap.timescale_service }}.credentials.postgresql.acid.zalan.do'
+      register: timescale_credentials
+
+    - name: Store timescale credentials
+      set_fact:
+        TIMESCALE_PASSWORD: "{{ timescale_credentials.resources[0].data.password | b64decode }}"
+        cacheable: yes
+
+    - name: Install Helm package with values loaded from template
+      community.kubernetes.helm:
+        name: "{{ grafana_helm_release_name }}"
+        chart_ref: "{{ grafana_helm_repo_name }}/{{ grafana_helm_chart_name }}"
+        kubeconfig: "{{ k8s_config }}"
+        context: "{{ k8s_context }}"
+        release_namespace: "{{ k8s_namespace }}"
+        update_repo_cache: true
+        create_namespace: true
+        values: "{{ lookup('template', 'grafana/grafana-values.yaml.j2') | from_yaml }}"
+
+    - name: Let Grafana a chance to start
+      pause:
+        seconds: 60
+
+    - name: Ensure temp directory exists
+      file:
+        path: /tmp/udp/grafana/dashboard_files/
+        recurse: yes
+        state: directory
+        mode: '0755'
+
+    - name: Create grafana dashboard from template (Weather DWD)
+      template:
+        src: grafana/dashboard_files/tsdb_weather_DWD.json.j2
+        dest: /tmp/udp/grafana/dashboard_files/tsdb_weather_DWD.json
+        mode: '0666'
+
+    - name: (Re-)Import Grafana Dashboard (Weather DWD)
+      community.grafana.grafana_dashboard:
+            grafana_url: "https://grafana.{{ DOMAIN }}"
+            url_username: "{{ grafana.admin_user }}"
+            url_password: "{{ grafana.admin_password }}"
+            state: present
+            commit_message: Updated by ansible
+            overwrite: yes
+            path: /tmp/udp/grafana/dashboard_files/tsdb_weather_DWD.json
+
+    - name: Create grafana dashboard from template (Particulate Matter)
+      template:
+        src: grafana/dashboard_files/tsdb_particulate_matter.json.j2
+        dest: /tmp/udp/grafana/dashboard_files/tsdb_particulate_matter.json
+        mode: '0666'
+
+    - name: (Re-)Import Grafana Dashboard (Particulate Matter)
+      community.grafana.grafana_dashboard:
+            grafana_url: "https://grafana.{{ DOMAIN }}"
+            url_username: "{{ grafana.admin_user }}"
+            url_password: "{{ grafana.admin_password }}"
+            state: present
+            commit_message: Updated by ansible
+            overwrite: yes
+            path: /tmp/udp/grafana/dashboard_files/tsdb_particulate_matter.json
+
+    - name: Create grafana dashboard from template (Weather)
+      template:
+        src: grafana/dashboard_files/tsdb_weather.json.j2
+        dest: /tmp/udp/grafana/dashboard_files/tsdb_weather.json
+        mode: '0666'
+
+    - name: (Re-)Import Grafana Dashboard (Weather)
+      community.grafana.grafana_dashboard:
+            grafana_url: "https://grafana.{{ DOMAIN }}"
+            url_username: "{{ grafana.admin_user }}"
+            url_password: "{{ grafana.admin_password }}"
+            state: present
+            commit_message: Updated by ansible
+            overwrite: yes
+            path: /tmp/udp/grafana/dashboard_files/tsdb_weather.json

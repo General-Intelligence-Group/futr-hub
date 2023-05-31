@@ -1,0 +1,21 @@
+---
+# file: 03_setup_k8s_platform/vars/webgis_masterportal.yml
+
+HELM_CHART_NAME: webgis-masterportal
+HELM_RELEASE_NAME: geodata-masterportal
+
+replicaCount: 1
+image_registry: "registry.gitlab.com/"
+image_repository: "registry.gitlab.com/berlintxl/futr-hub/platform/masterportal_customizing"
+image_tag: "{{ ENVIRONMENT }}"
+image_pullPolicy: Always
+
+service_type: NodePort
+service_port: 80
+
+ingress_enabled: true
+ingress_class: public
+ingress_tls_acme: true
+ingress_host: "masterportal.{{ DOMAIN }}"
+ingress_host_path: "/"
+ingress_tls_secret: "masterportal.{{ DOMAIN }}-tls"

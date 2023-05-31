@@ -1,0 +1,20 @@
+---
+# file: 03_setup_k8s_platform/vars/idm-stack/install_openldap.yml
+
+# PVC settings
+pv_storageClass: microk8s-hostpath
+pv_accessMode: ReadWriteOnce
+pv_size: 100Mi
+
+# Deployment settings
+image_tag: "2.4.58"
+ldap_admin_username: "{{ LDAP_ADMIN_USERNAME }}"
+ldap_admin_password: "{{ LDAP_ADMIN_PASSWORD }}"
+ldap_users: "{{ LDAP_USERS }}"
+ldap_passwords: "{{ LDAP_PASSWORDS}}"
+ldap_root: "{{ LDAP_ROOT }}"
+ldap_user_dc: "{{ LDAP_USER_DC}}"
+ldap_group: "{{ LDAP_GROUP }}"
+ldap_extra_schemas: "LDAP_EXTRA_SCHEMAS }}"
+ldap_skip_default_tree: "no"
+ldap_ulimit_nofiles: "1024"

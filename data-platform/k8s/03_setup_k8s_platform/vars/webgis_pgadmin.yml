@@ -1,0 +1,50 @@
+---
+# file: 03_setup_k8s_platform/vars/webgis_pgadmin.yml
+
+HELM_REPO_NAME: runix
+HELM_REPO_URL: https://helm.runix.net/
+HELM_CHART_NAME: pgadmin4
+HELM_RELEASE_NAME: geodata-pgadmin
+
+image_registry: docker.io
+image_repository: dpage/pgadmin4
+image_tag: "4.29"
+image_pullPolicy: IfNotPresent
+
+service_type: NodePort
+service_port: 80
+service_targetPort: http
+service_portName: http
+
+serverDefinitions_enabled: true
+serverDefinitions_Name: WebGIS Prototyp – PostGIS
+serverDefinitions_Group: Servers
+serverDefinitions_Port: 5432
+serverDefintions_Username: "{{ MAPSERVER_POSTGIS_USER }}"
+serverDefintions_Host: "{{ MAPSERVER_POSTGIS_HOST }}"
+serverDefinitions_SSLMode: prefer
+serverDefinitions_MaintenanceDB: "{{ MAPSERVER_POSTGIS_DB }}"
+
+networkPolicy_enabled: true
+
+ingress_enabled: true
+ingress_class: public
+ingres_host: "pgadmin.{{ DOMAIN }}"
+tls_acme: true
+tls_secretName: "pgadmin.{{ DOMAIN }}-tls"
+
+existingSecret: ""
+
+env_email: "{{ PGADMIN_DEFAULT_EMAIL }}"
+env_password: "{{ PGADMIN_DEFAULT_PASSWORD }}"
+env_enhanced_cookie_protection: "{{ PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION }}"
+
+
+persistentVolume_enabled: true
+persistentVolume_accessModes: ReadWriteOnce
+persistentVolume_size: 100Mi
+persistentVolume_storageClass: microk8s-hostpath
+persistentVolume_existingClaim:
+
+VolumePermissions_enabled: true
+

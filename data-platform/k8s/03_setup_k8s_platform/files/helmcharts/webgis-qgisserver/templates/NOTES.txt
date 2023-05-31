@@ -1,0 +1,14 @@
+Your QGIS Server v.{{ .Chart.AppVersion }} "{{ .Release.Name }}" release is now running.
+
+**************************************************************************************************
+
+To check WMS capabilities, type the following URL in a web browser:
+http://ip_of_the_mapserver:30080/ogc/name_of_qgis_project?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities
+
+{{- if .Values.ingress.enabled }}
+{{- range $host := .Values.ingress.hosts }}
+  {{- range .paths }}
+  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}
+  {{- end }}
+{{- end }}
+{{- end }}
